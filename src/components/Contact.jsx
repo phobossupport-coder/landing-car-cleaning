@@ -5,7 +5,7 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Section from './Section';
-import { brand, packages, services } from '../data';
+import { brand, services } from '../data';
 
 const contacts = [
   { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
@@ -14,7 +14,7 @@ const contacts = [
   { icon: AccessTimeIcon, label: brand.hours },
 ];
 
-const options = [...packages.map((p) => `Пакет ${p.name}`), ...services.map((s) => s.title), 'Потрібна консультація'];
+const options = [...services.map((s) => s.title), 'Потрібна консультація'];
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -38,7 +38,7 @@ export default function Contact() {
             Запишіться на безкоштовний огляд
           </Typography>
           <Typography color="text.secondary" sx={{ mb: 5 }}>
-            Оцінимо стан лаку, заміряємо товщину ЛФП і запропонуємо оптимальний варіант. Передзвонимо протягом 15 хвилин у
+            Оцінимо стан кузова й салону та запропонуємо оптимальний варіант. Передзвонимо протягом 15 хвилин у
             робочий час.
           </Typography>
           <Stack spacing={3}>

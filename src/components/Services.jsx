@@ -1,20 +1,19 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
-import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import AirlineSeatReclineExtraOutlinedIcon from '@mui/icons-material/AirlineSeatReclineExtraOutlined';
+import UmbrellaOutlinedIcon from '@mui/icons-material/UmbrellaOutlined';
 import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import CheckIcon from '@mui/icons-material/Check';
 import Section, { SectionTitle } from './Section';
 import { services } from '../data';
 
 const icons = {
   polish: AutoAwesomeIcon,
   shield: ShieldOutlinedIcon,
-  layers: LayersOutlinedIcon,
   seat: AirlineSeatReclineExtraOutlinedIcon,
-  wash: WaterDropOutlinedIcon,
-  light: LightModeOutlinedIcon,
+  rain: UmbrellaOutlinedIcon,
+  wax: WaterDropOutlinedIcon,
 };
 
 export default function Services() {
@@ -22,42 +21,67 @@ export default function Services() {
     <Section id="services">
       <SectionTitle
         overline="Послуги"
-        title="Повний цикл догляду за кузовом"
-        subtitle="Від делікатної мийки до багатоетапної корекції лаку та довготривалого захисту."
+        title="П’ять послуг — один бездоганний результат"
+        subtitle="Від відновлення лаку до довготривалого захисту кузова, скла й салону."
       />
-      <Grid container spacing={0} sx={{ borderTop: '1px solid', borderLeft: '1px solid', borderColor: 'divider' }}>
+      <Box sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
         {services.map((s, i) => {
           const Icon = icons[s.icon];
           return (
-            <Grid
+            <Box
               key={s.title}
-              size={{ xs: 12, sm: 6, md: 4 }}
               sx={{
-                p: { xs: 4, md: 5 },
-                borderRight: '1px solid',
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '90px 1.2fr 1fr' },
+                gap: { xs: 2, md: 6 },
+                py: { xs: 5, md: 7 },
+                px: { md: 2 },
                 borderBottom: '1px solid',
                 borderColor: 'divider',
-                position: 'relative',
                 transition: 'background .3s',
                 '&:hover': { bgcolor: 'background.paper' },
                 '&:hover .num': { color: 'primary.main' },
               }}
             >
-              <Typography className="num" sx={{ position: 'absolute', top: 24, right: 28, fontFamily: 'Montserrat', fontWeight: 700, color: 'rgba(255,255,255,0.12)', transition: 'color .3s' }}>
+              <Typography className="num" sx={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: { xs: 32, md: 48 }, lineHeight: 1, color: 'rgba(255,255,255,0.12)', transition: 'color .3s' }}>
                 {String(i + 1).padStart(2, '0')}
               </Typography>
-              <Icon sx={{ fontSize: 36, color: 'primary.main', mb: 3 }} />
-              <Typography variant="h4" component="h3" gutterBottom>
-                {s.title}
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
-                {s.text}
-              </Typography>
-              <Box sx={{ fontWeight: 600, color: 'primary.light' }}>{s.price}</Box>
-            </Grid>
+              <Box>
+                <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                  <Icon sx={{ fontSize: 32, color: 'primary.main' }} />
+                  <Typography variant="h3" component="h3">
+                    {s.title}
+                  </Typography>
+                </Stack>
+                <Typography color="text.secondary">{s.text}</Typography>
+                {s.details && (
+                  <Stack spacing={1} mt={2.5}>
+                    {s.details.map((d) => (
+                      <Stack key={d} direction="row" spacing={1.5}>
+                        <CheckIcon fontSize="small" color="primary" sx={{ mt: 0.4 }} />
+                        <Typography variant="body2" sx={{ lineHeight: 1.7 }}>
+                          {d}
+                        </Typography>
+                      </Stack>
+                    ))}
+                  </Stack>
+                )}
+              </Box>
+              <Stack justifyContent="space-between" alignItems="flex-start" spacing={3}>
+                <Box sx={{ borderLeft: '2px solid', borderColor: 'primary.main', pl: 3, py: 0.5 }}>
+                  <Typography variant="overline" color="primary" component="p">
+                    {s.fact.label}
+                  </Typography>
+                  <Typography sx={{ fontFamily: 'Montserrat', fontWeight: 600, fontSize: '1.25rem', lineHeight: 1.4 }}>{s.fact.value}</Typography>
+                </Box>
+                <Button href="#contact" variant="outlined" color="secondary">
+                  Записатися
+                </Button>
+              </Stack>
+            </Box>
           );
         })}
-      </Grid>
+      </Box>
     </Section>
   );
 }
