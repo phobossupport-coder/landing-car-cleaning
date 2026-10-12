@@ -91,7 +91,7 @@ us-east-1                       eu-north-1
 Shared inputs: DomainName, HostedZoneId (from Route 53 registration)
 ```
 
-Files: `infra/certificate.yaml`, `infra/site.yaml`, `infra/form.yaml`, `infra/form/handler.mjs`, `infra/form/handler.test.mjs`, `infra/params/*.json` (non-secret parameter files), `infra/README.md`.
+Files: `infra/certificate.yaml`, `infra/site.yaml`, `infra/form.yaml`, `infra/form/src/handler.mjs` (only this directory is packaged into the Lambda), `infra/form/handler.test.mjs`, `infra/params/*.example.json` (committed) and `infra/params/*.json` (real values, git-ignored because the repository is public), `infra/README.md`.
 
 ### 4.2 `stella-certificate` (us-east-1)
 
@@ -127,7 +127,7 @@ Resources:
 
 Out-of-template, one-time manual steps (documented in the runbook): put the Telegram token and chat id into SSM; verify `NotifyEmail` as an SES identity (required while the account is in the SES sandbox); confirm the SNS subscription email.
 
-### 4.5 Lambda handler behaviour (`infra/form/handler.mjs`)
+### 4.5 Lambda handler behaviour (`infra/form/src/handler.mjs`)
 
 Input (JSON body): `name`, `phone`, `car`, `service`, `message`, `lang`, `website` (honeypot), plus `page` (URL). Output JSON with `ok: true | false` and `error` code.
 
