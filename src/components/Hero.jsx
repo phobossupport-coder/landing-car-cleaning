@@ -1,19 +1,83 @@
-import { Box, Button, Container, Grid, Rating, Stack, Typography } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { images, partners, stats } from '../data';
+import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { carBrands, images, stats, yachtBrands } from '../data';
+import { serif } from '../theme';
+
+// Бігова дорожка з марками. reverse — рух у протилежний бік, speed — секунди на цикл.
+function Marquee({ items, label, reverse = false, speed = 60 }) {
+  const row = [...items, ...items];
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', borderTop: '1px solid', borderColor: 'divider' }}>
+      <Typography
+        variant="overline"
+        sx={{
+          flexShrink: 0,
+          px: { xs: 2, md: 4 },
+          py: 2.5,
+          fontSize: '0.6rem',
+          color: 'text.secondary',
+          borderRight: '1px solid',
+          borderColor: 'divider',
+          minWidth: { xs: 96, md: 180 },
+        }}
+      >
+        {label}
+      </Typography>
+      <Box
+        sx={{
+          flex: 1,
+          overflow: 'hidden',
+          maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
+          WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            width: 'max-content',
+            animation: `marquee ${speed}s linear infinite ${reverse ? 'reverse' : ''}`,
+            '@keyframes marquee': { to: { transform: 'translateX(-50%)' } },
+            '&:hover': { animationPlayState: 'paused' },
+          }}
+        >
+          {row.map((p, i) => (
+            <Stack key={i} direction="row" alignItems="center" spacing={{ xs: 3, md: 5 }} sx={{ pr: { xs: 3, md: 5 } }}>
+              <Typography
+                sx={{
+                  fontFamily: serif,
+                  fontWeight: 500,
+                  fontSize: { xs: 18, md: 22 },
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(244,241,234,0.42)',
+                  whiteSpace: 'nowrap',
+                  transition: 'color .3s',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {p}
+              </Typography>
+              <Box sx={{ width: 5, height: 5, transform: 'rotate(45deg)', bgcolor: 'primary.main', opacity: 0.6 }} />
+            </Stack>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  );
+}
 
 export default function Hero() {
   return (
-    <Box id="top" component="header" sx={{ position: 'relative', minHeight: 'min(100svh, 1000px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <Box id="top" component="header" sx={{ position: 'relative', minHeight: 'min(100svh, 1080px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           backgroundImage: `url(${images.hero})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center 60%',
-          transform: 'scale(1.05)',
-          animation: 'heroZoom 18s ease-out forwards',
+          backgroundPosition: { xs: '62% center', md: 'center 40%' },
+          transform: 'scale(1.08)',
+          animation: 'heroZoom 22s ease-out forwards',
           '@keyframes heroZoom': { to: { transform: 'scale(1)' } },
         }}
       />
@@ -21,46 +85,73 @@ export default function Hero() {
         sx={{
           position: 'absolute',
           inset: 0,
-          background:
-            'linear-gradient(90deg, rgba(11,11,13,0.95) 0%, rgba(11,11,13,0.7) 45%, rgba(11,11,13,0.2) 100%), linear-gradient(0deg, #0B0B0D 0%, rgba(11,11,13,0) 40%)',
+          background: {
+            xs: 'linear-gradient(180deg, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.7) 50%, #0A0A0B 100%)',
+            md: 'linear-gradient(90deg, rgba(10,10,11,0.96) 0%, rgba(10,10,11,0.78) 40%, rgba(10,10,11,0.25) 75%, rgba(10,10,11,0.5) 100%), linear-gradient(0deg, #0A0A0B 0%, rgba(10,10,11,0) 45%), linear-gradient(180deg, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0) 30%)',
+          },
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', pt: 14, pb: 6 }}>
-        <Box sx={{ maxWidth: 680 }}>
-          <Stack direction="row" spacing={1.5} alignItems="center" mb={3}>
-            <Rating value={5} readOnly size="small" sx={{ color: 'primary.main' }} />
-            <Typography variant="body2" color="text.secondary">
-              4.9 · 380+ відгуків у Google
-            </Typography>
-          </Stack>
-          <Typography variant="h1" component="h1">
-            Блиск, який{' '}
-            <Box component="span" sx={{ color: 'primary.main' }}>
-              видно здалеку
+      {/* Вертикальний підпис зліва — деталь, яку помічають не одразу */}
+      <Typography
+        variant="overline"
+        sx={{
+          position: 'absolute',
+          left: 28,
+          bottom: 260,
+          transform: 'rotate(-90deg)',
+          transformOrigin: 'left bottom',
+          color: 'text.secondary',
+          display: { xs: 'none', xl: 'block' },
+          whiteSpace: 'nowrap',
+        }}
+      >
+        Detailing Atelier · Kyiv · Est. 2017
+      </Typography>
+
+      <Container maxWidth="lg" sx={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', pt: { xs: 16, md: 18 }, pb: 8 }}>
+        <Box sx={{ maxWidth: 760 }}>
+          <Typography
+            variant="overline"
+            color="primary"
+            component="p"
+            sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4, animation: 'fadeUp 1s .1s both', '@keyframes fadeUp': { from: { opacity: 0, transform: 'translateY(18px)' } } }}
+          >
+            <Box component="span" sx={{ width: 48, height: '1px', bgcolor: 'primary.main' }} />
+            Детейлінг-ательє для автомобілів та яхт
+          </Typography>
+          <Typography variant="h1" component="h1" sx={{ animation: 'fadeUp 1.1s .25s both' }}>
+            Досконалість
+            <Box component="span" sx={{ display: 'block', fontStyle: 'italic', fontWeight: 500, color: 'primary.main' }}>
+              у кожному відблиску
             </Box>
           </Typography>
-          <Typography sx={{ mt: 3, fontSize: { xs: '1.05rem', md: '1.2rem' }, color: 'text.secondary', maxWidth: 560 }}>
-            Професійне полірування кузова, корекція лаку та керамічний захист. Повертаємо авто глибину кольору й дзеркальний
-            блиск — з гарантією результату.
+          <Typography sx={{ mt: 4, fontSize: { xs: '1.05rem', md: '1.18rem' }, color: 'text.secondary', maxWidth: 560, animation: 'fadeUp 1.1s .4s both' }}>
+            Корекція лаку, керамічний захист, повна підготовка до зими та догляд за яхтами. Вручну, із замірами на кожній
+            деталі та гарантією результату.
           </Typography>
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={5}>
-            <Button href="#contact" variant="contained" size="large" endIcon={<ArrowForwardIcon />}>
-              Безкоштовний огляд
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={6} sx={{ animation: 'fadeUp 1.1s .55s both' }}>
+            <Button href="#contact" variant="contained" size="large" endIcon={<ArrowOutwardIcon />}>
+              Записатися на огляд
             </Button>
-            <Button href="#packages" variant="outlined" size="large" color="secondary">
-              Ціни та пакети
+            <Button href="#services" variant="outlined" size="large">
+              Послуги
             </Button>
           </Stack>
         </Box>
       </Container>
 
-      <Container maxWidth="lg" sx={{ position: 'relative', pb: 5 }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', pb: { xs: 5, md: 7 } }}>
         <Grid container sx={{ borderTop: '1px solid', borderColor: 'divider', pt: 4 }} rowSpacing={3}>
           {stats.map((s) => (
             <Grid key={s.label} size={{ xs: 6, md: 3 }}>
-              <Typography sx={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: { xs: 28, md: 36 } }}>{s.value}</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Stack direction="row" alignItems="baseline" spacing={1}>
+                <Typography sx={{ fontFamily: serif, fontWeight: 500, fontSize: { xs: 40, md: 54 }, lineHeight: 1, color: 'text.primary' }}>{s.value}</Typography>
+                {s.suffix && (
+                  <Typography sx={{ fontFamily: serif, fontStyle: 'italic', fontSize: { xs: 18, md: 22 }, color: 'primary.main' }}>{s.suffix}</Typography>
+                )}
+              </Stack>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 1, letterSpacing: '0.02em' }}>
                 {s.label}
               </Typography>
             </Grid>
@@ -68,24 +159,9 @@ export default function Hero() {
         </Grid>
       </Container>
 
-      <Box sx={{ position: 'relative', borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider', bgcolor: '#08080A', py: 3, overflow: 'hidden' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            width: 'max-content',
-            animation: 'marquee 30s linear infinite',
-            '@keyframes marquee': { to: { transform: 'translateX(-50%)' } },
-          }}
-        >
-          {[...partners, ...partners, ...partners, ...partners].map((p, i) => (
-            <Typography
-              key={i}
-              sx={{ px: { xs: 4, md: 7 }, fontFamily: 'Montserrat', fontWeight: 700, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.35)', whiteSpace: 'nowrap' }}
-            >
-              {p}
-            </Typography>
-          ))}
-        </Box>
+      <Box sx={{ position: 'relative', bgcolor: '#070708', borderBottom: '1px solid', borderColor: 'divider' }}>
+        <Marquee label="Автомобілі" items={carBrands} speed={70} />
+        <Marquee label="Яхти та катери" items={yachtBrands} reverse speed={85} />
       </Box>
     </Box>
   );

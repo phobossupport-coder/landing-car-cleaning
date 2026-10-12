@@ -2,7 +2,8 @@ import { useCallback, useRef, useState } from 'react';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import CodeIcon from '@mui/icons-material/Code';
-import Section from './Section';
+import Section, { Eyebrow } from './Section';
+import Reveal from './Reveal';
 import { images } from '../data';
 
 const points = ['Глибина й насиченість кольору', 'Без голограм і павутинки', 'Дзеркальне відображення', 'Захист, що зберігає результат'];
@@ -60,7 +61,7 @@ function Slider({ before, after }) {
             width: 48,
             height: 48,
             borderRadius: '50%',
-            bgcolor: 'primary.main',
+            background: 'linear-gradient(135deg, #EAD6A3, #C9A86A 45%, #9C7F45)',
             color: 'primary.contrastText',
             display: 'grid',
             placeItems: 'center',
@@ -76,13 +77,12 @@ function Slider({ before, after }) {
 
 export default function BeforeAfter() {
   return (
-    <Section id="results" dark>
+    <Section id="results">
       <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
         <Grid size={{ xs: 12, md: 5 }}>
-          <Typography variant="overline" color="primary" component="p">
-            Результат
-          </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 3 }}>
+          <Reveal>
+          <Eyebrow align="left">Результат</Eyebrow>
+          <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
             Різниця, яку не можна не помітити
           </Typography>
           <Typography color="text.secondary" sx={{ mb: 4 }}>
@@ -100,9 +100,12 @@ export default function BeforeAfter() {
           <Button href="#contact" variant="contained" size="large">
             Хочу такий результат
           </Button>
+          </Reveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Slider before={images.beforeAfter} after={images.beforeAfter} />
+          <Reveal delay={150}>
+            <Slider before={images.beforeAfter} after={images.beforeAfter} />
+          </Reveal>
         </Grid>
       </Grid>
     </Section>

@@ -1,7 +1,9 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Winter from './components/Winter';
 import BeforeAfter from './components/BeforeAfter';
+import Yachts from './components/Yachts';
 import Packages from './components/Packages';
 import Process from './components/Process';
 import Gallery from './components/Gallery';
@@ -17,7 +19,9 @@ export default function App() {
       <Hero />
       <main>
         <Services />
+        <Winter />
         <BeforeAfter />
+        <Yachts />
         <Packages />
         <Process />
         <Gallery />
