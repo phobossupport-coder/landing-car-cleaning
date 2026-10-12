@@ -2,10 +2,14 @@ import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import SailingOutlinedIcon from '@mui/icons-material/SailingOutlined';
 import { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { images, yachts } from '../data';
+import { images, serviceMeta } from '../data';
+import { formatPrice } from '../i18n/currency';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
 
 export default function Yachts() {
+  const { t } = useLang();
+  const yachts = t.yachts;
   return (
     <Box component="section" id="yachts" sx={{ position: 'relative', scrollMarginTop: 72, overflow: 'hidden' }}>
       <Box
@@ -25,11 +29,11 @@ export default function Yachts() {
         <Grid container spacing={{ xs: 6, md: 10 }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Reveal>
-              <Eyebrow align="left">Yacht detailing</Eyebrow>
+              <Eyebrow align="left">{yachts.eyebrow}</Eyebrow>
               <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-                Яхти та катери.
+                {yachts.title1}
                 <Box component="span" sx={{ display: 'block', fontStyle: 'italic', color: 'primary.main' }}>
-                  Той самий рівень.
+                  {yachts.title2}
                 </Box>
               </Typography>
               <Typography color="text.secondary" sx={{ mb: 4, maxWidth: 520 }}>
@@ -41,9 +45,16 @@ export default function Yachts() {
                   {yachts.where}
                 </Typography>
               </Stack>
-              <Button href="#contact" variant="outlined" size="large">
-                Розрахувати для моєї яхти
-              </Button>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 4 }} alignItems={{ sm: 'center' }} useFlexGap flexWrap="wrap">
+                <Button href="#contact" variant="outlined" size="large" sx={{ whiteSpace: 'nowrap' }}>
+                  {yachts.cta}
+                </Button>
+                <Stack direction="row" alignItems="baseline" spacing={1} sx={{ whiteSpace: 'nowrap' }}>
+                  <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
+                  <Typography sx={{ fontFamily: serif, fontSize: 30, lineHeight: 1, color: 'primary.light' }}>{formatPrice(serviceMeta[5].price, t.currency)}</Typography>
+                  <Typography variant="body2" color="text.secondary">/ {t.common.perFoot}</Typography>
+                </Stack>
+              </Stack>
             </Reveal>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>

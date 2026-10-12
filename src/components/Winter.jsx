@@ -3,10 +3,14 @@ import AcUnitOutlinedIcon from '@mui/icons-material/AcUnitOutlined';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { images, winter } from '../data';
+import { images, winterMeta } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
+import { formatPrice } from '../i18n/currency';
 
 export default function Winter() {
+  const { t } = useLang();
+  const winter = t.winter;
   return (
     <Section id="winter" dark sx={{ overflow: 'hidden' }}>
       {/* Холодне свічення у кутку — натяк на сезон без банальних сніжинок */}
@@ -29,7 +33,7 @@ export default function Winter() {
               <Box
                 component="img"
                 src={images.winter}
-                alt="Авто в студії перед зимовою підготовкою"
+                alt=""
                 loading="lazy"
                 sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover', filter: 'saturate(0.6) brightness(0.9)' }}
               />
@@ -38,7 +42,7 @@ export default function Winter() {
               <Stack sx={{ position: 'absolute', left: 40, bottom: 40, right: 40 }} spacing={1}>
                 <AcUnitOutlinedIcon sx={{ color: 'primary.main', fontSize: 28 }} />
                 <Typography sx={{ fontFamily: serif, fontSize: { xs: 34, md: 44 }, lineHeight: 1.05 }}>
-                  Сезон <Box component="span" sx={{ fontStyle: 'italic', color: 'primary.main' }}>2026/27</Box>
+                  {winter.season} <Box component="span" sx={{ fontStyle: 'italic', color: 'primary.main' }}>{winterMeta.season}</Box>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {winter.note}
@@ -49,11 +53,11 @@ export default function Winter() {
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
           <Reveal>
-            <Eyebrow align="left">Сезонна програма</Eyebrow>
+            <Eyebrow align="left">{winter.eyebrow}</Eyebrow>
             <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-              Підготовка авто до зими.
+              {winter.title1}
               <Box component="span" sx={{ display: 'block', fontStyle: 'italic', color: 'primary.main' }}>
-                Повний цикл.
+                {winter.title2}
               </Box>
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 5, maxWidth: 600 }}>
@@ -80,18 +84,18 @@ export default function Winter() {
           </Grid>
 
           <Reveal>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 5 }} alignItems={{ sm: 'center' }}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 5 }} alignItems={{ sm: 'center' }} useFlexGap flexWrap="wrap">
               <Stack direction="row" alignItems="baseline" spacing={1}>
-                <Typography variant="overline" color="text.secondary">від</Typography>
-                <Typography sx={{ fontFamily: serif, fontSize: 48, lineHeight: 1, color: 'primary.light' }}>{winter.price}</Typography>
+                <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
+                <Typography sx={{ fontFamily: serif, fontSize: 48, lineHeight: 1, color: 'primary.light' }}>{formatPrice(winterMeta.price, t.currency)}</Typography>
               </Stack>
-              <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'text.secondary' }}>
+              <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'text.secondary', whiteSpace: 'nowrap' }}>
                 <ScheduleIcon fontSize="small" />
                 <Typography variant="body2">{winter.duration}</Typography>
               </Stack>
               <Box sx={{ flex: 1 }} />
-              <Button href="#contact" variant="contained" size="large">
-                Забронювати дату
+              <Button href="#contact" variant="contained" size="large" sx={{ whiteSpace: 'nowrap' }}>
+                {winter.cta}
               </Button>
             </Stack>
           </Reveal>

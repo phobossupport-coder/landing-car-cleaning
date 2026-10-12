@@ -2,16 +2,20 @@ import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { packages } from '../data';
+import { packageMeta } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
+import { formatPrice } from '../i18n/currency';
 
 export default function Packages() {
+  const { t } = useLang();
+  const packages = t.packages.items.map((p, i) => ({ ...p, ...packageMeta[i] }));
   return (
     <Section id="packages">
       <SectionTitle
-        overline="Пакети"
-        title="Прозорі ціни без сюрпризів"
-        subtitle="Ціни для седана бізнес-класу. Для суперкарів, лімузинів та яхт розраховуємо індивідуально після огляду."
+        overline={t.packages.overline}
+        title={t.packages.title}
+        subtitle={`${t.packages.subtitle} ${t.common.vat}`}
       />
       <Grid container spacing={{ xs: 3, md: 0 }} alignItems="stretch">
         {packages.map((p, i) => (
@@ -37,7 +41,7 @@ export default function Packages() {
               >
                 {p.featured && (
                   <Typography variant="overline" color="primary" component="p" sx={{ position: { xs: 'static', md: 'absolute' }, top: 18, right: 24, fontSize: '0.6rem', mb: { xs: 2, md: 0 } }}>
-                    Обирають найчастіше
+                    {t.packages.featured}
                   </Typography>
                 )}
                 <Typography variant="overline" color="text.secondary">
@@ -47,9 +51,9 @@ export default function Packages() {
                   {p.name}
                 </Typography>
                 <Stack direction="row" alignItems="baseline" spacing={1}>
-                  <Typography variant="overline" color="text.secondary">від</Typography>
+                  <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
                   <Typography sx={{ fontFamily: serif, fontSize: 52, lineHeight: 1, color: p.featured ? 'primary.light' : 'text.primary' }}>
-                    {p.price}
+                    {formatPrice(p.price, t.currency)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'text.secondary', mt: 1.5, mb: 4 }}>
@@ -65,7 +69,7 @@ export default function Packages() {
                   ))}
                 </Stack>
                 <Button href="#contact" variant={p.featured ? 'contained' : 'outlined'} size="large" fullWidth>
-                  Обрати {p.name}
+                  {t.packages.choose} {p.name}
                 </Button>
               </Box>
             </Reveal>

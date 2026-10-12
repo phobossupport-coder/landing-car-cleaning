@@ -1,7 +1,8 @@
 import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { carBrands, images, stats, yachtBrands } from '../data';
+import { carBrands, images, yachtBrands } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
 
 // Бігова дорожка з марками. reverse — рух у протилежний бік, speed — секунди на цикл.
 function Marquee({ items, label, reverse = false, speed = 60 }) {
@@ -67,6 +68,8 @@ function Marquee({ items, label, reverse = false, speed = 60 }) {
 }
 
 export default function Hero() {
+  const { t } = useLang();
+  const h = t.hero;
   return (
     <Box id="top" component="header" sx={{ position: 'relative', minHeight: 'min(100svh, 1080px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       <Box
@@ -106,7 +109,7 @@ export default function Hero() {
           whiteSpace: 'nowrap',
         }}
       >
-        Detailing Atelier · Kyiv · Est. 2017
+        {h.side}
       </Typography>
 
       <Container maxWidth="lg" sx={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', pt: { xs: 16, md: 18 }, pb: 8 }}>
@@ -118,24 +121,23 @@ export default function Hero() {
             sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4, animation: 'fadeUp 1s .1s both', '@keyframes fadeUp': { from: { opacity: 0, transform: 'translateY(18px)' } } }}
           >
             <Box component="span" sx={{ width: 48, height: '1px', bgcolor: 'primary.main' }} />
-            Детейлінг-ательє для автомобілів та яхт
+            {h.eyebrow}
           </Typography>
           <Typography variant="h1" component="h1" sx={{ animation: 'fadeUp 1.1s .25s both' }}>
-            Досконалість
+            {h.title1}
             <Box component="span" sx={{ display: 'block', fontStyle: 'italic', fontWeight: 500, color: 'primary.main' }}>
-              у кожному відблиску
+              {h.title2}
             </Box>
           </Typography>
           <Typography sx={{ mt: 4, fontSize: { xs: '1.05rem', md: '1.18rem' }, color: 'text.secondary', maxWidth: 560, animation: 'fadeUp 1.1s .4s both' }}>
-            Корекція лаку, керамічний захист, повна підготовка до зими та догляд за яхтами. Вручну, із замірами на кожній
-            деталі та гарантією результату.
+            {h.text}
           </Typography>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={6} sx={{ animation: 'fadeUp 1.1s .55s both' }}>
             <Button href="#contact" variant="contained" size="large" endIcon={<ArrowOutwardIcon />}>
-              Записатися на огляд
+              {h.cta1}
             </Button>
             <Button href="#services" variant="outlined" size="large">
-              Послуги
+              {h.cta2}
             </Button>
           </Stack>
         </Box>
@@ -143,7 +145,7 @@ export default function Hero() {
 
       <Container maxWidth="lg" sx={{ position: 'relative', pb: { xs: 5, md: 7 } }}>
         <Grid container sx={{ borderTop: '1px solid', borderColor: 'divider', pt: 4 }} rowSpacing={3}>
-          {stats.map((s) => (
+          {h.stats.map((s) => (
             <Grid key={s.label} size={{ xs: 6, md: 3 }}>
               <Stack direction="row" alignItems="baseline" spacing={1}>
                 <Typography sx={{ fontFamily: serif, fontWeight: 500, fontSize: { xs: 40, md: 54 }, lineHeight: 1, color: 'text.primary' }}>{s.value}</Typography>
@@ -160,8 +162,8 @@ export default function Hero() {
       </Container>
 
       <Box sx={{ position: 'relative', bgcolor: '#070708', borderBottom: '1px solid', borderColor: 'divider' }}>
-        <Marquee label="Автомобілі" items={carBrands} speed={70} />
-        <Marquee label="Яхти та катери" items={yachtBrands} reverse speed={85} />
+        <Marquee label={h.marqueeCars} items={carBrands} speed={70} />
+        <Marquee label={h.marqueeYachts} items={yachtBrands} reverse speed={85} />
       </Box>
     </Box>
   );

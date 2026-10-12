@@ -6,24 +6,21 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { brand, packages, services, trust } from '../data';
-
-const contacts = [
-  { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
-  { icon: MailOutlineIcon, label: brand.email, href: `mailto:${brand.email}` },
-  { icon: PlaceOutlinedIcon, label: brand.address },
-  { icon: AccessTimeIcon, label: brand.hours },
-];
-
-const options = [
-  'Підготовка авто до зими — повний цикл',
-  ...packages.map((p) => `Пакет ${p.name}`),
-  ...services.map((s) => s.title),
-  'Потрібна консультація',
-];
+import { brand, packageMeta } from '../data';
+import { useLang } from '../i18n';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const { t } = useLang();
+  const c = t.contact;
+  const f = c.form;
+  const contacts = [
+    { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
+    { icon: MailOutlineIcon, label: brand.email, href: `mailto:${brand.email}` },
+    { icon: PlaceOutlinedIcon, label: brand.address },
+    { icon: AccessTimeIcon, label: c.hours },
+  ];
+  const options = [f.winterOption, ...packageMeta.map((p) => `${f.packagePrefix} ${p.name}`), ...t.services.items.map((s) => s.title), f.consult];
 
   // Форма без бекенду: підключіть Formspree / Web3Forms / AWS Lambda —
   // див. DEPLOY.md, розділ «Форма заявки».
@@ -36,15 +33,15 @@ export default function Contact() {
   return (
     <Section id="contact" dark>
       <Grid container spacing={{ xs: 6, md: 10 }} sx={{ mb: { xs: 8, md: 12 } }}>
-        {trust.map((t, i) => (
-          <Grid key={t.title} size={{ xs: 12, sm: 6, md: 3 }}>
+        {t.trust.map((item, i) => (
+          <Grid key={item.title} size={{ xs: 12, sm: 6, md: 3 }}>
             <Reveal delay={i * 100}>
               <Box sx={{ borderTop: '1px solid', borderColor: 'primary.main', pt: 2.5 }}>
                 <Typography variant="h5" component="h3" sx={{ mb: 1 }}>
-                  {t.title}
+                  {item.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {t.text}
+                  {item.text}
                 </Typography>
               </Box>
             </Reveal>
@@ -55,13 +52,12 @@ export default function Contact() {
       <Grid container spacing={{ xs: 6, md: 10 }}>
         <Grid size={{ xs: 12, md: 5 }}>
           <Reveal>
-            <Eyebrow align="left">Запис</Eyebrow>
+            <Eyebrow align="left">{c.eyebrow}</Eyebrow>
             <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-              Запишіться на безкоштовний огляд
+              {c.title}
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 5 }}>
-              Оцінимо стан лаку або гелькоуту, зробимо заміри та запропонуємо оптимальний варіант. Передзвонимо протягом 15
-              хвилин у робочий час.
+              {c.text}
             </Typography>
             <Stack spacing={2.5}>
               {contacts.map(({ icon: Icon, label, href }) => (
@@ -82,16 +78,16 @@ export default function Contact() {
             <Box component="form" onSubmit={onSubmit} sx={{ p: { xs: 3, md: 6 }, bgcolor: 'background.paper', border: '1px solid', borderColor: 'divider' }}>
               <Grid container spacing={3.5}>
                 <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="name" label="Ім’я" required />
+                  <TextField name="name" label={f.name} required />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="phone" label="Телефон" type="tel" required />
+                  <TextField name="phone" label={f.phone} type="tel" required />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="car" label="Авто або яхта: марка й модель" />
+                  <TextField name="car" label={f.car} />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="service" label="Послуга" select defaultValue="">
+                  <TextField name="service" label={f.service} select defaultValue="">
                     {options.map((o) => (
                       <MenuItem key={o} value={o}>
                         {o}
@@ -100,14 +96,14 @@ export default function Contact() {
                   </TextField>
                 </Grid>
                 <Grid size={12}>
-                  <TextField name="message" label="Коментар" multiline minRows={2} />
+                  <TextField name="message" label={f.message} multiline minRows={2} />
                 </Grid>
                 <Grid size={12}>
                   <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 1 }}>
-                    Надіслати заявку
+                    {f.submit}
                   </Button>
                   <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2, textAlign: 'center' }}>
-                    Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних. Конфіденційність гарантуємо.
+                    {f.consent}
                   </Typography>
                 </Grid>
               </Grid>
@@ -117,7 +113,7 @@ export default function Contact() {
       </Grid>
       <Snackbar open={sent} autoHideDuration={5000} onClose={() => setSent(false)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert severity="success" variant="filled" onClose={() => setSent(false)}>
-          Дякуємо! Ми зв’яжемося з вами найближчим часом.
+          {f.success}
         </Alert>
       </Snackbar>
     </Section>

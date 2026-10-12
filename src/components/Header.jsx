@@ -17,8 +17,10 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { brand, nav } from '../data';
+import { brand, navHrefs } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
+import LanguageSwitch from './LanguageSwitch';
 
 export function Logo() {
   return (
@@ -26,7 +28,7 @@ export function Logo() {
       <Typography sx={{ fontFamily: serif, fontWeight: 600, fontSize: 26, letterSpacing: '0.28em', lineHeight: 1 }}>
         {brand.name}
       </Typography>
-      <Typography variant="overline" color="primary" sx={{ fontSize: 8.5, display: { xs: 'none', sm: 'block' }, lineHeight: 1 }}>
+      <Typography variant="overline" color="primary" sx={{ fontSize: 8.5, display: { xs: 'none', sm: 'block', md: 'none', xl: 'block' }, lineHeight: 1, whiteSpace: 'nowrap' }}>
         {brand.tagline}
       </Typography>
     </Box>
@@ -36,6 +38,8 @@ export function Logo() {
 export default function Header() {
   const [open, setOpen] = useState(false);
   const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
+  const { t } = useLang();
+  const nav = t.nav.map((label, i) => ({ label, href: navHrefs[i] }));
 
   return (
     <AppBar
@@ -50,9 +54,9 @@ export default function Header() {
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ height: 76, justifyContent: 'space-between' }}>
+        <Toolbar disableGutters sx={{ height: 76, justifyContent: 'space-between', gap: 3 }}>
           <Logo />
-          <Stack direction="row" spacing={3.5} sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Stack direction="row" spacing={{ lg: 2.5, xl: 3 }} sx={{ display: { xs: 'none', lg: 'flex' } }}>
             {nav.map((item) => (
               <Typography
                 key={item.href}
@@ -61,9 +65,10 @@ export default function Header() {
                 sx={{
                   color: 'text.secondary',
                   textDecoration: 'none',
-                  fontSize: 12,
+                  fontSize: 11.5,
                   fontWeight: 500,
-                  letterSpacing: '0.14em',
+                  letterSpacing: '0.12em',
+                  whiteSpace: 'nowrap',
                   textTransform: 'uppercase',
                   position: 'relative',
                   transition: 'color .3s',
@@ -76,7 +81,8 @@ export default function Header() {
               </Typography>
             ))}
           </Stack>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={{ xs: 1, md: 1.5 }} alignItems="center">
+            <LanguageSwitch sx={{ display: { xs: 'none', lg: 'flex' }, pl: 2, ml: 1, borderLeft: '1px solid', borderColor: 'divider' }} />
             <Button
               href={brand.phoneHref}
               startIcon={<PhoneIcon sx={{ fontSize: 16 }} />}
@@ -85,10 +91,10 @@ export default function Header() {
             >
               {brand.phone}
             </Button>
-            <Button href="#contact" variant="outlined" sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 1.25, px: 3 }}>
-              Записатися
+            <Button href="#contact" variant="outlined" sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 1.25, px: 2.5, whiteSpace: 'nowrap' }}>
+              {t.header.cta}
             </Button>
-            <IconButton color="inherit" onClick={() => setOpen(true)} sx={{ display: { md: 'none' } }} aria-label="Меню">
+            <IconButton color="inherit" onClick={() => setOpen(true)} sx={{ display: { lg: 'none' } }} aria-label={t.header.menu}>
               <MenuIcon />
             </IconButton>
           </Stack>
@@ -96,12 +102,13 @@ export default function Header() {
       </Container>
 
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)} slotProps={{ paper: { sx: { width: '100%', maxWidth: 380, p: 3, bgcolor: '#0A0A0B' } } }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={3}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
           <Logo />
-          <IconButton onClick={() => setOpen(false)} aria-label="Закрити">
+          <IconButton onClick={() => setOpen(false)} aria-label={t.header.close}>
             <CloseIcon />
           </IconButton>
         </Stack>
+        <LanguageSwitch size="large" sx={{ py: 2, borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }} />
         <List>
           {nav.map((item) => (
             <ListItemButton key={item.href} component="a" href={item.href} onClick={() => setOpen(false)} sx={{ px: 1, borderBottom: '1px solid', borderColor: 'divider' }}>
@@ -110,7 +117,7 @@ export default function Header() {
           ))}
         </List>
         <Button href="#contact" variant="contained" size="large" onClick={() => setOpen(false)} sx={{ mt: 3 }}>
-          Записатися
+          {t.header.cta}
         </Button>
         <Button href={brand.phoneHref} startIcon={<PhoneIcon />} sx={{ mt: 2, textTransform: 'none', letterSpacing: 0 }}>
           {brand.phone}

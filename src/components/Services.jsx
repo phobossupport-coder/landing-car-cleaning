@@ -8,8 +8,10 @@ import AnchorOutlinedIcon from '@mui/icons-material/AnchorOutlined';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { services } from '../data';
+import { serviceMeta } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
+import { formatPrice } from '../i18n/currency';
 
 const icons = {
   polish: AutoAwesomeOutlinedIcon,
@@ -21,12 +23,15 @@ const icons = {
 };
 
 export default function Services() {
+  const { t } = useLang();
+  const cur = t.currency;
+  const services = t.services.items.map((s, i) => ({ ...s, ...serviceMeta[i] }));
   return (
     <Section id="services">
       <SectionTitle
-        overline="Послуги"
-        title="Повний цикл догляду за авто та яхтою"
-        subtitle="Від делікатної мийки до багатоетапної корекції лаку, сезонного захисту та догляду за гелькоутом."
+        overline={t.services.overline}
+        title={t.services.title}
+        subtitle={t.services.subtitle}
       />
       <Grid container spacing={0} sx={{ borderTop: '1px solid', borderLeft: '1px solid', borderColor: 'divider' }}>
         {services.map((s, i) => {
@@ -80,12 +85,15 @@ export default function Services() {
                   </Typography>
                   <Stack direction="row" alignItems="baseline" justifyContent="space-between">
                     <Typography sx={{ fontFamily: serif, fontSize: 22, color: 'primary.light' }}>
-                      {s.price === 'за запитом' ? (
-                        <Box component="span" sx={{ fontStyle: 'italic' }}>за запитом</Box>
+                      {!s.price ? (
+                        <Box component="span" sx={{ fontStyle: 'italic' }}>{t.common.onRequest}</Box>
                       ) : (
                         <>
-                          <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', mr: 1, letterSpacing: '0.1em' }}>ВІД</Box>
-                          {s.price}
+                          <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', mr: 1, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t.common.from}</Box>
+                          {formatPrice(s.price, cur)}
+                          {s.perFoot && (
+                            <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', ml: 1 }}>/ {t.common.perFoot}</Box>
+                          )}
                         </>
                       )}
                     </Typography>

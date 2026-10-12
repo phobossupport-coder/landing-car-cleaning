@@ -1,13 +1,16 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { reviews } from '../data';
+import { reviewCars } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
 
 export default function Reviews() {
+  const { t } = useLang();
+  const reviews = t.reviews.items.map((r, i) => ({ ...r, car: reviewCars[i] }));
   return (
     <Section id="reviews" dark>
-      <SectionTitle overline="Відгуки" title="Нам довіряють те, що цінують" />
+      <SectionTitle overline={t.reviews.overline} title={t.reviews.title} />
       <Grid container spacing={0} sx={{ borderTop: '1px solid', borderLeft: '1px solid', borderColor: 'divider' }}>
         {reviews.map((r, i) => (
           <Grid key={r.name} size={{ xs: 12, md: 4 }} sx={{ borderRight: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>

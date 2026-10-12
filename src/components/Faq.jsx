@@ -2,14 +2,16 @@ import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from 
 import AddIcon from '@mui/icons-material/Add';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { faq } from '../data';
+import { useLang } from '../i18n';
 
 export default function Faq() {
+  const { t } = useLang();
+  const faq = t.faq.items;
   return (
     <Section id="faq">
       <Grid container spacing={{ xs: 4, md: 10 }}>
         <Grid size={{ xs: 12, md: 4 }}>
-          <SectionTitle align="left" overline="FAQ" title="Часті питання" subtitle="Не знайшли відповідь? Зателефонуйте — проконсультуємо безкоштовно." />
+          <SectionTitle align="left" overline={t.faq.overline} title={t.faq.title} subtitle={t.faq.subtitle} />
         </Grid>
         <Grid size={{ xs: 12, md: 8 }}>
           <Reveal>

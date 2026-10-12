@@ -5,12 +5,12 @@ import CodeIcon from '@mui/icons-material/Code';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
 import { images } from '../data';
+import { useLang } from '../i18n';
 
-const points = ['Глибина й насиченість кольору', 'Без голограм і павутинки', 'Дзеркальне відображення', 'Захист, що зберігає результат'];
 
 // Інтерактивний слайдер «до / після». Замість демо-фільтра покладіть
 // власні фото у public/ і передайте шляхи в before/after.
-function Slider({ before, after }) {
+function Slider({ before, after, labels }) {
   const [pos, setPos] = useState(50);
   const ref = useRef(null);
 
@@ -33,11 +33,11 @@ function Slider({ before, after }) {
       onPointerMove={(e) => e.buttons && move(e.clientX)}
       sx={{ position: 'relative', aspectRatio: '4 / 3', cursor: 'ew-resize', userSelect: 'none', touchAction: 'pan-y', overflow: 'hidden' }}
     >
-      <Box component="img" src={after} alt="Після полірування" sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover' }} draggable={false} />
+      <Box component="img" src={after} alt={labels.after} sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover' }} draggable={false} />
       <Box
         component="img"
         src={before}
-        alt="До полірування"
+        alt={labels.before}
         draggable={false}
         sx={{
           position: 'absolute',
@@ -49,8 +49,8 @@ function Slider({ before, after }) {
           filter: before === after ? 'saturate(0.35) contrast(0.75) brightness(0.85) blur(0.6px)' : 'none',
         }}
       />
-      <Box sx={{ ...label, left: 16 }}>ДО</Box>
-      <Box sx={{ ...label, right: 16, color: 'primary.main' }}>ПІСЛЯ</Box>
+      <Box sx={{ ...label, left: 16 }}>{labels.before}</Box>
+      <Box sx={{ ...label, right: 16, color: 'primary.main' }}>{labels.after}</Box>
       <Box sx={{ position: 'absolute', top: 0, bottom: 0, left: `${pos}%`, width: 2, bgcolor: 'primary.main', transform: 'translateX(-1px)' }}>
         <Box
           sx={{
@@ -76,21 +76,22 @@ function Slider({ before, after }) {
 }
 
 export default function BeforeAfter() {
+  const { t } = useLang();
+  const r = t.results;
   return (
     <Section id="results">
       <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
         <Grid size={{ xs: 12, md: 5 }}>
           <Reveal>
-          <Eyebrow align="left">Результат</Eyebrow>
+          <Eyebrow align="left">{r.eyebrow}</Eyebrow>
           <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-            Різниця, яку не можна не помітити
+            {r.title}
           </Typography>
           <Typography color="text.secondary" sx={{ mb: 4 }}>
-            Потягніть повзунок, щоб порівняти. Кожне авто фотографуємо до і після під однаковим світлом — ви бачите чесний
-            результат.
+            {r.text}
           </Typography>
           <Stack spacing={2} mb={5}>
-            {points.map((p) => (
+            {r.points.map((p) => (
               <Stack key={p} direction="row" spacing={2} alignItems="center">
                 <CheckIcon color="primary" />
                 <Typography>{p}</Typography>
@@ -98,13 +99,13 @@ export default function BeforeAfter() {
             ))}
           </Stack>
           <Button href="#contact" variant="contained" size="large">
-            Хочу такий результат
+            {r.cta}
           </Button>
           </Reveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
           <Reveal delay={150}>
-            <Slider before={images.beforeAfter} after={images.beforeAfter} />
+            <Slider before={images.beforeAfter} after={images.beforeAfter} labels={{ before: r.before, after: r.after }} />
           </Reveal>
         </Grid>
       </Grid>

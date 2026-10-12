@@ -1,4 +1,4 @@
-# LUSTRA — лендінг детейлінг-студії
+# Stella Detailing Studio — лендінг детейлінг-студії
 
 React 18 + MUI 7 + Vite. Потрібен Node.js 20+ (див. `.nvmrc`).
 

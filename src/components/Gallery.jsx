@@ -1,16 +1,19 @@
 import { Box, Typography } from '@mui/material';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { gallery } from '../data';
+import { galleryMeta } from '../data';
 import { serif } from '../theme';
+import { useLang } from '../i18n';
 
 // Асиметрична сітка: перша і остання роботи займають дві колонки.
-const wide = (i) => i === 0 || i === gallery.length - 1;
+const wide = (i) => i === 0 || i === galleryMeta.length - 1;
 
 export default function Gallery() {
+  const { t } = useLang();
+  const gallery = galleryMeta.map((g, i) => ({ ...g, work: t.gallery.works[i] }));
   return (
     <Section id="gallery">
-      <SectionTitle overline="Портфоліо" title="Нещодавно виїхали зі студії" subtitle="Кожна робота — із фотозвітом і замірами до та після." />
+      <SectionTitle overline={t.gallery.overline} title={t.gallery.title} subtitle={t.gallery.subtitle} />
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' }, gap: 1.5 }}>
         {gallery.map((g, i) => (
           <Reveal key={g.src} delay={(i % 4) * 90} sx={{ gridColumn: wide(i) ? { md: 'span 2' } : 'auto' }}>

@@ -2,9 +2,13 @@ import { Box, Container, Fab, IconButton, Stack, Typography } from '@mui/materia
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Logo } from './Header';
-import { brand, nav } from '../data';
+import { brand, navHrefs } from '../data';
+import { useLang } from '../i18n';
+import LanguageSwitch from './LanguageSwitch';
 
 export default function Footer() {
+  const { t } = useLang();
+  const nav = t.nav.map((label, i) => ({ label, href: navHrefs[i] }));
   return (
     <Box component="footer" sx={{ borderTop: '1px solid', borderColor: 'divider', py: 6, bgcolor: '#070708' }}>
       <Container maxWidth="lg">
@@ -26,16 +30,19 @@ export default function Footer() {
             </IconButton>
           </Stack>
         </Stack>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 5, fontSize: 12 }}>
-          © {new Date().getFullYear()} {brand.name} {brand.tagline}. Автомобілі та яхти. Усі права захищено.
-        </Typography>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mt: 5 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ fontSize: 12 }}>
+            © {new Date().getFullYear()} {brand.name} {brand.tagline}. {t.footer.rights}
+          </Typography>
+          <LanguageSwitch />
+        </Stack>
       </Container>
 
       <Fab
         href={brand.whatsapp}
         target="_blank"
         rel="noopener"
-        aria-label="Написати у WhatsApp"
+        aria-label={t.footer.whatsapp}
         sx={{ position: 'fixed', right: 20, bottom: 20, bgcolor: '#111113', color: '#F4F1EA', border: '1px solid', borderColor: 'divider', '&:hover': { bgcolor: '#1A1A1D', borderColor: 'primary.main', color: 'primary.main' } }}
       >
         <WhatsAppIcon />
