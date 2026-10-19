@@ -1,35 +1,20 @@
 import { useState } from 'react';
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemText,
-  Stack,
-  Toolbar,
-  Typography,
-  useScrollTrigger,
-} from '@mui/material';
+import { AppBar, Box, Button, Container, Drawer, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { brand, navHrefs } from '../data';
-import { serif } from '../theme';
 import { useLang } from '../i18n';
 import LanguageSwitch from './LanguageSwitch';
 
-export function Logo() {
+export function Logo({ color = 'text.primary' }) {
   return (
-    <Box component="a" href="#top" sx={{ display: 'flex', alignItems: 'baseline', gap: 1.5, color: 'inherit', textDecoration: 'none' }}>
-      <Typography sx={{ fontFamily: serif, fontWeight: 600, fontSize: 26, letterSpacing: '0.28em', lineHeight: 1 }}>
+    <Box component="a" href="#top" sx={{ display: 'flex', alignItems: 'baseline', gap: 0.75, color, textDecoration: 'none' }}>
+      <Typography component="span" sx={{ fontWeight: 800, fontSize: 20, letterSpacing: '0.04em' }}>
         {brand.name}
       </Typography>
-      <Typography variant="overline" color="primary" sx={{ fontSize: 8.5, display: { xs: 'none', sm: 'block', md: 'none', xl: 'block' }, lineHeight: 1, whiteSpace: 'nowrap' }}>
-        {brand.tagline}
+      <Typography component="span" sx={{ fontWeight: 500, fontSize: 15, opacity: 0.7 }}>
+        Detailing
       </Typography>
     </Box>
   );
@@ -37,89 +22,66 @@ export function Logo() {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
   const { t } = useLang();
   const nav = t.nav.map((label, i) => ({ label, href: navHrefs[i] }));
 
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      sx={{
-        bgcolor: scrolled ? 'rgba(10,10,11,0.82)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px) saturate(1.2)' : 'none',
-        borderBottom: '1px solid',
-        borderColor: scrolled ? 'divider' : 'transparent',
-        transition: 'all .4s ease',
-      }}
-    >
+    <AppBar position="sticky" elevation={0} color="inherit" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}>
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ height: 76, justifyContent: 'space-between', gap: 3 }}>
+        <Toolbar disableGutters sx={{ minHeight: { xs: 56, md: 68 }, justifyContent: 'space-between', gap: 3 }}>
           <Logo />
-          <Stack direction="row" spacing={{ lg: 2.5, xl: 3 }} sx={{ display: { xs: 'none', lg: 'flex' } }}>
+          <Stack direction="row" spacing={3} sx={{ display: { xs: 'none', lg: 'flex' } }}>
             {nav.map((item) => (
               <Typography
                 key={item.href}
                 component="a"
                 href={item.href}
-                sx={{
-                  color: 'text.secondary',
-                  textDecoration: 'none',
-                  fontSize: 11.5,
-                  fontWeight: 500,
-                  letterSpacing: '0.12em',
-                  whiteSpace: 'nowrap',
-                  textTransform: 'uppercase',
-                  position: 'relative',
-                  transition: 'color .3s',
-                  '&::after': { content: '""', position: 'absolute', left: 0, bottom: -6, width: 0, height: '1px', bgcolor: 'primary.main', transition: 'width .35s' },
-                  '&:hover': { color: 'text.primary' },
-                  '&:hover::after': { width: '100%' },
-                }}
+                sx={{ color: 'text.secondary', textDecoration: 'none', fontSize: 15, fontWeight: 500, py: 1, '&:hover': { color: 'text.primary' } }}
               >
                 {item.label}
               </Typography>
             ))}
           </Stack>
-          <Stack direction="row" spacing={{ xs: 1, md: 1.5 }} alignItems="center">
-            <LanguageSwitch sx={{ display: { xs: 'none', lg: 'flex' }, pl: 2, ml: 1, borderLeft: '1px solid', borderColor: 'divider' }} />
-            <Button
-              href={brand.phoneHref}
-              startIcon={<PhoneIcon sx={{ fontSize: 16 }} />}
-              color="inherit"
-              sx={{ display: { xs: 'none', xl: 'inline-flex' }, textTransform: 'none', letterSpacing: 0, fontSize: 14, px: 1.5, whiteSpace: 'nowrap' }}
-            >
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            <LanguageSwitch sx={{ display: { xs: 'none', lg: 'flex' } }} />
+            <Button href={brand.phoneHref} startIcon={<PhoneIcon />} color="secondary" sx={{ display: { xs: 'none', md: 'inline-flex' }, whiteSpace: 'nowrap' }}>
               {brand.phone}
             </Button>
-            <Button href="#contact" variant="outlined" sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 1.25, px: 2.5, whiteSpace: 'nowrap' }}>
+            <Button href="#contact" variant="contained" sx={{ display: { xs: 'none', sm: 'inline-flex' }, whiteSpace: 'nowrap' }}>
               {t.header.cta}
             </Button>
-            <IconButton color="inherit" onClick={() => setOpen(true)} sx={{ display: { lg: 'none' } }} aria-label={t.header.menu}>
+            <IconButton onClick={() => setOpen(true)} sx={{ display: { lg: 'none' } }} aria-label={t.header.menu}>
               <MenuIcon />
             </IconButton>
           </Stack>
         </Toolbar>
       </Container>
 
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)} slotProps={{ paper: { sx: { width: '100%', maxWidth: 380, p: 3, bgcolor: '#0A0A0B' } } }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
+      <Drawer anchor="right" open={open} onClose={() => setOpen(false)} slotProps={{ paper: { sx: { width: '100%', maxWidth: 400, p: 2.5 } } }}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1}>
           <Logo />
           <IconButton onClick={() => setOpen(false)} aria-label={t.header.close}>
             <CloseIcon />
           </IconButton>
         </Stack>
-        <LanguageSwitch size="large" sx={{ py: 2, borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }} />
-        <List>
+        <LanguageSwitch sx={{ py: 1.5 }} />
+        <Stack sx={{ mt: 1 }}>
           {nav.map((item) => (
-            <ListItemButton key={item.href} component="a" href={item.href} onClick={() => setOpen(false)} sx={{ px: 1, borderBottom: '1px solid', borderColor: 'divider' }}>
-              <ListItemText primary={item.label} slotProps={{ primary: { fontSize: 26, fontFamily: serif, fontWeight: 500 } }} />
-            </ListItemButton>
+            <Typography
+              key={item.href}
+              component="a"
+              href={item.href}
+              onClick={() => setOpen(false)}
+              sx={{ py: 1.75, fontSize: 18, fontWeight: 500, color: 'text.primary', textDecoration: 'none', borderBottom: '1px solid', borderColor: 'divider' }}
+            >
+              {item.label}
+            </Typography>
           ))}
-        </List>
+        </Stack>
         <Button href="#contact" variant="contained" size="large" onClick={() => setOpen(false)} sx={{ mt: 3 }}>
           {t.header.cta}
         </Button>
-        <Button href={brand.phoneHref} startIcon={<PhoneIcon />} sx={{ mt: 2, textTransform: 'none', letterSpacing: 0 }}>
+        <Button href={brand.phoneHref} variant="outlined" size="large" startIcon={<PhoneIcon />} sx={{ mt: 1.5 }}>
           {brand.phone}
         </Button>
       </Drawer>

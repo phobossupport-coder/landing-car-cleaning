@@ -1,48 +1,35 @@
-import { Box, ButtonBase, Stack } from '@mui/material';
+import { ButtonBase, Stack } from '@mui/material';
 import { languages, useLang } from '../i18n';
 
-// Текстовий перемикач мов: NO · EN · DE · UA · RU. Активна — золотом.
-export default function LanguageSwitch({ size = 'small', sx }) {
+// Перемикач мов: NO EN DE UA RU. Кнопки мають зону дотику 44 px.
+export default function LanguageSwitch({ sx }) {
   const { lang, setLang, t } = useLang();
-  const big = size === 'large';
   return (
-    <Stack component="nav" aria-label={t.header.language} direction="row" alignItems="center" sx={{ ...sx }}>
-      {languages.map((l, i) => (
-        <Stack key={l.code} direction="row" alignItems="center">
-          {i > 0 && <Box sx={{ width: 3, height: 3, transform: 'rotate(45deg)', bgcolor: 'rgba(255,255,255,0.22)', mx: big ? 1.5 : 0.4 }} />}
+    <Stack component="nav" aria-label={t.header.language} direction="row" spacing={0.5} sx={sx}>
+      {languages.map((l) => {
+        const active = l.code === lang;
+        return (
           <ButtonBase
+            key={l.code}
             onClick={() => setLang(l.code)}
-            aria-current={l.code === lang ? 'true' : undefined}
+            aria-current={active ? 'true' : undefined}
             aria-label={l.name}
             sx={{
-              fontFamily: 'Inter',
-              fontSize: big ? 14 : 11,
-              fontWeight: 500,
-              letterSpacing: '0.16em',
-              px: 0.4,
-              py: 0.5,
-              color: l.code === lang ? 'primary.main' : 'text.secondary',
-              position: 'relative',
-              transition: 'color .3s',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                left: 4,
-                right: 4,
-                bottom: 0,
-                height: '1px',
-                bgcolor: 'primary.main',
-                transform: l.code === lang ? 'scaleX(1)' : 'scaleX(0)',
-                transformOrigin: 'left',
-                transition: 'transform .35s',
-              },
-              '&:hover': { color: l.code === lang ? 'primary.main' : 'text.primary' },
+              minWidth: 44,
+              minHeight: 44,
+              px: 1,
+              borderRadius: 2,
+              fontSize: 14,
+              fontWeight: 600,
+              color: active ? 'primary.contrastText' : 'text.secondary',
+              bgcolor: active ? 'primary.main' : 'transparent',
+              '&:hover': { bgcolor: active ? 'primary.dark' : 'action.hover' },
             }}
           >
             {l.label}
           </ButtonBase>
-        </Stack>
-      ))}
+        );
+      })}
     </Stack>
   );
 }

@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import CodeIcon from '@mui/icons-material/Code';
-import Section, { Eyebrow } from './Section';
+import Section from './Section';
 import Reveal from './Reveal';
 import { images } from '../data';
 import { useLang } from '../i18n';
@@ -24,14 +24,14 @@ function Slider({ before, after, labels }) {
     move(e.clientX);
   };
 
-  const label = { position: 'absolute', top: 16, px: 1.5, py: 0.5, bgcolor: 'rgba(0,0,0,0.6)', fontSize: 12, letterSpacing: '0.2em', fontWeight: 600 };
+  const label = { position: 'absolute', top: 16, px: 1.5, py: 0.5, bgcolor: 'rgba(0,0,0,0.6)', fontSize: 12, fontWeight: 600, color: '#fff', borderRadius: 1 };
 
   return (
     <Box
       ref={ref}
       onPointerDown={onPointerDown}
       onPointerMove={(e) => e.buttons && move(e.clientX)}
-      sx={{ position: 'relative', aspectRatio: '4 / 3', cursor: 'ew-resize', userSelect: 'none', touchAction: 'pan-y', overflow: 'hidden' }}
+      sx={{ position: 'relative', aspectRatio: '4 / 3', cursor: 'ew-resize', userSelect: 'none', touchAction: 'pan-y', overflow: 'hidden', borderRadius: 3 }}
     >
       <Box component="img" src={after} alt={labels.after} sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover' }} draggable={false} />
       <Box
@@ -50,22 +50,22 @@ function Slider({ before, after, labels }) {
         }}
       />
       <Box sx={{ ...label, left: 16 }}>{labels.before}</Box>
-      <Box sx={{ ...label, right: 16, color: 'primary.main' }}>{labels.after}</Box>
-      <Box sx={{ position: 'absolute', top: 0, bottom: 0, left: `${pos}%`, width: 2, bgcolor: 'primary.main', transform: 'translateX(-1px)' }}>
+      <Box sx={{ ...label, right: 16 }}>{labels.after}</Box>
+      <Box sx={{ position: 'absolute', top: 0, bottom: 0, left: `${pos}%`, width: 2, bgcolor: '#fff', transform: 'translateX(-1px)' }}>
         <Box
           sx={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 48,
-            height: 48,
+            width: 44,
+            height: 44,
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #EAD6A3, #C9A86A 45%, #9C7F45)',
-            color: 'primary.contrastText',
+            bgcolor: '#fff',
+            color: 'primary.main',
             display: 'grid',
             placeItems: 'center',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.35)',
           }}
         >
           <CodeIcon />
@@ -80,20 +80,19 @@ export default function BeforeAfter() {
   const r = t.results;
   return (
     <Section id="results">
-      <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
+      <Grid container spacing={{ xs: 3, md: 8 }} alignItems="center">
         <Grid size={{ xs: 12, md: 5 }}>
           <Reveal>
-          <Eyebrow align="left">{r.eyebrow}</Eyebrow>
-          <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
+          <Typography variant="h2" sx={{ mb: 1.5 }}>
             {r.title}
           </Typography>
-          <Typography color="text.secondary" sx={{ mb: 4 }}>
+          <Typography color="text.secondary" sx={{ mb: 2.5 }}>
             {r.text}
           </Typography>
-          <Stack spacing={2} mb={5}>
+          <Stack spacing={1.25} mb={3}>
             {r.points.map((p) => (
               <Stack key={p} direction="row" spacing={2} alignItems="center">
-                <CheckIcon color="primary" />
+                <CheckIcon color="primary" fontSize="small" />
                 <Typography>{p}</Typography>
               </Stack>
             ))}
@@ -104,7 +103,7 @@ export default function BeforeAfter() {
           </Reveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Reveal delay={150}>
+          <Reveal>
             <Slider before={images.beforeAfter} after={images.beforeAfter} labels={{ before: r.before, after: r.after }} />
           </Reveal>
         </Grid>

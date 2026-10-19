@@ -1,83 +1,58 @@
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import SailingOutlinedIcon from '@mui/icons-material/SailingOutlined';
-import { Eyebrow } from './Section';
-import Reveal from './Reveal';
+import Section from './Section';
 import { images, serviceMeta } from '../data';
 import { formatPrice } from '../i18n/currency';
-import { serif } from '../theme';
 import { useLang } from '../i18n';
 
 export default function Yachts() {
   const { t } = useLang();
   const yachts = t.yachts;
   return (
-    <Box component="section" id="yachts" sx={{ position: 'relative', scrollMarginTop: 72, overflow: 'hidden' }}>
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${images.yacht})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'saturate(0.55) brightness(0.55)',
-        }}
-      />
-      <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,11,0.94) 0%, rgba(10,10,11,0.8) 45%, rgba(10,10,11,0.35) 100%)' }} />
-      <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,0) 18%, rgba(10,10,11,0) 82%, #0A0A0B 100%)' }} />
-
-      <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 12, md: 18 } }}>
-        <Grid container spacing={{ xs: 6, md: 10 }}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Reveal>
-              <Eyebrow align="left">{yachts.eyebrow}</Eyebrow>
-              <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-                {yachts.title1}
-                <Box component="span" sx={{ display: 'block', fontStyle: 'italic', color: 'primary.main' }}>
-                  {yachts.title2}
-                </Box>
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 4, maxWidth: 520 }}>
-                {yachts.intro}
-              </Typography>
-              <Stack direction="row" spacing={2} alignItems="flex-start" sx={{ mb: 5, p: 3, border: '1px solid', borderColor: 'divider', bgcolor: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)', maxWidth: 520 }}>
-                <SailingOutlinedIcon sx={{ color: 'primary.main', mt: 0.3 }} />
-                <Typography variant="body2" color="text.secondary">
-                  {yachts.where}
-                </Typography>
-              </Stack>
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 4 }} alignItems={{ sm: 'center' }} useFlexGap flexWrap="wrap">
-                <Button href="#contact" variant="outlined" size="large" sx={{ whiteSpace: 'nowrap' }}>
-                  {yachts.cta}
-                </Button>
-                <Stack direction="row" alignItems="baseline" spacing={1} sx={{ whiteSpace: 'nowrap' }}>
-                  <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
-                  <Typography sx={{ fontFamily: serif, fontSize: 30, lineHeight: 1, color: 'primary.light' }}>{formatPrice(serviceMeta[5].price, t.currency)}</Typography>
-                  <Typography variant="body2" color="text.secondary">/ {t.common.perFoot}</Typography>
-                </Stack>
-              </Stack>
-            </Reveal>
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Stack sx={{ borderTop: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
-              {yachts.points.map((p, i) => (
-                <Reveal key={p.title} delay={i * 100}>
-                  <Stack direction="row" spacing={3} sx={{ py: 3.5, borderBottom: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
-                    <Typography sx={{ fontFamily: serif, fontSize: 30, lineHeight: 1, color: 'primary.main', minWidth: 48 }}>{String(i + 1).padStart(2, '0')}</Typography>
-                    <Box>
-                      <Typography variant="h5" component="h3" sx={{ mb: 0.75 }}>
-                        {p.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {p.text}
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Reveal>
-              ))}
-            </Stack>
-          </Grid>
+    <Section id="yachts">
+      <Box component="img" src={images.yacht} alt="" loading="lazy" sx={{ width: 1, height: { xs: 180, md: 320 }, objectFit: 'cover', borderRadius: 3, display: 'block', mb: { xs: 3, md: 5 } }} />
+      <Grid container spacing={{ xs: 3, md: 8 }}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Typography variant="h2" component="h2">
+            {yachts.title1} {yachts.title2}
+          </Typography>
+          <Typography color="text.secondary" sx={{ mt: 1.5, mb: 2.5 }}>
+            {yachts.intro}
+          </Typography>
+          <Stack direction="row" spacing={1.5} sx={{ mb: 3, p: 2, bgcolor: 'background.default', border: '1px solid', borderColor: 'divider', borderRadius: 3 }}>
+            <SailingOutlinedIcon sx={{ color: 'primary.main' }} />
+            <Typography variant="body2">{yachts.where}</Typography>
+          </Stack>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 3 }} alignItems={{ sm: 'center' }}>
+            <Button href="#contact" variant="contained" size="large">
+              {yachts.cta}
+            </Button>
+            <Typography sx={{ fontWeight: 700, fontSize: 20 }}>
+              <Box component="span" sx={{ fontWeight: 500, fontSize: 15, color: 'text.secondary', mr: 0.75 }}>
+                {t.common.from}
+              </Box>
+              {formatPrice(serviceMeta[5].price, t.currency)}
+              <Box component="span" sx={{ fontWeight: 500, fontSize: 15, color: 'text.secondary', ml: 0.75 }}>
+                / {t.common.perFoot}
+              </Box>
+            </Typography>
+          </Stack>
         </Grid>
-      </Container>
-    </Box>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Stack spacing={2.5}>
+            {yachts.points.map((p) => (
+              <Box key={p.title}>
+                <Typography variant="h4" component="h3" sx={{ mb: 0.5 }}>
+                  {p.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {p.text}
+                </Typography>
+              </Box>
+            ))}
+          </Stack>
+        </Grid>
+      </Grid>
+    </Section>
   );
 }
