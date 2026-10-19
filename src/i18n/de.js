@@ -4,8 +4,8 @@ export default {
   label: 'DE',
   name: 'Deutsch',
   meta: {
-    title: 'Stella Detailing Studio — Detailing-Atelier für Autos und Yachten',
-    description: 'Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung und Yacht-Detailing. Premium-Atelier mit garantiertem Ergebnis.',
+    title: 'Stella Detailing Studio — Mobiles Detailing für Autos und Yachten',
+    description: 'Mobiles Detailing für Autos und Yachten: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder in die Marina. Premium-Atelier mit garantiertem Ergebnis.',
   },
   nav: ['Leistungen', 'Winter', 'Yachten', 'Pakete', 'Arbeiten', 'Bewertungen', 'FAQ'],
   header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache' },
@@ -13,7 +13,7 @@ export default {
     eyebrow: 'Detailing-Atelier für Autos und Yachten',
     title1: 'Perfektion',
     title2: 'in jeder Spiegelung',
-    text: 'Lackkorrektur, Keramikschutz, komplette Wintervorbereitung und Yachtpflege. Von Hand, mit Messungen an jedem Bauteil und garantiertem Ergebnis.',
+    text: 'Wir kommen zu Ihnen nach Hause, ins Büro oder in die Marina. Lackkorrektur, Keramikschutz, komplette Wintervorbereitung und Yachtpflege. Von Hand, mit Messungen an jedem Bauteil und garantiertem Ergebnis.',
     cta1: 'Besichtigung buchen',
     cta2: 'Leistungen',
     side: 'Detailing Studio · Est. 2017',
@@ -27,6 +27,17 @@ export default {
     marqueeYachts: 'Yachten & Boote',
   },
   common: { from: 'ab', onRequest: 'auf Anfrage', perFoot: 'pro Fuß', vat: 'Alle Preise inkl. MwSt.' },
+  mobile: {
+    eyebrow: 'Mobiles Detailing',
+    title: 'Wir arbeiten überwiegend bei Ihnen vor Ort',
+    text: 'Der Großteil unserer Arbeit findet mobil statt. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina und arbeiten vor Ort, sodass Sie nirgendwohin fahren müssen.',
+    cta: 'Besuch buchen',
+    points: [
+      { title: 'Wo es Ihnen passt', text: 'Zu Hause, im Büro, auf dem Parkplatz oder in der Marina in Oslo und Umgebung.' },
+      { title: 'Ausrüstung dabei', text: 'Wir bringen Ausrüstung und Produkte mit. Sie brauchen nur einen Stellplatz.' },
+      { title: 'Keine verlorene Zeit', text: 'Sie gehen Ihrem Tag nach, während wir uns um das Auto kümmern.' },
+    ],
+  },
   services: {
     overline: 'Leistungen',
     title: 'Komplette Pflege für Auto und Yacht',
@@ -134,6 +145,7 @@ export default {
     title: 'Häufige Fragen',
     subtitle: 'Keine Antwort gefunden? Rufen Sie an – die Beratung ist kostenlos.',
     items: [
+      { q: 'Kommen Sie zu mir?', a: 'Ja, das ist unser Hauptformat. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina in Oslo und Umgebung. Ausrüstung und Produkte bringen wir mit; Sie brauchen nur einen Stellplatz.' },
       { q: 'Wie lange dauert die Arbeit?', a: 'Von einem Tag für die Glanzauffrischung bis zu 4–5 Tagen für die mehrstufige Korrektur mit Keramik. Die Wintervorbereitung dauert 1–2 Tage. Die genaue Dauer nennen wir nach der Besichtigung.' },
       { q: '„Frisst“ die Politur den Lack?', a: 'Vor der Arbeit messen wir die Schichtdicke an jedem Bauteil und tragen nur die minimal nötige Schicht ab – meist wenige Mikrometer.' },
       { q: 'Was gehört zur Wintervorbereitung?', a: 'Der komplette Zyklus: Dekontamination, Lackauffrischung, Saisonschutz für Karosserie und Felgen, Regenabweiser, Konservierung von Unterboden und Radhäusern, Dichtungspflege und Innenraum. Details im Abschnitt „Winter“.' },
@@ -145,7 +157,7 @@ export default {
   contact: {
     eyebrow: 'Terminanfrage',
     title: 'Kostenlose Besichtigung buchen',
-    text: 'Wir beurteilen den Zustand von Lack oder Gelcoat, nehmen Messungen vor und schlagen die beste Lösung vor. Rückruf innerhalb von 15 Minuten während der Öffnungszeiten.',
+    text: 'Wir beurteilen den Zustand von Lack oder Gelcoat, nehmen Messungen vor und schlagen die beste Lösung vor. Rückruf innerhalb von 15 Minuten während der Öffnungszeiten, dabei klären wir die Adresse für den Einsatz.',
     hours: 'Mo–Sa 9:00–20:00',
     form: {
       name: 'Name',

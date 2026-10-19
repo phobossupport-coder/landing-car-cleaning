@@ -6,15 +6,15 @@ export default {
   name: 'Norsk',
   meta: {
     title: 'Stella Detailing Studio — detailing-atelier for biler og yachter',
-    description: 'Lakkorreksjon, keramisk coating, komplett vinterklargjøring og detailing av yachter. Premium atelier med garantert resultat.',
+    description: 'Mobil detailing av biler og yachter: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller marinaen. Premium atelier med garantert resultat.',
   },
   nav: ['Tjenester', 'Vinter', 'Yachter', 'Pakker', 'Arbeider', 'Omtaler', 'FAQ'],
   header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk' },
   hero: {
-    eyebrow: 'Detailing-atelier for biler og yachter',
+    eyebrow: 'Mobil detailing for biler og yachter',
     title1: 'Perfeksjon',
     title2: 'i hver refleksjon',
-    text: 'Lakkorreksjon, keramisk beskyttelse, komplett vinterklargjøring og pleie av yachter. Håndarbeid, med målinger på hver del og garantert resultat.',
+    text: 'Vi kommer hjem til deg, til jobben eller marinaen. Lakkorreksjon, keramisk beskyttelse, komplett vinterklargjøring og pleie av yachter. Håndarbeid, med målinger på hver del og garantert resultat.',
     cta1: 'Bestill befaring',
     cta2: 'Tjenester',
     side: 'Detailing Studio · Est. 2017',
@@ -28,6 +28,17 @@ export default {
     marqueeYachts: 'Yachter og båter',
   },
   common: { from: 'fra', onRequest: 'på forespørsel', perFoot: 'per fot', vat: 'Alle priser inkl. mva.' },
+  mobile: {
+    eyebrow: 'Mobil detailing',
+    title: 'Vi jobber hovedsakelig hos deg',
+    text: 'Hovedtyngden av jobbene våre gjøres mobilt. Vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen og jobber på stedet, så du slipper å kjøre noe sted.',
+    cta: 'Bestill utrykning',
+    points: [
+      { title: 'Der det passer deg', text: 'Hjemme, på jobb, på parkeringsplassen eller i marinaen i Oslo og omegn.' },
+      { title: 'Utstyr med', text: 'Vi tar med utstyr og kjemi. Du trenger bare en plass til bilen.' },
+      { title: 'Ingen bortkastet tid', text: 'Du gjør det du skal, mens vi tar vare på bilen.' },
+    ],
+  },
   services: {
     overline: 'Tjenester',
     title: 'Komplett pleie for bil og yacht',
@@ -135,6 +146,7 @@ export default {
     title: 'Vanlige spørsmål',
     subtitle: 'Fant du ikke svaret? Ring oss – vi gir gratis rådgivning.',
     items: [
+      { q: 'Kommer dere til meg?', a: 'Ja, det er hovedformatet vårt. Vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen i Oslo og omegn. Vi har med utstyr og produkter; du trenger bare en plass til bilen.' },
       { q: 'Hvor lang tid tar arbeidet?', a: 'Fra én dag for oppfriskning av glans til 4–5 dager for flertrinns korreksjon med keramikk. Vinterklargjøring tar 1–2 dager. Nøyaktig tid gir vi etter befaring.' },
       { q: '«Spiser» poleringen opp lakken?', a: 'Før arbeidet måler vi lakktykkelsen på hver del og fjerner kun det minimale laget som trengs – vanligvis noen få mikron.' },
       { q: 'Hva inngår i vinterklargjøringen?', a: 'Komplett syklus: dekontaminering, oppfriskning av lakk, sesongbeskyttelse av karosseri og felger, regnavviser, konservering av understell og hjulbuer, behandling av pakninger og interiør. Se detaljer under «Vinter».' },
@@ -146,7 +158,7 @@ export default {
   contact: {
     eyebrow: 'Bestilling',
     title: 'Bestill gratis befaring',
-    text: 'Vi vurderer tilstanden på lakk eller gelcoat, tar målinger og foreslår den beste løsningen. Vi ringer tilbake innen 15 minutter i åpningstiden.',
+    text: 'Vi vurderer tilstanden på lakk eller gelcoat, tar målinger og foreslår den beste løsningen. Vi ringer tilbake innen 15 minutter i åpningstiden og bekrefter adressen for besøket.',
     hours: 'Man–lør 9:00–20:00',
     form: {
       name: 'Navn',

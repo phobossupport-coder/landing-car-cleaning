@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Mobile from './components/Mobile';
 import Services from './components/Services';
 import Winter from './components/Winter';
 import BeforeAfter from './components/BeforeAfter';
@@ -18,6 +19,7 @@ export default function App() {
       <Header />
       <Hero />
       <main>
+        <Mobile />
         <Services />
         <Winter />
         <BeforeAfter />

@@ -5,15 +5,15 @@ export default {
   name: 'English',
   meta: {
     title: 'Stella Detailing Studio — detailing atelier for cars and yachts',
-    description: 'Paint correction, ceramic coating, complete winter preparation and yacht detailing. A premium atelier with guaranteed results.',
+    description: 'Mobile detailing for cars and yachts: paint correction, ceramic coating, complete winter preparation. We come to your home, office or marina. A premium atelier with guaranteed results.',
   },
   nav: ['Services', 'Winter', 'Yachts', 'Packages', 'Work', 'Reviews', 'FAQ'],
   header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language' },
   hero: {
-    eyebrow: 'Detailing atelier for cars and yachts',
+    eyebrow: 'Mobile detailing for cars and yachts',
     title1: 'Perfection',
     title2: 'in every reflection',
-    text: 'Paint correction, ceramic protection, complete winter preparation and yacht care. Done by hand, with measurements on every panel and a guaranteed result.',
+    text: 'We come to your home, office or marina. Paint correction, ceramic protection, complete winter preparation and yacht care. Done by hand, with measurements on every panel and a guaranteed result.',
     cta1: 'Book an inspection',
     cta2: 'Services',
     side: 'Detailing Studio · Est. 2017',
@@ -27,6 +27,17 @@ export default {
     marqueeYachts: 'Yachts & boats',
   },
   common: { from: 'from', onRequest: 'on request', perFoot: 'per ft', vat: 'All prices incl. VAT.' },
+  mobile: {
+    eyebrow: 'Mobile detailing',
+    title: 'Mostly, we come to you',
+    text: 'Most of our work is mobile. We come to your home, office, car park or marina and work on site, so you do not have to drive anywhere.',
+    cta: 'Book a visit',
+    points: [
+      { title: 'Where it suits you', text: 'At home, at work, in the car park or at the marina in Oslo and surroundings.' },
+      { title: 'Equipment on board', text: 'We bring equipment and products. You only need a spot for the car.' },
+      { title: 'No time lost', text: 'You carry on with your day while we look after the car.' },
+    ],
+  },
   services: {
     overline: 'Services',
     title: 'Complete care for your car and yacht',
@@ -134,6 +145,7 @@ export default {
     title: 'Frequently asked questions',
     subtitle: 'Didn’t find the answer? Call us – the consultation is free.',
     items: [
+      { q: 'Do you come to me?', a: 'Yes, that is our main format. We come to your home, office, car park or marina in Oslo and surroundings. We bring equipment and products; you only need a spot for the car.' },
       { q: 'How long does the work take?', a: 'From one day for a gloss enhancement to 4–5 days for multi-stage correction with ceramic. Winter preparation takes 1–2 days. The exact time is confirmed after inspection.' },
       { q: 'Will polishing “eat” the paint?', a: 'Before the work we measure the paint thickness on every panel and remove only the minimum layer required – usually a few microns.' },
       { q: 'What is included in winter preparation?', a: 'The complete cycle: decontamination, paint refresh, seasonal protection of body and wheels, rain repellent, underbody and arch preservation, seal treatment and interior. See the “Winter” section.' },
@@ -145,7 +157,7 @@ export default {
   contact: {
     eyebrow: 'Booking',
     title: 'Book a free inspection',
-    text: 'We assess the paint or gelcoat, take measurements and propose the best option. We call back within 15 minutes during working hours.',
+    text: 'We assess the paint or gelcoat, take measurements and propose the best option. We call back within 15 minutes during working hours and confirm the visit address.',
     hours: 'Mon–Sat 9:00–20:00',
     form: {
       name: 'Name',
