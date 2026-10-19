@@ -1,10 +1,10 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 // Палітра «нічного шоуруму»: глибокий графіт, шампань-золото та тонкі лінії.
-// Заголовки — класична антиква Cormorant Garamond, текст — Inter.
+// Шрифт скрізь Inter.
 export const gold = '#C9A86A';
 export const goldGradient = 'linear-gradient(135deg, #EAD6A3 0%, #C9A86A 45%, #9C7F45 100%)';
-export const serif = '"Cormorant Garamond", "Times New Roman", serif';
+export const serif = '"Inter", system-ui, sans-serif'; // заголовки теж Inter: практичний шрифт без засічок
 export const sans = '"Inter", system-ui, sans-serif';
 export const hairline = 'rgba(255,255,255,0.09)';
 
@@ -20,9 +20,9 @@ let theme = createTheme({
   shape: { borderRadius: 0 },
   typography: {
     fontFamily: sans,
-    h1: { fontFamily: serif, fontWeight: 500, fontSize: '5rem', lineHeight: 1.02, letterSpacing: '-0.01em' },
-    h2: { fontFamily: serif, fontWeight: 500, fontSize: '3.25rem', lineHeight: 1.08, letterSpacing: '-0.01em' },
-    h3: { fontFamily: serif, fontWeight: 500, fontSize: '2.1rem', lineHeight: 1.15 },
+    h1: { fontFamily: serif, fontWeight: 600, fontSize: '4.25rem', lineHeight: 1.05, letterSpacing: '-0.03em' },
+    h2: { fontFamily: serif, fontWeight: 600, fontSize: '2.75rem', lineHeight: 1.1, letterSpacing: '-0.02em' },
+    h3: { fontFamily: serif, fontWeight: 600, fontSize: '2.1rem', lineHeight: 1.15 },
     h4: { fontFamily: serif, fontWeight: 600, fontSize: '1.6rem', lineHeight: 1.2 },
     h5: { fontFamily: serif, fontWeight: 600, fontSize: '1.3rem', lineHeight: 1.3 },
     overline: { fontFamily: sans, fontWeight: 500, letterSpacing: '0.32em', fontSize: '0.68rem', lineHeight: 2, textTransform: 'uppercase' },
