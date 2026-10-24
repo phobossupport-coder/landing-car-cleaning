@@ -30,8 +30,8 @@ export default {
   common: { from: 'ab', onRequest: 'auf Anfrage', perFoot: 'pro Fuß', vat: 'Alle Preise inkl. MwSt.' },
   mobile: {
     eyebrow: 'Mobiles Detailing',
-    title: 'Wir arbeiten überwiegend bei Ihnen vor Ort',
-    text: 'Der Großteil unserer Arbeit findet mobil statt. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina und arbeiten vor Ort, sodass Sie nirgendwohin fahren müssen.',
+    title: 'Wir arbeiten ausschließlich bei Ihnen vor Ort',
+    text: 'Sie müssen Ihr Auto nirgendwohin bringen: Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina und arbeiten vor Ort.',
     cta: 'Besuch buchen',
     points: [
       { title: 'Wo es Ihnen passt', text: 'Zu Hause, im Büro, auf dem Parkplatz oder in der Marina in Oslo und Umgebung.' },
@@ -44,7 +44,7 @@ export default {
     title: 'Komplette Pflege für Auto und Yacht',
     subtitle: 'Von der schonenden Wäsche bis zur mehrstufigen Lackkorrektur, Saisonschutz und Gelcoat-Pflege.',
     items: [
-      { title: 'Lackkorrektur', text: 'Mehrstufige Maschinenpolitur unter Studiolicht: entfernt Hologramme, Swirls und Kratzer bis zu 90 % der Defekttiefe.' },
+      { title: 'Lackkorrektur', text: 'Mehrstufige Maschinenpolitur unter starkem LED-Licht: entfernt Hologramme, Swirls und Kratzer bis zu 90 % der Defekttiefe.' },
       { title: 'Keramikversiegelung', text: 'Professionelle 9H-Keramik mit bis zu 5 Jahren Garantie: Farbtiefe, Hydrophobie und Schutz vor Streusalz, Chemie und UV.' },
       { title: 'Innenraum-Detailing', text: 'Tiefenreinigung, Auffrischung und Schutz von Nappaleder und Alcantara, Ozonbehandlung. Innenraum wie am Tag der Auslieferung.' },
       { title: 'Detailing-Wäsche', text: 'Berührungslose Zweiphasenwäsche, Flugrost- und Teerentfernung, Reinigungsknete, Wachs- oder Sealant-Schutz.' },
@@ -77,7 +77,7 @@ export default {
     title1: 'Yachten und Boote.',
     title2: 'Dasselbe Niveau.',
     intro: 'Gelcoat oxidiert durch Sonne und Salz schneller als Autolack. Wir stellen den tiefen Glanz des Rumpfes wieder her, schützen ihn mit Marine-Keramik und pflegen jede Oberfläche an Bord.',
-    where: 'Wir kommen in Ihre Marina oder nehmen das Boot auf dem Trailer im Studio an.',
+    where: 'Wir kommen in Ihre Marina oder dorthin, wo das Boot an Land steht.',
     cta: 'Angebot für meine Yacht',
     points: [
       { title: 'Rumpf & Aufbau', text: 'Mehrstufige Gelcoat-Politur, Entfernung von Oxidation, Kreidebelag und Läufern.' },
@@ -110,10 +110,10 @@ export default {
   process: {
     eyebrow: 'So arbeiten wir',
     title: 'Fünf Schritte zum perfekten Lack',
-    text: 'Geschlossenes, beheiztes Studio, Studiolicht und Schichtdickenkontrolle an jedem Bauteil. Sie können die Arbeit persönlich verfolgen oder einen Fotobericht erhalten.',
-    imageAlt: 'Arbeit im Studio',
+    text: 'Wir arbeiten dort, wo Ihr Auto steht: starkes LED-Licht und Schichtdickenkontrolle an jedem Bauteil. Sie können die Arbeit persönlich verfolgen oder einen Fotobericht erhalten.',
+    imageAlt: 'Detailer bei der Arbeit vor Ort',
     steps: [
-      { title: 'Besichtigung & Messung', text: 'Inspektion unter Studiolicht, Schichtdickenmessung an jedem Bauteil, „Vorher“-Fotos.' },
+      { title: 'Besichtigung & Messung', text: 'Inspektion unter starkem LED-Licht, Schichtdickenmessung an jedem Bauteil, „Vorher“-Fotos.' },
       { title: 'Vorbereitung', text: 'Zweiphasenwäsche, Flugrost- und Teerentfernung, Reinigungsknete, Abkleben.' },
       { title: 'Politur', text: 'Stufenweise Korrektur mit Kontrolle nach jedem Durchgang. Keine Hologramme.' },
       { title: 'Schutz', text: 'Keramik, Sealant oder Wachs – je nach Aufgabe und Saison. Infrarot-Aushärtung.' },
@@ -122,7 +122,7 @@ export default {
   },
   gallery: {
     overline: 'Portfolio',
-    title: 'Kürzlich aus dem Studio',
+    title: 'Aktuelle Arbeiten',
     subtitle: 'Jede Arbeit – mit Fotobericht und Messungen vorher und nachher.',
     works: ['Lackkorrektur + Keramik', 'Concours', 'Wintervorbereitung', 'Innenraum-Detailing', 'Keramik', 'Gelcoat-Politur'],
   },
@@ -136,9 +136,9 @@ export default {
     ],
   },
   trust: [
-    { title: 'Geschlossenes Studio', text: 'Zugang nur für das Team. Keine fremden Blicke und keine Fotos ohne Ihre Zustimmung.' },
-    { title: 'Abholung & Lieferung', text: 'Wir holen Ihr Auto im geschlossenen Transporter oder mit Fahrer in Handschuhen ab und bringen es zurück.' },
-    { title: 'Versicherung', text: 'Jedes Auto ist während des gesamten Aufenthalts bei uns versichert.' },
+    { title: 'Komplett autark', text: 'Wir bringen Wasser, Strom, Licht und Produkte mit. Sie brauchen nur einen Stellplatz.' },
+    { title: 'Diskretion', text: 'Keine Fotos Ihres Autos oder Ihrer Adresse in sozialen Medien ohne Ihre Zustimmung.' },
+    { title: 'Versicherung', text: 'Unsere Haftung ist für die gesamte Arbeit an Ihrem Auto versichert.' },
     { title: 'Ein Meister pro Auto', text: 'Ein Meister begleitet Ihr Auto von der Besichtigung bis zur Übergabe.' },
   ],
   faq: {
@@ -146,11 +146,11 @@ export default {
     title: 'Häufige Fragen',
     subtitle: 'Keine Antwort gefunden? Rufen Sie an – die Beratung ist kostenlos.',
     items: [
-      { q: 'Kommen Sie zu mir?', a: 'Ja, das ist unser Hauptformat. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina in Oslo und Umgebung. Ausrüstung und Produkte bringen wir mit; Sie brauchen nur einen Stellplatz.' },
+      { q: 'Kommen Sie zu mir?', a: 'Ja, wir arbeiten ausschließlich vor Ort. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina in Oslo und Umgebung. Ausrüstung und Produkte bringen wir mit; Sie brauchen nur einen Stellplatz.' },
       { q: 'Wie lange dauert die Arbeit?', a: 'Von einem Tag für die Glanzauffrischung bis zu 4–5 Tagen für die mehrstufige Korrektur mit Keramik. Die Wintervorbereitung dauert 1–2 Tage. Die genaue Dauer nennen wir nach der Besichtigung.' },
       { q: '„Frisst“ die Politur den Lack?', a: 'Vor der Arbeit messen wir die Schichtdicke an jedem Bauteil und tragen nur die minimal nötige Schicht ab – meist wenige Mikrometer.' },
       { q: 'Was gehört zur Wintervorbereitung?', a: 'Der komplette Zyklus: Dekontamination, Lackauffrischung, Saisonschutz für Karosserie und Felgen, Regenabweiser, Konservierung von Unterboden und Radhäusern, Dichtungspflege und Innenraum. Details im Abschnitt „Winter“.' },
-      { q: 'Arbeiten Sie mit Yachten und Booten?', a: 'Ja. Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Interieur. Wir kommen in die Marina oder nehmen das Boot auf dem Trailer im Studio an.' },
+      { q: 'Arbeiten Sie mit Yachten und Booten?', a: 'Ja. Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Interieur. Wir kommen in die Marina oder dorthin, wo das Boot an Land steht.' },
       { q: 'Wie pflege ich das Auto nach der Keramik?', a: 'Die ersten 7 Tage keine Wäsche. Danach schonende Wäsche ohne Bürsten. Sie erhalten eine Pflegeanleitung, und wir bieten regelmäßige Pflege an.' },
       { q: 'Geben Sie Garantie?', a: 'Ja, auf Keramikversiegelungen bis zu 5 Jahre mit Zertifikat. Auf Marine-Keramik bis zu 24 Monate.' },
     ],

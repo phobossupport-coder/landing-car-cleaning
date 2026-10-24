@@ -30,8 +30,8 @@ export default {
   common: { from: 'from', onRequest: 'on request', perFoot: 'per ft', vat: 'All prices incl. VAT.' },
   mobile: {
     eyebrow: 'Mobile detailing',
-    title: 'Mostly, we come to you',
-    text: 'Most of our work is mobile. We come to your home, office, car park or marina and work on site, so you do not have to drive anywhere.',
+    title: 'We only work on site, at your place',
+    text: 'You never have to take the car anywhere: we come to your home, office, car park or marina and work on site.',
     cta: 'Book a visit',
     points: [
       { title: 'Where it suits you', text: 'At home, at work, in the car park or at the marina in Oslo and surroundings.' },
@@ -44,7 +44,7 @@ export default {
     title: 'Complete care for your car and yacht',
     subtitle: 'From a gentle wash to multi-stage paint correction, seasonal protection and gelcoat care.',
     items: [
-      { title: 'Paint correction', text: 'Multi-stage machine polishing under studio light: removes holograms, swirls and scratches up to 90% of defect depth.' },
+      { title: 'Paint correction', text: 'Multi-stage machine polishing under powerful LED light: removes holograms, swirls and scratches up to 90% of defect depth.' },
       { title: 'Ceramic coating', text: 'Professional 9H ceramic with up to 5 years of warranty: colour depth, hydrophobic effect and protection from road salt, chemicals and UV.' },
       { title: 'Interior detailing', text: 'Deep cleaning, restoration and protection of Nappa leather and Alcantara, ozone treatment. The cabin as on delivery day.' },
       { title: 'Detailing wash', text: 'Touchless two-phase wash, iron and tar decontamination, clay, wax or sealant protection.' },
@@ -77,7 +77,7 @@ export default {
     title1: 'Yachts and boats.',
     title2: 'The same standard.',
     intro: 'Gelcoat oxidises from sun and salt faster than automotive paint. We restore deep gloss to the hull, protect it with marine ceramic and care for every surface on board.',
-    where: 'We come to your marina or accept the boat on a trailer at the studio.',
+    where: 'We come to your marina or wherever the boat is stored on land.',
     cta: 'Get a quote for my yacht',
     points: [
       { title: 'Hull & superstructure', text: 'Multi-stage gelcoat polishing, removal of oxidation, chalking and streaks.' },
@@ -110,10 +110,10 @@ export default {
   process: {
     eyebrow: 'How we work',
     title: 'Five steps to perfect paint',
-    text: 'A closed, heated studio, studio lighting and paint-thickness control on every panel. Watch the work in person or receive a photo report.',
-    imageAlt: 'Work in the studio',
+    text: 'We work wherever your car is parked: powerful LED lighting and paint-thickness control on every panel. Watch the work in person or receive a photo report.',
+    imageAlt: 'Detailer at work on site',
     steps: [
-      { title: 'Inspection & measurement', text: 'Inspection under studio light, paint thickness on every panel, “before” photos.' },
+      { title: 'Inspection & measurement', text: 'Inspection under powerful LED light, paint thickness on every panel, “before” photos.' },
       { title: 'Preparation', text: 'Two-phase wash, iron and tar decontamination, clay, masking.' },
       { title: 'Polishing', text: 'Stage-by-stage correction with a check after every pass. No holograms.' },
       { title: 'Protection', text: 'Ceramic, sealant or wax – depending on the task and the season. Infrared curing.' },
@@ -122,7 +122,7 @@ export default {
   },
   gallery: {
     overline: 'Portfolio',
-    title: 'Recently left the studio',
+    title: 'Recent work',
     subtitle: 'Every job comes with a photo report and before/after measurements.',
     works: ['Paint correction + ceramic', 'Concours', 'Winter preparation', 'Interior detailing', 'Ceramic', 'Gelcoat polishing'],
   },
@@ -136,9 +136,9 @@ export default {
     ],
   },
   trust: [
-    { title: 'Closed studio', text: 'Team access only. No strangers and no photos without your consent.' },
-    { title: 'Collection & delivery', text: 'We collect and return your car by enclosed transporter or a driver in gloves.' },
-    { title: 'Insurance', text: 'Every car is insured for the whole time it is with us.' },
+    { title: 'Fully self-sufficient', text: 'We bring water, power, lighting and products. All you provide is a spot for the car.' },
+    { title: 'Discretion', text: 'No photos of your car or address on social media without your consent.' },
+    { title: 'Insurance', text: 'Our liability is insured for the whole time we work on your car.' },
     { title: 'One master per car', text: 'One master follows your car from inspection to handover.' },
   ],
   faq: {
@@ -146,11 +146,11 @@ export default {
     title: 'Frequently asked questions',
     subtitle: 'Didn’t find the answer? Call us – the consultation is free.',
     items: [
-      { q: 'Do you come to me?', a: 'Yes, that is our main format. We come to your home, office, car park or marina in Oslo and surroundings. We bring equipment and products; you only need a spot for the car.' },
+      { q: 'Do you come to me?', a: 'Yes, we only work on site. We come to your home, office, car park or marina in Oslo and surroundings. We bring equipment and products; you only need a spot for the car.' },
       { q: 'How long does the work take?', a: 'From one day for a gloss enhancement to 4–5 days for multi-stage correction with ceramic. Winter preparation takes 1–2 days. The exact time is confirmed after inspection.' },
       { q: 'Will polishing “eat” the paint?', a: 'Before the work we measure the paint thickness on every panel and remove only the minimum layer required – usually a few microns.' },
       { q: 'What is included in winter preparation?', a: 'The complete cycle: decontamination, paint refresh, seasonal protection of body and wheels, rain repellent, underbody and arch preservation, seal treatment and interior. See the “Winter” section.' },
-      { q: 'Do you work with yachts and boats?', a: 'Yes. Gelcoat polishing, oxidation removal, marine ceramic, teak and interior care. We come to the marina or accept the boat on a trailer at the studio.' },
+      { q: 'Do you work with yachts and boats?', a: 'Yes. Gelcoat polishing, oxidation removal, marine ceramic, teak and interior care. We come to the marina or wherever the boat is stored on land.' },
       { q: 'How do I care for the car after ceramic?', a: 'No washing for the first 7 days. Then gentle washing without brushes. You receive a care guide and we offer regular maintenance.' },
       { q: 'Do you offer a warranty?', a: 'Yes, up to 5 years with a certificate on ceramic coatings. Up to 24 months on marine ceramic.' },
     ],

@@ -31,8 +31,8 @@ export default {
   common: { from: 'fra', onRequest: 'på forespørsel', perFoot: 'per fot', vat: 'Alle priser inkl. mva.' },
   mobile: {
     eyebrow: 'Mobil detailing',
-    title: 'Vi jobber hovedsakelig hos deg',
-    text: 'Hovedtyngden av jobbene våre gjøres mobilt. Vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen og jobber på stedet, så du slipper å kjøre noe sted.',
+    title: 'Vi jobber kun hos deg',
+    text: 'Du trenger aldri å kjøre bilen noe sted: vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen og jobber på stedet.',
     cta: 'Bestill utrykning',
     points: [
       { title: 'Der det passer deg', text: 'Hjemme, på jobb, på parkeringsplassen eller i marinaen i Oslo og omegn.' },
@@ -45,7 +45,7 @@ export default {
     title: 'Komplett pleie for bil og yacht',
     subtitle: 'Fra skånsom vask til flertrinns lakkorreksjon, sesongbeskyttelse og pleie av gelcoat.',
     items: [
-      { title: 'Lakkorreksjon', text: 'Flertrinns maskinpolering under studiolys: fjerner hologrammer, swirls og riper opp til 90 % av defektene.' },
+      { title: 'Lakkorreksjon', text: 'Flertrinns maskinpolering under kraftig LED-lys: fjerner hologrammer, swirls og riper opp til 90 % av defektene.' },
       { title: 'Keramisk coating', text: 'Profesjonell 9H-keramikk med inntil 5 års garanti: fargedybde, hydrofob effekt og beskyttelse mot veisalt, kjemikalier og UV.' },
       { title: 'Interiørdetailing', text: 'Dyprens, oppfriskning og beskyttelse av Nappa-skinn og Alcantara, ozonbehandling. Kupeen som ved levering.' },
       { title: 'Detailing-vask', text: 'Berøringsfri tofasevask, dekontaminering av jern og tjære, clay, voks- eller sealantbeskyttelse.' },
@@ -78,7 +78,7 @@ export default {
     title1: 'Yachter og båter.',
     title2: 'Samme nivå.',
     intro: 'Gelcoat oksiderer raskere av sol og salt enn billakk. Vi gjenoppretter dyp glans på skroget, beskytter det med marin keramikk og pleier hver overflate om bord.',
-    where: 'Vi kommer til marinaen din eller tar imot båten på henger i studioet.',
+    where: 'Vi kommer til marinaen din eller der båten står på land.',
     cta: 'Få pris for min yacht',
     points: [
       { title: 'Skrog og overbygg', text: 'Flertrinns polering av gelcoat, fjerning av oksidasjon, krittbelegg og renner.' },
@@ -111,10 +111,10 @@ export default {
   process: {
     eyebrow: 'Slik jobber vi',
     title: 'Fem trinn til perfekt lakk',
-    text: 'Lukket, oppvarmet studio, studiolys og kontroll av lakktykkelse på hver del. Du kan følge arbeidet selv eller få fotorapport.',
-    imageAlt: 'Arbeid i studioet',
+    text: 'Vi jobber der bilen din står: kraftig LED-lys og kontroll av lakktykkelse på hver del. Du kan følge arbeidet selv eller få fotorapport.',
+    imageAlt: 'Detailer i arbeid på stedet',
     steps: [
-      { title: 'Befaring og måling', text: 'Inspeksjon under studiolys, måling av lakktykkelse på hver del, «før»-bilder.' },
+      { title: 'Befaring og måling', text: 'Inspeksjon under kraftig LED-lys, måling av lakktykkelse på hver del, «før»-bilder.' },
       { title: 'Forberedelse', text: 'Tofasevask, dekontaminering av jern og tjære, clay, maskering.' },
       { title: 'Polering', text: 'Trinnvis korreksjon med kontroll etter hver omgang. Ingen hologrammer.' },
       { title: 'Beskyttelse', text: 'Keramikk, sealant eller voks – avhengig av oppgave og sesong. Infrarød herding.' },
@@ -123,7 +123,7 @@ export default {
   },
   gallery: {
     overline: 'Portefølje',
-    title: 'Nylig ut fra studioet',
+    title: 'Nylige oppdrag',
     subtitle: 'Hvert arbeid – med fotorapport og målinger før og etter.',
     works: ['Lakkorreksjon + keramikk', 'Concours', 'Vinterklargjøring', 'Interiørdetailing', 'Keramikk', 'Polering av gelcoat'],
   },
@@ -137,9 +137,9 @@ export default {
     ],
   },
   trust: [
-    { title: 'Lukket studio', text: 'Kun teamet har adgang. Ingen fremmede øyne og ingen bilder uten ditt samtykke.' },
-    { title: 'Henting og levering', text: 'Vi henter og leverer bilen med lukket biltransport eller sjåfør i hansker.' },
-    { title: 'Forsikring', text: 'Hver bil er forsikret så lenge den er hos oss.' },
+    { title: 'Helt selvforsynt', text: 'Vi har med vann, strøm, lys og produkter. Du trenger bare en plass til bilen.' },
+    { title: 'Diskresjon', text: 'Ingen bilder av bilen eller adressen din i sosiale medier uten ditt samtykke.' },
+    { title: 'Forsikring', text: 'Ansvaret vårt er forsikret så lenge vi jobber med bilen din.' },
     { title: 'Én mester per bil', text: 'Én mester følger bilen din fra befaring til levering.' },
   ],
   faq: {
@@ -147,11 +147,11 @@ export default {
     title: 'Vanlige spørsmål',
     subtitle: 'Fant du ikke svaret? Ring oss – vi gir gratis rådgivning.',
     items: [
-      { q: 'Kommer dere til meg?', a: 'Ja, det er hovedformatet vårt. Vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen i Oslo og omegn. Vi har med utstyr og produkter; du trenger bare en plass til bilen.' },
+      { q: 'Kommer dere til meg?', a: 'Ja, vi jobber kun hos kunden. Vi kommer hjem til deg, til jobben, parkeringsplassen eller marinaen i Oslo og omegn. Vi har med utstyr og produkter; du trenger bare en plass til bilen.' },
       { q: 'Hvor lang tid tar arbeidet?', a: 'Fra én dag for oppfriskning av glans til 4–5 dager for flertrinns korreksjon med keramikk. Vinterklargjøring tar 1–2 dager. Nøyaktig tid gir vi etter befaring.' },
       { q: '«Spiser» poleringen opp lakken?', a: 'Før arbeidet måler vi lakktykkelsen på hver del og fjerner kun det minimale laget som trengs – vanligvis noen få mikron.' },
       { q: 'Hva inngår i vinterklargjøringen?', a: 'Komplett syklus: dekontaminering, oppfriskning av lakk, sesongbeskyttelse av karosseri og felger, regnavviser, konservering av understell og hjulbuer, behandling av pakninger og interiør. Se detaljer under «Vinter».' },
-      { q: 'Jobber dere med yachter og båter?', a: 'Ja. Polering av gelcoat, fjerning av oksidasjon, marin keramikk, pleie av teak og interiør. Vi kommer til marinaen eller tar imot båten på henger i studioet.' },
+      { q: 'Jobber dere med yachter og båter?', a: 'Ja. Polering av gelcoat, fjerning av oksidasjon, marin keramikk, pleie av teak og interiør. Vi kommer til marinaen eller der båten står på land.' },
       { q: 'Hvordan pleie bilen etter keramikk?', a: 'De første 7 dagene – ingen vask. Deretter skånsom vask uten børster. Du får pleieveiledning, og vi tilbyr regelmessig vedlikehold.' },
       { q: 'Gir dere garanti?', a: 'Ja, på keramiske coatinger – inntil 5 år med sertifikat. På marin keramikk – inntil 24 måneder.' },
     ],
