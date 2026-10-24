@@ -24,8 +24,8 @@ export default function App() {
         <Services />
         <Winter />
         <BeforeAfter />
-        <Yachts />
         <Packages />
+        <Yachts />
         <Process />
         <Gallery />
         <Reviews />

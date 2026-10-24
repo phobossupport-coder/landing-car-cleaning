@@ -5,28 +5,27 @@ export default {
   label: 'NO',
   name: 'Norsk',
   meta: {
-    title: 'Stella Detailing Studio — detailing-atelier for biler og yachter',
-    description: 'Mobil detailing av biler og yachter: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller marinaen. Premium atelier med garantert resultat.',
+    title: 'Stella Detailing — mobil bildetailing i Oslo',
+    description: 'Mobil bildetailing i Oslo: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller parkeringsplassen. Vi tar også båter.',
   },
-  nav: ['Tjenester', 'Vinter', 'Yachter', 'Pakker', 'Arbeider', 'Omtaler', 'FAQ'],
+  nav: ['Tjenester', 'Vinter', 'Pakker', 'Yachter', 'Arbeider', 'Omtaler', 'FAQ'],
   header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk' },
   hero: {
-    eyebrow: 'Mobil detailing for biler og yachter',
+    eyebrow: 'Mobil bildetailing',
     title1: 'Perfeksjon',
     title2: 'i hver refleksjon',
-    text: 'Vi kommer hjem til deg, til jobben eller marinaen. Lakkorreksjon, keramisk beskyttelse, komplett vinterklargjøring og pleie av yachter. Håndarbeid, med målinger på hver del og garantert resultat.',
-    cta1: 'Gratis befaring og lakkmåling',
-    note: 'Uforpliktende · Vi svarer innen 15 minutter',
+    text: 'Vi kommer hjem til deg, til jobben eller parkeringsplassen. Lakkorreksjon, keramisk beskyttelse og komplett vinterklargjøring. Håndarbeid, med målinger på hver del og garantert resultat.',
+    cta1: 'Gratis befaring',
+    note: 'Lakkmåling · Uforpliktende · Vi svarer innen 15 minutter',
     cta2: 'Tjenester',
     side: 'Detailing Studio · Est. 2017',
     stats: [
       { value: '1 200+', label: 'biler betrodd oss' },
-      { value: '40+', label: 'yachter og båter' },
+      { value: '100%', label: 'oppdrag med fotorapport' },
       { value: '9', suffix: 'år', label: 'erfaring med detailing' },
       { value: '5', suffix: 'år', label: 'garanti på keramikk' },
     ],
     marqueeCars: 'Biler',
-    marqueeYachts: 'Yachter og båter',
   },
   common: { from: 'fra', onRequest: 'på forespørsel', perFoot: 'per fot', vat: 'Alle priser inkl. mva.' },
   mobile: {
@@ -42,8 +41,8 @@ export default {
   },
   services: {
     overline: 'Tjenester',
-    title: 'Komplett pleie for bil og yacht',
-    subtitle: 'Fra skånsom vask til flertrinns lakkorreksjon, sesongbeskyttelse og pleie av gelcoat.',
+    title: 'Komplett pleie av bilen din',
+    subtitle: 'Fra skånsom vask til flertrinns lakkorreksjon, keramikk og sesongbeskyttelse.',
     items: [
       { title: 'Lakkorreksjon', text: 'Flertrinns maskinpolering under kraftig LED-lys: fjerner hologrammer, swirls og riper opp til 90 % av defektene.' },
       { title: 'Keramisk coating', text: 'Profesjonell 9H-keramikk med inntil 5 års garanti: fargedybde, hydrofob effekt og beskyttelse mot veisalt, kjemikalier og UV.' },
@@ -74,7 +73,7 @@ export default {
     ],
   },
   yachts: {
-    eyebrow: 'Yacht detailing',
+    eyebrow: 'Også båter',
     title1: 'Yachter og båter.',
     title2: 'Samme nivå.',
     intro: 'Gelcoat oksiderer raskere av sol og salt enn billakk. Vi gjenoppretter dyp glans på skroget, beskytter det med marin keramikk og pleier hver overflate om bord.',
@@ -133,7 +132,7 @@ export default {
     items: [
       { name: 'Alexander K.', text: 'Den svarte lakken var full av swirls etter vaskehaller. Nå ser bilen bedre ut enn den dagen den ble levert fra forhandler. De viste hvert trinn og alle målinger.' },
       { name: 'Maria L.', text: 'Keramikk og vinterklargjøring. Etter en vinter med veisalt er lakken som ny, skitten fester seg ikke, og vasken tar ti minutter.' },
-      { name: 'Andreas P.', text: 'Skroget var matt av oksidasjon. De kom til marinaen, og på tre dager fikk de tilbake speilglansen og forseglet den med keramikk.' },
+      { name: 'Andreas P.', text: 'De kom til kontoret mens jeg jobbet. Om kvelden kjørte jeg hjem med korrigert lakk og keramikk — speilblank, ikke ett hologram.' },
     ],
   },
   trust: [

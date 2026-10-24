@@ -4,28 +4,27 @@ export default {
   label: 'EN',
   name: 'English',
   meta: {
-    title: 'Stella Detailing Studio — detailing atelier for cars and yachts',
-    description: 'Mobile detailing for cars and yachts: paint correction, ceramic coating, complete winter preparation. We come to your home, office or marina. A premium atelier with guaranteed results.',
+    title: 'Stella Detailing — mobile car detailing in Oslo',
+    description: 'Mobile car detailing in Oslo: paint correction, ceramic coating, complete winter preparation. We come to your home, office or car park. Yachts on request too.',
   },
-  nav: ['Services', 'Winter', 'Yachts', 'Packages', 'Work', 'Reviews', 'FAQ'],
+  nav: ['Services', 'Winter', 'Packages', 'Yachts', 'Work', 'Reviews', 'FAQ'],
   header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language' },
   hero: {
-    eyebrow: 'Mobile detailing for cars and yachts',
+    eyebrow: 'Mobile car detailing',
     title1: 'Perfection',
     title2: 'in every reflection',
-    text: 'We come to your home, office or marina. Paint correction, ceramic protection, complete winter preparation and yacht care. Done by hand, with measurements on every panel and a guaranteed result.',
-    cta1: 'Free inspection & paint check',
-    note: 'No obligation · We reply within 15 minutes',
+    text: 'We come to your home, office or car park. Paint correction, ceramic protection and complete winter preparation. Done by hand, with measurements on every panel and a guaranteed result.',
+    cta1: 'Free inspection',
+    note: 'Paint measurement · No obligation · We reply within 15 minutes',
     cta2: 'Services',
     side: 'Detailing Studio · Est. 2017',
     stats: [
       { value: '1,200+', label: 'cars entrusted to us' },
-      { value: '40+', label: 'yachts and boats' },
+      { value: '100%', label: 'jobs with a photo report' },
       { value: '9', suffix: 'years', label: 'of detailing experience' },
       { value: '5', suffix: 'years', label: 'ceramic warranty' },
     ],
     marqueeCars: 'Automobiles',
-    marqueeYachts: 'Yachts & boats',
   },
   common: { from: 'from', onRequest: 'on request', perFoot: 'per ft', vat: 'All prices incl. VAT.' },
   mobile: {
@@ -41,8 +40,8 @@ export default {
   },
   services: {
     overline: 'Services',
-    title: 'Complete care for your car and yacht',
-    subtitle: 'From a gentle wash to multi-stage paint correction, seasonal protection and gelcoat care.',
+    title: 'Complete care for your car',
+    subtitle: 'From a gentle wash to multi-stage paint correction, ceramic coating and seasonal protection.',
     items: [
       { title: 'Paint correction', text: 'Multi-stage machine polishing under powerful LED light: removes holograms, swirls and scratches up to 90% of defect depth.' },
       { title: 'Ceramic coating', text: 'Professional 9H ceramic with up to 5 years of warranty: colour depth, hydrophobic effect and protection from road salt, chemicals and UV.' },
@@ -73,7 +72,7 @@ export default {
     ],
   },
   yachts: {
-    eyebrow: 'Yacht detailing',
+    eyebrow: 'Yachts too',
     title1: 'Yachts and boats.',
     title2: 'The same standard.',
     intro: 'Gelcoat oxidises from sun and salt faster than automotive paint. We restore deep gloss to the hull, protect it with marine ceramic and care for every surface on board.',
@@ -132,7 +131,7 @@ export default {
     items: [
       { name: 'Alexander K.', text: 'The black paint was covered in swirls after car washes. Now the car looks better than on delivery day. They showed every stage and every measurement.' },
       { name: 'Maria L.', text: 'Ceramic and winter preparation. After a winter of road salt the paint is like new, dirt does not stick and a wash takes ten minutes.' },
-      { name: 'Andreas P.', text: 'The hull was dull from oxidation. They came to the marina and in three days brought back the mirror gloss and sealed it with ceramic.' },
+      { name: 'Andreas P.', text: 'They came to my office while I was working. That evening I drove off with corrected paint and ceramic — a mirror finish, not a single hologram.' },
     ],
   },
   trust: [

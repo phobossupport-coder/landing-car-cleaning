@@ -27,56 +27,48 @@ export default function Yachts() {
       <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,11,0.94) 0%, rgba(10,10,11,0.8) 45%, rgba(10,10,11,0.35) 100%)' }} />
       <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,0) 18%, rgba(10,10,11,0) 82%, #0A0A0B 100%)' }} />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 12, md: 18 } }}>
-        <Grid container spacing={{ xs: 6, md: 10 }}>
+      {/* Яхти — другорядний напрям: компактний блок без детальних описів пунктів */}
+      <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 9, md: 12 } }}>
+        <Grid container spacing={{ xs: 5, md: 10 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Reveal>
               <Eyebrow align="left">{yachts.eyebrow}</Eyebrow>
-              <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-                {yachts.title1}
-                <Box component="span" sx={{ display: 'block', fontStyle: 'italic', color: 'primary.main' }}>
+              <Typography variant="h3" component="h2" sx={{ mt: 2, mb: 2 }}>
+                {yachts.title1}{' '}
+                <Box component="span" sx={{ fontStyle: 'italic', color: 'primary.main' }}>
                   {yachts.title2}
                 </Box>
               </Typography>
-              <Typography color="text.secondary" sx={{ mb: 4, maxWidth: 520 }}>
+              <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 520 }}>
                 {yachts.intro}
               </Typography>
-              <Stack direction="row" spacing={2} alignItems="flex-start" sx={{ mb: 5, p: 3, border: '1px solid', borderColor: 'divider', bgcolor: 'rgba(10,10,11,0.5)', backdropFilter: 'blur(8px)', maxWidth: 520 }}>
-                <SailingOutlinedIcon sx={{ color: 'primary.main', mt: 0.3 }} />
-                <Typography variant="body2" color="text.secondary">
-                  {yachts.where}
-                </Typography>
+              <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mt: 2.5, color: 'text.secondary' }}>
+                <SailingOutlinedIcon sx={{ color: 'primary.main', fontSize: 18 }} />
+                <Typography variant="body2">{yachts.where}</Typography>
               </Stack>
+            </Reveal>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Reveal delay={120}>
+              <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0, mb: 4, display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
+                {yachts.points.map((p) => (
+                  <Box component="li" key={p.title} sx={{ display: 'flex', gap: 1.5, alignItems: 'baseline', py: 1.75, pr: 2, borderBottom: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
+                    <Box sx={{ width: 5, height: 5, transform: 'rotate(45deg)', bgcolor: 'primary.main', flexShrink: 0, position: 'relative', top: -2 }} />
+                    <Typography variant="body2">{p.title}</Typography>
+                  </Box>
+                ))}
+              </Box>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 4 }} alignItems={{ sm: 'center' }} useFlexGap flexWrap="wrap">
-                <Button href="#contact" onClick={() => setService(`service-${serviceMeta.length - 1}`)} variant="outlined" size="large" sx={{ whiteSpace: 'nowrap' }}>
-                  {yachts.cta}
-                </Button>
                 <Stack direction="row" alignItems="baseline" spacing={1} sx={{ whiteSpace: 'nowrap' }}>
                   <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
                   <Typography sx={{ fontFamily: serif, fontSize: 30, lineHeight: 1, color: 'primary.light' }}>{formatPrice(serviceMeta[5].price, t.currency)}</Typography>
                   <Typography variant="body2" color="text.secondary">/ {t.common.perFoot}</Typography>
                 </Stack>
+                <Button href="#contact" onClick={() => setService(`service-${serviceMeta.length - 1}`)} variant="outlined" size="large" sx={{ whiteSpace: { sm: 'nowrap' } }}>
+                  {yachts.cta}
+                </Button>
               </Stack>
             </Reveal>
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Stack sx={{ borderTop: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
-              {yachts.points.map((p, i) => (
-                <Reveal key={p.title} delay={i * 100}>
-                  <Stack direction="row" spacing={3} sx={{ py: 3.5, borderBottom: '1px solid', borderColor: 'rgba(255,255,255,0.14)' }}>
-                    <Typography sx={{ fontFamily: serif, fontSize: 30, lineHeight: 1, color: 'primary.main', minWidth: 48 }}>{String(i + 1).padStart(2, '0')}</Typography>
-                    <Box>
-                      <Typography variant="h5" component="h3" sx={{ mb: 0.75 }}>
-                        {p.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {p.text}
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Reveal>
-              ))}
-            </Stack>
           </Grid>
         </Grid>
       </Container>

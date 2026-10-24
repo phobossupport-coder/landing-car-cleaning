@@ -41,10 +41,8 @@ export const carBrands = [
   'Cadillac Escalade',
 ];
 
-export const yachtBrands = ['Azimut', 'Sunseeker', 'Princess', 'Ferretti', 'Beneteau', 'Jeanneau', 'Sea Ray', 'Riva', 'Pershing', 'Bavaria'];
-
 // Якорі навігації та секцій — однакові для всіх мов.
-export const navHrefs = ['#services', '#winter', '#yachts', '#packages', '#gallery', '#reviews', '#faq'];
+export const navHrefs = ['#services', '#winter', '#packages', '#yachts', '#gallery', '#reviews', '#faq'];
 
 // Ціни в NOK (інші валюти перераховуються автоматично, див. src/i18n/currency.js).
 // Базу взято з прайсів студій Осло (жовтень 2026) мінус 15 %:
@@ -80,4 +78,4 @@ export const galleryMeta = [
   { src: img('photo-1605281317010-fe5ffe798166', 1400), title: 'Azimut 55' },
 ];
 
-export const reviewCars = ['Rolls-Royce Ghost', 'Porsche 911 Turbo S', 'Azimut 55'];
+export const reviewCars = ['Rolls-Royce Ghost', 'Porsche 911 Turbo S', 'BMW M5 Competition'];

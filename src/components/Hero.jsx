@@ -1,6 +1,6 @@
 import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { carBrands, images, yachtBrands } from '../data';
+import { carBrands, images } from '../data';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
 
@@ -166,7 +166,6 @@ export default function Hero() {
 
       <Box sx={{ position: 'relative', bgcolor: '#070708', borderBottom: '1px solid', borderColor: 'divider' }}>
         <Marquee label={h.marqueeCars} items={carBrands} speed={70} />
-        <Marquee label={h.marqueeYachts} items={yachtBrands} reverse speed={85} />
       </Box>
     </Box>
   );

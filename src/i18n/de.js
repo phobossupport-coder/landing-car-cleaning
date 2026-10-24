@@ -4,28 +4,27 @@ export default {
   label: 'DE',
   name: 'Deutsch',
   meta: {
-    title: 'Stella Detailing Studio — Mobiles Detailing für Autos und Yachten',
-    description: 'Mobiles Detailing für Autos und Yachten: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder in die Marina. Premium-Atelier mit garantiertem Ergebnis.',
+    title: 'Stella Detailing — mobiles Auto-Detailing in Oslo',
+    description: 'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
   },
-  nav: ['Leistungen', 'Winter', 'Yachten', 'Pakete', 'Arbeiten', 'Bewertungen', 'FAQ'],
+  nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Arbeiten', 'Bewertungen', 'FAQ'],
   header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache' },
   hero: {
-    eyebrow: 'Detailing-Atelier für Autos und Yachten',
+    eyebrow: 'Mobiles Auto-Detailing',
     title1: 'Perfektion',
     title2: 'in jeder Spiegelung',
-    text: 'Wir kommen zu Ihnen nach Hause, ins Büro oder in die Marina. Lackkorrektur, Keramikschutz, komplette Wintervorbereitung und Yachtpflege. Von Hand, mit Messungen an jedem Bauteil und garantiertem Ergebnis.',
-    cta1: 'Kostenlose Begutachtung',
-    note: 'Unverbindlich · Antwort innerhalb von 15 Minuten',
+    text: 'Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Lackkorrektur, Keramikschutz und komplette Wintervorbereitung. Von Hand, mit Messungen an jedem Bauteil und garantiertem Ergebnis.',
+    cta1: 'Kostenloser Check',
+    note: 'Lackmessung · Unverbindlich · Antwort innerhalb von 15 Minuten',
     cta2: 'Leistungen',
     side: 'Detailing Studio · Est. 2017',
     stats: [
       { value: '1 200+', label: 'Autos uns anvertraut' },
-      { value: '40+', label: 'Yachten und Boote' },
+      { value: '100%', label: 'Aufträge mit Fotobericht' },
       { value: '9', suffix: 'Jahre', label: 'Erfahrung im Detailing' },
       { value: '5', suffix: 'Jahre', label: 'Garantie auf Keramik' },
     ],
     marqueeCars: 'Automobile',
-    marqueeYachts: 'Yachten & Boote',
   },
   common: { from: 'ab', onRequest: 'auf Anfrage', perFoot: 'pro Fuß', vat: 'Alle Preise inkl. MwSt.' },
   mobile: {
@@ -41,8 +40,8 @@ export default {
   },
   services: {
     overline: 'Leistungen',
-    title: 'Komplette Pflege für Auto und Yacht',
-    subtitle: 'Von der schonenden Wäsche bis zur mehrstufigen Lackkorrektur, Saisonschutz und Gelcoat-Pflege.',
+    title: 'Rundum-Pflege für Ihr Auto',
+    subtitle: 'Von der schonenden Wäsche bis zur mehrstufigen Lackkorrektur, Keramik und Saisonschutz.',
     items: [
       { title: 'Lackkorrektur', text: 'Mehrstufige Maschinenpolitur unter starkem LED-Licht: entfernt Hologramme, Swirls und Kratzer bis zu 90 % der Defekttiefe.' },
       { title: 'Keramikversiegelung', text: 'Professionelle 9H-Keramik mit bis zu 5 Jahren Garantie: Farbtiefe, Hydrophobie und Schutz vor Streusalz, Chemie und UV.' },
@@ -73,7 +72,7 @@ export default {
     ],
   },
   yachts: {
-    eyebrow: 'Yacht detailing',
+    eyebrow: 'Auch Yachten',
     title1: 'Yachten und Boote.',
     title2: 'Dasselbe Niveau.',
     intro: 'Gelcoat oxidiert durch Sonne und Salz schneller als Autolack. Wir stellen den tiefen Glanz des Rumpfes wieder her, schützen ihn mit Marine-Keramik und pflegen jede Oberfläche an Bord.',
@@ -132,7 +131,7 @@ export default {
     items: [
       { name: 'Alexander K.', text: 'Der schwarze Lack war nach Waschanlagen voller Swirls. Jetzt sieht das Auto besser aus als am Tag der Auslieferung. Jeder Schritt und jede Messung wurden gezeigt.' },
       { name: 'Maria L.', text: 'Keramik und Wintervorbereitung. Nach einem Winter mit Streusalz ist der Lack wie neu, Schmutz haftet nicht, und die Wäsche dauert zehn Minuten.' },
-      { name: 'Andreas P.', text: 'Der Rumpf war matt von Oxidation. Sie kamen in die Marina und brachten in drei Tagen den Spiegelglanz zurück – versiegelt mit Keramik.' },
+      { name: 'Andreas P.', text: 'Sie kamen zu mir ins Büro, während ich arbeitete. Abends fuhr ich mit korrigiertem Lack und Keramik nach Hause – spiegelglatt, kein einziges Hologramm.' },
     ],
   },
   trust: [
