@@ -1,14 +1,24 @@
+import { createContext, useContext } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import Reveal from './Reveal';
+import { sectionOrder } from '../data';
+import { mono } from '../theme';
 
-// Надзаголовок із золотою рискою — єдиний стиль для всіх секцій.
-export function Eyebrow({ children, align = 'center', sx }) {
+// Секція повідомляє свій id надзаголовку — так номер береться з sectionOrder без пропсів.
+const SectionContext = createContext(null);
+
+// Надзаголовок у стилі Valmora: моно-шрифт, номер секції й золота риска.
+export function Eyebrow({ children, align = 'center', section, sx }) {
+  const id = useContext(SectionContext);
+  const n = sectionOrder.indexOf(section ?? id) + 1;
   return (
     <Typography
       variant="overline"
       color="primary"
       component="p"
       sx={{
+        fontFamily: mono,
+        letterSpacing: '0.24em',
         display: 'flex',
         alignItems: 'center',
         justifyContent: align === 'center' ? 'center' : 'flex-start',
@@ -18,6 +28,7 @@ export function Eyebrow({ children, align = 'center', sx }) {
         ...sx,
       }}
     >
+      {n > 0 && `${String(n).padStart(2, '0')} — `}
       {children}
     </Typography>
   );
@@ -52,7 +63,7 @@ export default function Section({ id, children, sx, dark, disableContainer }) {
         ...sx,
       }}
     >
-      {disableContainer ? children : <Container maxWidth="lg">{children}</Container>}
+      <SectionContext.Provider value={id}>{disableContainer ? children : <Container maxWidth="lg">{children}</Container>}</SectionContext.Provider>
     </Box>
   );
 }

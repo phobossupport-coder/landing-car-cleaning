@@ -9,7 +9,7 @@ export default {
     description: 'Mobil bildetailing i Oslo: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller parkeringsplassen. Vi tar også båter.',
   },
   nav: ['Tjenester', 'Vinter', 'Pakker', 'Yachter', 'Arbeider', 'Omtaler', 'FAQ'],
-  header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk' },
+  header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobil bildetailing',
     title1: 'Perfeksjon',

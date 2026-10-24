@@ -4,7 +4,7 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
 import { images, winterMeta } from '../data';
-import { serif } from '../theme';
+import { mono, serif } from '../theme';
 import { useLang } from '../i18n';
 import { useBooking } from '../booking';
 import { formatPrice } from '../i18n/currency';
@@ -72,7 +72,7 @@ export default function Winter() {
               <Grid key={s.title} size={{ xs: 12, sm: 6 }} sx={{ borderBottom: '1px solid', borderColor: 'divider', pr: { sm: i % 2 === 0 ? 4 : 0 }, pl: { sm: i % 2 === 1 ? 4 : 0 } }}>
                 <Reveal delay={i * 60}>
                   <Stack direction="row" spacing={2.5} sx={{ py: 2.5 }}>
-                    <Typography sx={{ fontFamily: serif, fontSize: 18, color: 'primary.main', minWidth: 28, pt: 0.2 }}>{String(i + 1).padStart(2, '0')}</Typography>
+                    <Typography sx={{ fontFamily: mono, fontSize: 12, letterSpacing: '0.12em', color: 'primary.main', minWidth: 28, pt: 0.5 }}>{String(i + 1).padStart(2, '0')}</Typography>
                     <Box>
                       <Typography sx={{ fontWeight: 600, fontSize: 15, mb: 0.5 }}>{s.title}</Typography>
                       <Typography variant="body2" color="text.secondary">

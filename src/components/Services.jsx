@@ -9,7 +9,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
 import { serviceMeta } from '../data';
-import { serif } from '../theme';
+import { mono, serif } from '../theme';
 import { useLang } from '../i18n';
 import { formatPrice } from '../i18n/currency';
 
@@ -72,7 +72,7 @@ export default function Services() {
                 >
                   <Typography
                     className="num"
-                    sx={{ position: 'absolute', top: 28, right: 32, fontFamily: serif, fontSize: 20, color: 'text.secondary', opacity: 0.5, transition: 'all .4s' }}
+                    sx={{ position: 'absolute', top: 30, right: 32, fontFamily: mono, fontSize: 12, letterSpacing: '0.2em', color: 'text.secondary', opacity: 0.6, transition: 'all .4s' }}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </Typography>

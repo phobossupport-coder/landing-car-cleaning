@@ -8,7 +8,7 @@ export default {
     description: 'Mobile car detailing in Oslo: paint correction, ceramic coating, complete winter preparation. We come to your home, office or car park. Yachts on request too.',
   },
   nav: ['Services', 'Winter', 'Packages', 'Yachts', 'Work', 'Reviews', 'FAQ'],
-  header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language' },
+  header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobile car detailing',
     title1: 'Perfection',

@@ -42,6 +42,9 @@ export const carBrands = [
 ];
 
 // Якорі навігації та секцій — однакові для всіх мов.
+// Порядок секцій сторінки — з нього беруться номери надзаголовків «02 — ПОСЛУГИ».
+export const sectionOrder = ['mobile', 'services', 'winter', 'results', 'packages', 'yachts', 'process', 'gallery', 'reviews', 'faq', 'contact'];
+
 export const navHrefs = ['#services', '#winter', '#packages', '#yachts', '#gallery', '#reviews', '#faq'];
 
 // Ціни в NOK (інші валюти перераховуються автоматично, див. src/i18n/currency.js).

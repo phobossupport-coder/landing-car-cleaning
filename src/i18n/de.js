@@ -8,7 +8,7 @@ export default {
     description: 'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
   },
   nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Arbeiten', 'Bewertungen', 'FAQ'],
-  header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache' },
+  header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobiles Auto-Detailing',
     title1: 'Perfektion',
