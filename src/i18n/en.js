@@ -7,7 +7,7 @@ export default {
     title: 'Stella Detailing — mobile car detailing in Oslo',
     description: 'Mobile car detailing in Oslo: paint correction, ceramic coating, complete winter preparation. We come to your home, office or car park. Yachts on request too.',
   },
-  nav: ['Services', 'Winter', 'Packages', 'Yachts', 'Work', 'Reviews', 'FAQ'],
+  nav: ['Services', 'Winter', 'Packages', 'Yachts', 'Portfolio', 'Reviews', 'FAQ'],
   header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobile car detailing',
@@ -125,11 +125,13 @@ export default {
       { title: 'Handover', text: 'Final inspection together with you, care guide, warranty certificate.' },
     ],
   },
-  gallery: {
+  portfolio: {
     overline: 'Portfolio',
     title: 'Recent work',
     subtitle: 'Every job comes with a photo report and before/after measurements.',
-    works: ['Paint correction + ceramic', 'Concours', 'Winter preparation', 'Interior detailing', 'Ceramic', 'Gelcoat polishing'],
+    work: 'Paint correction + ceramic',
+    prev: 'Previous photo',
+    next: 'Next photo',
   },
   reviews: {
     overline: 'Reviews',

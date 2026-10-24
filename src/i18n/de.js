@@ -7,7 +7,7 @@ export default {
     title: 'Stella Detailing — mobiles Auto-Detailing in Oslo',
     description: 'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
   },
-  nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Arbeiten', 'Bewertungen', 'FAQ'],
+  nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Portfolio', 'Bewertungen', 'FAQ'],
   header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobiles Auto-Detailing',
@@ -125,11 +125,13 @@ export default {
       { title: 'Übergabe', text: 'Endabnahme gemeinsam mit Ihnen, Pflegeanleitung, Garantiezertifikat.' },
     ],
   },
-  gallery: {
+  portfolio: {
     overline: 'Portfolio',
     title: 'Aktuelle Arbeiten',
     subtitle: 'Jede Arbeit – mit Fotobericht und Messungen vorher und nachher.',
-    works: ['Lackkorrektur + Keramik', 'Concours', 'Wintervorbereitung', 'Innenraum-Detailing', 'Keramik', 'Gelcoat-Politur'],
+    work: 'Lackkorrektur + Keramik',
+    prev: 'Vorheriges Foto',
+    next: 'Nächstes Foto',
   },
   reviews: {
     overline: 'Bewertungen',

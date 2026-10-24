@@ -91,14 +91,4 @@ export const portfolioCases = [
 
 export const portfolioSrc = (id, n, w) => `${import.meta.env.BASE_URL}portfolio/${id}/${n}-${w}.webp`;
 
-// Фото та об’єкти портфоліо (підписи робіт — у t.gallery.works).
-export const galleryMeta = [
-  { src: img('photo-1612825173281-9a193378527e', 1400), title: 'Lamborghini Huracán EVO' },
-  { src: img('photo-1503376780353-7e6692767b70', 1000), title: 'Porsche Panamera' },
-  { src: img('photo-1563720223185-11003d516935', 1000), title: 'Range Rover Sport' },
-  { src: img('photo-1520031441872-265e4ff70366', 1000), title: 'Mercedes-AMG G 63' },
-  { src: img('photo-1553440569-bcc63803a83d', 1000), title: 'Mercedes-AMG GT R' },
-  { src: img('photo-1605281317010-fe5ffe798166', 1400), title: 'Azimut 55' },
-];
-
 export const reviewCars = ['Rolls-Royce Ghost', 'Porsche 911 Turbo S', 'BMW M5 Competition'];

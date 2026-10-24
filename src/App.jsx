@@ -8,7 +8,7 @@ import BeforeAfter from './components/BeforeAfter';
 import Yachts from './components/Yachts';
 import Packages from './components/Packages';
 import Process from './components/Process';
-import Gallery from './components/Gallery';
+import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
@@ -29,7 +29,7 @@ export default function App() {
         <Packages />
         <Yachts />
         <Process />
-        <Gallery />
+        <Portfolio />
         <Reviews />
         <Faq />
         <Contact />
