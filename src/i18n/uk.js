@@ -1,6 +1,6 @@
 export default {
   code: 'uk',
-  currency: 'UAH',
+  currency: 'NOK',
   label: 'UA',
   name: 'Українська',
   meta: {

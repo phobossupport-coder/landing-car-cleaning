@@ -1,6 +1,6 @@
 export default {
   code: 'ru',
-  currency: 'EUR',
+  currency: 'NOK',
   label: 'RU',
   name: 'Русский',
   meta: {

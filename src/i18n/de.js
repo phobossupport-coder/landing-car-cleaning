@@ -1,6 +1,6 @@
 export default {
   code: 'de',
-  currency: 'EUR',
+  currency: 'NOK',
   label: 'DE',
   name: 'Deutsch',
   meta: {
