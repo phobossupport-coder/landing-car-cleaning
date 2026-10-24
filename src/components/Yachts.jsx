@@ -6,9 +6,11 @@ import { images, serviceMeta } from '../data';
 import { formatPrice } from '../i18n/currency';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
+import { useBooking } from '../booking';
 
 export default function Yachts() {
   const { t } = useLang();
+  const { setService } = useBooking();
   const yachts = t.yachts;
   return (
     <Box component="section" id="yachts" sx={{ position: 'relative', scrollMarginTop: 72, overflow: 'hidden' }}>
@@ -46,7 +48,7 @@ export default function Yachts() {
                 </Typography>
               </Stack>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 4 }} alignItems={{ sm: 'center' }} useFlexGap flexWrap="wrap">
-                <Button href="#contact" variant="outlined" size="large" sx={{ whiteSpace: 'nowrap' }}>
+                <Button href="#contact" onClick={() => setService(`service-${serviceMeta.length - 1}`)} variant="outlined" size="large" sx={{ whiteSpace: 'nowrap' }}>
                   {yachts.cta}
                 </Button>
                 <Stack direction="row" alignItems="baseline" spacing={1} sx={{ whiteSpace: 'nowrap' }}>

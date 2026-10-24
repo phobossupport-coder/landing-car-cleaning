@@ -9,6 +9,7 @@ import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource/cormorant-garamond/600.css';
 import theme from './theme';
 import { LanguageProvider } from './i18n';
+import { BookingProvider } from './booking';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <LanguageProvider>
-        <App />
+        <BookingProvider>
+          <App />
+        </BookingProvider>
       </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>,

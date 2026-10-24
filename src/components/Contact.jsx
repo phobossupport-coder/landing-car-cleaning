@@ -1,16 +1,19 @@
 import { useState } from 'react';
-import { Alert, Box, Button, Grid, MenuItem, Snackbar, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Collapse, Grid, MenuItem, Snackbar, Stack, TextField, Typography } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { brand, packageMeta } from '../data';
+import { brand } from '../data';
 import { useLang } from '../i18n';
+import { serviceOptions, useBooking } from '../booking';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [details, setDetails] = useState(false);
+  const { service, setService } = useBooking();
   const { t } = useLang();
   const c = t.contact;
   const f = c.form;
@@ -20,13 +23,15 @@ export default function Contact() {
     { icon: PlaceOutlinedIcon, label: brand.address },
     { icon: AccessTimeIcon, label: c.hours },
   ];
-  const options = [f.winterOption, ...packageMeta.map((p) => `${f.packagePrefix} ${p.name}`), ...t.services.items.map((s) => s.title), f.consult];
+  const options = serviceOptions(t);
 
   // Форма без бекенду: підключіть Formspree / Web3Forms / AWS Lambda —
   // див. DEPLOY.md, розділ «Форма заявки».
   const onSubmit = (e) => {
     e.preventDefault();
     e.currentTarget.reset();
+    setService('');
+    setDetails(false);
     setSent(true);
   };
 
@@ -83,20 +88,27 @@ export default function Contact() {
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField name="phone" label={f.phone} type="tel" required />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="car" label={f.car} />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                  <TextField name="service" label={f.service} select defaultValue="">
+                <Grid size={12}>
+                  <TextField name="service" label={f.service} select value={service} onChange={(e) => setService(e.target.value)}>
                     {options.map((o) => (
-                      <MenuItem key={o} value={o}>
-                        {o}
+                      <MenuItem key={o.id} value={o.id}>
+                        {o.label}
                       </MenuItem>
                     ))}
                   </TextField>
                 </Grid>
                 <Grid size={12}>
-                  <TextField name="message" label={f.message} multiline minRows={2} />
+                  {!details && (
+                    <Button onClick={() => setDetails(true)} sx={{ px: 0, textTransform: 'none', letterSpacing: 0, color: 'text.secondary', '&:hover': { color: 'primary.main', bgcolor: 'transparent' } }}>
+                      {f.more}
+                    </Button>
+                  )}
+                  <Collapse in={details} unmountOnExit>
+                    <Stack spacing={3.5}>
+                      <TextField name="car" label={f.car} />
+                      <TextField name="message" label={f.message} multiline minRows={2} />
+                    </Stack>
+                  </Collapse>
                 </Grid>
                 <Grid size={12}>
                   <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 1 }}>

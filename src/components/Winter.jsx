@@ -6,10 +6,12 @@ import Reveal from './Reveal';
 import { images, winterMeta } from '../data';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
+import { useBooking } from '../booking';
 import { formatPrice } from '../i18n/currency';
 
 export default function Winter() {
   const { t } = useLang();
+  const { setService } = useBooking();
   const winter = t.winter;
   return (
     <Section id="winter" dark sx={{ overflow: 'hidden' }}>
@@ -94,7 +96,7 @@ export default function Winter() {
                 <Typography variant="body2">{winter.duration}</Typography>
               </Stack>
               <Box sx={{ flex: 1 }} />
-              <Button href="#contact" variant="contained" size="large" sx={{ whiteSpace: 'nowrap' }}>
+              <Button href="#contact" onClick={() => setService('winter')} variant="contained" size="large" sx={{ whiteSpace: 'nowrap' }}>
                 {winter.cta}
               </Button>
             </Stack>

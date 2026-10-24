@@ -5,10 +5,12 @@ import Reveal from './Reveal';
 import { packageMeta } from '../data';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
+import { useBooking } from '../booking';
 import { formatPrice } from '../i18n/currency';
 
 export default function Packages() {
   const { t } = useLang();
+  const { setService } = useBooking();
   const packages = t.packages.items.map((p, i) => ({ ...p, ...packageMeta[i] }));
   return (
     <Section id="packages">
@@ -68,7 +70,7 @@ export default function Packages() {
                     </Stack>
                   ))}
                 </Stack>
-                <Button href="#contact" variant={p.featured ? 'contained' : 'outlined'} size="large" fullWidth>
+                <Button href="#contact" onClick={() => setService(`package-${p.name}`)} variant={p.featured ? 'contained' : 'outlined'} size="large" fullWidth>
                   {t.packages.choose} {p.name}
                 </Button>
               </Box>
