@@ -48,7 +48,7 @@ function CaseCard({ item, p }) {
               component="img"
               src={portfolioSrc(item.id, n, 640)}
               srcSet={`${portfolioSrc(item.id, n, 640)} 640w, ${portfolioSrc(item.id, n, 1080)} 1080w`}
-              sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+              sizes="(min-width: 900px) 33vw, 50vw"
               alt={`${item.name} — ${p.work} (${i + 1}/${total})`}
               loading="lazy"
               draggable={false}
@@ -56,7 +56,7 @@ function CaseCard({ item, p }) {
             />
           ))}
         </Box>
-        <Typography sx={{ position: 'absolute', top: 14, right: 14, fontFamily: mono, fontSize: 11, letterSpacing: '0.2em', color: 'text.primary', bgcolor: 'rgba(10,10,11,0.55)', px: 1.25, py: 0.5 }}>
+        <Typography sx={{ position: 'absolute', top: { xs: 8, md: 14 }, right: { xs: 8, md: 14 }, fontFamily: mono, fontSize: { xs: 9, md: 11 }, letterSpacing: '0.2em', color: 'text.primary', bgcolor: 'rgba(10,10,11,0.55)', px: { xs: 0.75, md: 1.25 }, py: 0.5 }}>
           {index + 1} / {total}
         </Typography>
         {index > 0 && (
@@ -70,9 +70,9 @@ function CaseCard({ item, p }) {
           </IconButton>
         )}
       </Box>
-      <Box sx={{ pt: 2.5, borderBottom: '1px solid', borderColor: 'divider', pb: 2 }}>
-        <Typography sx={{ fontFamily: serif, fontSize: 24, lineHeight: 1.15 }}>{item.name}</Typography>
-        <Typography sx={{ fontFamily: mono, fontSize: 10.5, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'primary.main', mt: 0.75 }}>{p.work}</Typography>
+      <Box sx={{ pt: { xs: 1.5, md: 2.5 }, borderBottom: '1px solid', borderColor: 'divider', pb: { xs: 1.5, md: 2 } }}>
+        <Typography sx={{ fontFamily: serif, fontSize: { xs: 17, md: 24 }, lineHeight: 1.15 }}>{item.name}</Typography>
+        <Typography sx={{ fontFamily: mono, fontSize: { xs: 8.5, md: 10.5 }, letterSpacing: { xs: '0.12em', md: '0.2em' }, textTransform: 'uppercase', color: 'primary.main', mt: 0.75 }}>{p.work}</Typography>
       </Box>
     </Box>
   );
@@ -84,7 +84,7 @@ export default function Portfolio() {
   return (
     <Section id="gallery">
       <SectionTitle overline={p.overline} title={p.title} subtitle={p.subtitle} />
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3, 1fr)' }, gap: { xs: 5, md: 4 } }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(3, 1fr)' }, columnGap: { xs: 1.5, md: 4 }, rowGap: { xs: 3, md: 4 } }}>
         {portfolioCases.map((item, i) => (
           <Reveal key={item.id} delay={(i % 3) * 100}>
             <CaseCard item={item} p={p} />
