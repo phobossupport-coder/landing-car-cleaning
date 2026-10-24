@@ -176,4 +176,6 @@ export default {
     },
   },
   footer: { rights: 'Biler og yachter. Alle rettigheter forbeholdt.', whatsapp: 'Skriv til oss på WhatsApp' },
+  bar: { call: 'Ring', whatsapp: 'WhatsApp', book: 'Bestill' },
+  whatsappText: { hello: "Hei! Jeg vil gjerne bestille en gratis befaring.", service: "Hei! Jeg vil gjerne bestille: {service}." },
 };

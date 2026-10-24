@@ -175,4 +175,6 @@ export default {
     },
   },
   footer: { rights: 'Автомобілі та яхти. Усі права захищено.', whatsapp: 'Написати у WhatsApp' },
+  bar: { call: 'Подзвонити', whatsapp: 'WhatsApp', book: 'Записатися' },
+  whatsappText: { hello: "Привіт! Хочу записатися на безкоштовний огляд.", service: "Привіт! Хочу записатися: {service}." },
 };

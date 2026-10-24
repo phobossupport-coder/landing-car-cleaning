@@ -14,6 +14,9 @@ export const brand = {
   since: 2017,
 };
 
+// Посилання на WhatsApp з готовим текстом повідомлення.
+export const whatsappLink = (text) => `${brand.whatsapp}?text=${encodeURIComponent(text)}`;
+
 export const images = {
   hero: img('photo-1617814076367-b759c7d7e738', 2400),
   beforeAfter: img('photo-1503376780353-7e6692767b70', 1800),

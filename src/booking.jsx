@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState } from 'react';
-import { packageMeta } from './data';
+import { packageMeta, whatsappLink } from './data';
+import { useLang } from './i18n';
 
 // Варіанти поля «Що потрібно зробити?». Зберігаємо id, а не текст, щоб вибір
 // не губився при перемиканні мови.
@@ -23,3 +24,11 @@ export function BookingProvider({ children }) {
 }
 
 export const useBooking = () => useContext(BookingContext);
+
+// WhatsApp із готовим текстом: якщо послугу вже обрано — згадуємо її.
+export function useWhatsappLink() {
+  const { t } = useLang();
+  const { service } = useBooking();
+  const label = serviceOptions(t).find((o) => o.id === service)?.label;
+  return whatsappLink(label ? t.whatsappText.service.replace('{service}', label) : t.whatsappText.hello);
+}

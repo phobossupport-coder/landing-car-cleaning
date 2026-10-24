@@ -5,9 +5,11 @@ import { Logo } from './Header';
 import { brand, navHrefs } from '../data';
 import { useLang } from '../i18n';
 import LanguageSwitch from './LanguageSwitch';
+import { useWhatsappLink } from '../booking';
 
 export default function Footer() {
   const { t } = useLang();
+  const whatsapp = useWhatsappLink();
   const nav = t.nav.map((label, i) => ({ label, href: navHrefs[i] }));
   return (
     <Box component="footer" sx={{ borderTop: '1px solid', borderColor: 'divider', py: 6, bgcolor: '#070708' }}>
@@ -25,7 +27,7 @@ export default function Footer() {
             <IconButton href={brand.instagram} target="_blank" rel="noopener" aria-label="Instagram" sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}>
               <InstagramIcon fontSize="small" />
             </IconButton>
-            <IconButton href={brand.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp" sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}>
+            <IconButton href={whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp" sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}>
               <WhatsAppIcon fontSize="small" />
             </IconButton>
           </Stack>
@@ -38,12 +40,13 @@ export default function Footer() {
         </Stack>
       </Container>
 
+      {/* На телефоні WhatsApp є в липкій панелі (MobileBar) */}
       <Fab
-        href={brand.whatsapp}
+        href={whatsapp}
         target="_blank"
         rel="noopener"
         aria-label={t.footer.whatsapp}
-        sx={{ position: 'fixed', right: 20, bottom: 20, bgcolor: '#111113', color: '#F4F1EA', border: '1px solid', borderColor: 'divider', '&:hover': { bgcolor: '#1A1A1D', borderColor: 'primary.main', color: 'primary.main' } }}
+        sx={{ display: { xs: 'none', md: 'inline-flex' }, position: 'fixed', right: 20, bottom: 20, bgcolor: '#111113', color: '#F4F1EA', border: '1px solid', borderColor: 'divider', '&:hover': { bgcolor: '#1A1A1D', borderColor: 'primary.main', color: 'primary.main' } }}
       >
         <WhatsAppIcon />
       </Fab>

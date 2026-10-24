@@ -175,4 +175,6 @@ export default {
     },
   },
   footer: { rights: 'Autos und Yachten. Alle Rechte vorbehalten.', whatsapp: 'Schreiben Sie uns auf WhatsApp' },
+  bar: { call: 'Anrufen', whatsapp: 'WhatsApp', book: 'Termin' },
+  whatsappText: { hello: "Hallo! Ich möchte eine kostenlose Begutachtung buchen.", service: "Hallo! Ich möchte buchen: {service}." },
 };

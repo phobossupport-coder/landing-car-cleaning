@@ -175,4 +175,6 @@ export default {
     },
   },
   footer: { rights: 'Cars and yachts. All rights reserved.', whatsapp: 'Message us on WhatsApp' },
+  bar: { call: 'Call', whatsapp: 'WhatsApp', book: 'Book' },
+  whatsappText: { hello: "Hi! I'd like to book a free inspection.", service: "Hi! I'd like to book: {service}." },
 };
