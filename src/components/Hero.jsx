@@ -140,6 +140,9 @@ export default function Hero() {
               {h.cta2}
             </Button>
           </Stack>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 2.5, letterSpacing: '0.04em', animation: 'fadeUp 1.1s .7s both' }}>
+            {h.note}
+          </Typography>
         </Box>
       </Container>
 

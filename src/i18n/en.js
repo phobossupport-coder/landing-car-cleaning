@@ -14,7 +14,8 @@ export default {
     title1: 'Perfection',
     title2: 'in every reflection',
     text: 'We come to your home, office or marina. Paint correction, ceramic protection, complete winter preparation and yacht care. Done by hand, with measurements on every panel and a guaranteed result.',
-    cta1: 'Book an inspection',
+    cta1: 'Free inspection & paint check',
+    note: 'No obligation · We reply within 15 minutes',
     cta2: 'Services',
     side: 'Detailing Studio · Est. 2017',
     stats: [

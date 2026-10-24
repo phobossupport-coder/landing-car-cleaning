@@ -14,7 +14,8 @@ export default {
     title1: 'Perfektion',
     title2: 'in jeder Spiegelung',
     text: 'Wir kommen zu Ihnen nach Hause, ins Büro oder in die Marina. Lackkorrektur, Keramikschutz, komplette Wintervorbereitung und Yachtpflege. Von Hand, mit Messungen an jedem Bauteil und garantiertem Ergebnis.',
-    cta1: 'Besichtigung buchen',
+    cta1: 'Kostenlose Begutachtung',
+    note: 'Unverbindlich · Antwort innerhalb von 15 Minuten',
     cta2: 'Leistungen',
     side: 'Detailing Studio · Est. 2017',
     stats: [

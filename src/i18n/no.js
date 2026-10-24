@@ -15,7 +15,8 @@ export default {
     title1: 'Perfeksjon',
     title2: 'i hver refleksjon',
     text: 'Vi kommer hjem til deg, til jobben eller marinaen. Lakkorreksjon, keramisk beskyttelse, komplett vinterklargjøring og pleie av yachter. Håndarbeid, med målinger på hver del og garantert resultat.',
-    cta1: 'Bestill befaring',
+    cta1: 'Gratis befaring og lakkmåling',
+    note: 'Uforpliktende · Vi svarer innen 15 minutter',
     cta2: 'Tjenester',
     side: 'Detailing Studio · Est. 2017',
     stats: [
