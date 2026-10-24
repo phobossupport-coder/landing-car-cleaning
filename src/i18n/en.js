@@ -17,7 +17,13 @@ export default {
     cta1: 'Free inspection',
     note: 'Paint measurement · No obligation · We reply within 15 minutes',
     cta2: 'Services',
-    side: 'Detailing Studio · Est. 2017',
+    skip: 'Skip',
+    stops: [
+      { title: 'Paint correction', text: 'Up to 90% of defects removed: holograms, swirls, scratches.' },
+      { title: 'Ceramic coating', text: '9H with up to a 5-year warranty: depth of colour and water beading.' },
+      { title: 'Wheels & calipers', text: 'Deep cleaning and ceramic against brake dust and road salt.' },
+      { title: 'Interior detailing', text: 'Leather, Alcantara, deep cleaning and protection — like new.' },
+    ],
     stats: [
       { value: '1,200+', label: 'cars entrusted to us' },
       { value: '100%', label: 'jobs with a photo report' },

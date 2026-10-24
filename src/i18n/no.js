@@ -18,7 +18,13 @@ export default {
     cta1: 'Gratis befaring',
     note: 'Lakkmåling · Uforpliktende · Vi svarer innen 15 minutter',
     cta2: 'Tjenester',
-    side: 'Detailing Studio · Est. 2017',
+    skip: 'Hopp over',
+    stops: [
+      { title: 'Lakkorreksjon', text: 'Opptil 90 % av defektene fjernet: hologrammer, swirls, riper.' },
+      { title: 'Keramisk coating', text: '9H med opptil 5 års garanti: fargedybde og vannavvisning.' },
+      { title: 'Felger og kalipere', text: 'Grundig rens og keramikk mot bremsestøv og veisalt.' },
+      { title: 'Interiørdetailing', text: 'Skinn, Alcantara, dyprens og beskyttelse — som ny.' },
+    ],
     stats: [
       { value: '1 200+', label: 'biler betrodd oss' },
       { value: '100%', label: 'oppdrag med fotorapport' },

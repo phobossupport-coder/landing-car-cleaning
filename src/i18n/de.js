@@ -17,7 +17,13 @@ export default {
     cta1: 'Kostenloser Check',
     note: 'Lackmessung · Unverbindlich · Antwort innerhalb von 15 Minuten',
     cta2: 'Leistungen',
-    side: 'Detailing Studio · Est. 2017',
+    skip: 'Überspringen',
+    stops: [
+      { title: 'Lackkorrektur', text: 'Bis zu 90 % der Defekte entfernt: Hologramme, Swirls, Kratzer.' },
+      { title: 'Keramikversiegelung', text: '9H mit bis zu 5 Jahren Garantie: Farbtiefe und Abperleffekt.' },
+      { title: 'Felgen & Bremssättel', text: 'Tiefenreinigung und Keramik gegen Bremsstaub und Streusalz.' },
+      { title: 'Innenraumaufbereitung', text: 'Leder, Alcantara, Tiefenreinigung und Schutz — wie neu.' },
+    ],
     stats: [
       { value: '1 200+', label: 'Autos uns anvertraut' },
       { value: '100%', label: 'Aufträge mit Fotobericht' },

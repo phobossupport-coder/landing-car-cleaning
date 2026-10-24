@@ -59,6 +59,14 @@ export const serviceMeta = [
   { icon: 'anchor', price: 149, perFoot: true, href: '#yachts' },
 ];
 
+// Зупинки hero-історії (порядок = manifest.json). service — індекс у serviceMeta для ціни; null — без ціни.
+export const heroStopMeta = [
+  { id: 'paint', service: 0 },
+  { id: 'ceramic', service: 1 },
+  { id: 'wheels', service: null },
+  { id: 'interior', service: 2 },
+];
+
 export const winterMeta = { price: 5900, season: '2026/27' };
 
 // Назви, ціни (NOK) та позначка «популярний» для пакетів (порядок збігається з t.packages.items).

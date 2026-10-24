@@ -1,5 +1,7 @@
+import { Box } from '@mui/material';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import HeroStory from './components/HeroStory';
+import Marquee from './components/Marquee';
 import Mobile from './components/Mobile';
 import Services from './components/Services';
 import Winter from './components/Winter';
@@ -12,14 +14,20 @@ import Reviews from './components/Reviews';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { carBrands } from './data';
+import { useLang } from './i18n';
 import MobileBar from './components/MobileBar';
 
 export default function App() {
+  const { t } = useLang();
   return (
     <>
       <Header />
-      <Hero />
+      <HeroStory />
       <main>
+        <Box sx={{ bgcolor: '#070708', borderBottom: '1px solid', borderColor: 'divider' }}>
+          <Marquee label={t.hero.marqueeCars} items={carBrands} speed={70} />
+        </Box>
         <Mobile />
         <Services />
         <Winter />

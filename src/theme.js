@@ -6,6 +6,8 @@ export const gold = '#C9A86A';
 export const goldGradient = 'linear-gradient(135deg, #EAD6A3 0%, #C9A86A 45%, #9C7F45 100%)';
 export const serif = '"Cormorant Garamond", "Times New Roman", serif';
 export const sans = '"Inter", system-ui, sans-serif';
+// Моноширинний — для службових підписів у стилі Valmora: навігація, лічильники, мітки.
+export const mono = '"JetBrains Mono", ui-monospace, monospace';
 export const hairline = 'rgba(255,255,255,0.09)';
 
 let theme = createTheme({
