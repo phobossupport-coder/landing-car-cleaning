@@ -79,6 +79,18 @@ export const packageMeta = [
   { name: 'Concours', price: 16500 },
 ];
 
+// Портфоліо: власні роботи (фото — public/portfolio/<id>/<n>-<640|1080>.webp, готує scripts/portfolio-photos.mjs).
+// Перше фото — обкладинка кейсу.
+export const portfolioCases = [
+  { id: 'bmw-m5-matte', name: 'BMW M5', photos: ['1', '2', '3'] },
+  { id: 'corvette-c8', name: 'Chevrolet Corvette C8', photos: ['1', '2', '3'] },
+  { id: 'amg-g63', name: 'Mercedes-AMG G 63', photos: ['1', '2', '3'] },
+  { id: 'bmw-m5-touring', name: 'BMW M5 Touring', photos: ['1', '2', '3'] },
+  { id: 'touareg', name: 'Volkswagen Touareg', photos: ['1', '2'] },
+];
+
+export const portfolioSrc = (id, n, w) => `${import.meta.env.BASE_URL}portfolio/${id}/${n}-${w}.webp`;
+
 // Фото та об’єкти портфоліо (підписи робіт — у t.gallery.works).
 export const galleryMeta = [
   { src: img('photo-1612825173281-9a193378527e', 1400), title: 'Lamborghini Huracán EVO' },

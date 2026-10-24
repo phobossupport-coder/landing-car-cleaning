@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "hero:frames": "node scripts/hero-frames.mjs"
+    "hero:frames": "node scripts/hero-frames.mjs",
+    "portfolio:photos": "node scripts/portfolio-photos.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -26,6 +27,7 @@
     "@vitejs/plugin-react": "^4.3.3",
     "ffmpeg-static": "^5.2.0",
     "jsdom": "^25.0.1",
+    "sharp": "^0.33.5",
     "vite": "^5.4.10",
     "vitest": "^2.1.9"
   },
