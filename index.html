@@ -4,12 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0B0B0D" />
-    <title>Stella Detailing Studio — detailing-atelier for biler og yachter</title>
+    <!-- Статичні тексти — норвезькою: їх бачать пошуковики і прев'ю посилань.
+         Після завантаження мова перемикається в src/i18n/index.jsx. -->
+    <title>Stella Detailing — mobil bildetailing i Oslo</title>
     <meta
       name="description"
-      content="Mobil detailing av biler og yachter: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller marinaen. Premium atelier med garantert resultat."
+      content="Mobil bildetailing i Oslo: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller parkeringsplassen. Vi tar også båter."
     />
+    <link rel="canonical" href="%SITE_URL%" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Прев'ю посилань у WhatsApp, Messenger, Facebook, Telegram -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Stella Detailing" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:url" content="%SITE_URL%" />
+    <meta property="og:title" content="Stella Detailing — mobil bildetailing i Oslo" />
+    <meta property="og:description" content="Lakkorreksjon og keramisk coating der bilen din står — hjemme, på jobben eller på parkeringsplassen." />
+    <meta property="og:image" content="%SITE_URL%og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Corvette C8, Mercedes-AMG G63 og BMW M5 etter lakkorreksjon og keramikk" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Дані для Google. Телефон і соцмережі додати, коли будуть справжні (src/data.js) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AutomotiveBusiness",
+        "name": "Stella Detailing",
+        "url": "%SITE_URL%",
+        "image": "%SITE_URL%og.jpg",
+        "description": "Mobil bildetailing i Oslo: lakkorreksjon, keramisk coating og vinterklargjøring. Vi kommer til kunden.",
+        "areaServed": { "@type": "City", "name": "Oslo" },
+        "currenciesAccepted": "NOK",
+        "knowsLanguage": ["nb", "en", "de", "uk", "ru"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

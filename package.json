@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "og:image": "node scripts/og-image.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
