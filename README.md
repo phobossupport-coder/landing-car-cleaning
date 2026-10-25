@@ -7,7 +7,12 @@ npm install
 npm run dev     # http://localhost:5173
 npm run build   # збірка в dist/
 npm test        # тести (Vitest)
+npm run lint    # ESLint (lint:fix — виправити автоматично)
+npm run format  # Prettier (format:check — лише перевірити)
 ```
+
+CI (`.github/workflows/ci.yml`) на кожен push і pull request запускає lint, format:check, тести й збірку.
+Деплой на GitHub Pages виконується лише після тих самих перевірок.
 
 - Тексти всіма мовами: `src/i18n/<мова>.js`; ціни, контакти, кейси портфоліо: `src/data.js`
 - Тема (кольори, шрифти): `src/theme.js`

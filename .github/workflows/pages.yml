@@ -30,6 +30,10 @@ jobs:
         uses: actions/configure-pages@v5
 
       - run: npm ci
+      # Ті самі перевірки, що в CI: зламаний код не потрапляє на сайт.
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
       # Сайт живе за адресою /<назва-репо>/ — Vite має знати цей префікс.
       - run: npm run build
         env:
