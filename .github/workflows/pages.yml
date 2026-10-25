@@ -35,6 +35,17 @@ jobs:
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
 
+      # Тимчасово: дизайн до редизайну Valmora за адресою /v1/ — для порівняння. Прибрати після вибору.
+      - name: Build previous design into dist/v1
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/v1/
+        run: |
+          git fetch --depth=1 origin eb7b96aa4dd9c14d033fb2aee0b811937f2a05e3
+          git worktree add --detach ../v1 FETCH_HEAD
+          (cd ../v1 && npm ci && npm run build)
+          cp -r ../v1/dist dist/v1
+          sed -i 's|<head>|<head><meta name="robots" content="noindex">|' dist/v1/index.html
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
