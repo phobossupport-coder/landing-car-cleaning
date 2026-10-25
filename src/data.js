@@ -7,8 +7,6 @@ export const brand = {
   tagline: 'Detailing Studio',
   phone: '+47 939 38 230',
   phoneHref: 'tel:+4793938230',
-  email: 'hello@stella-detailing.no',
-  instagram: 'https://instagram.com/',
   whatsapp: 'https://wa.me/4793938230',
   since: 2017,
 };
@@ -18,7 +16,6 @@ export const whatsappLink = (text) => `${brand.whatsapp}?text=${encodeURICompone
 
 export const images = {
   hero: img('photo-1617814076367-b759c7d7e738', 2400),
-  beforeAfter: img('photo-1503376780353-7e6692767b70', 1800),
   studio: img('photo-1607860108855-64acf2078ed9', 1400),
   winter: img('photo-1485291571150-772bcfc10da5', 1800),
   yacht: img('photo-1567899378494-47b22a2ae96a', 2400),

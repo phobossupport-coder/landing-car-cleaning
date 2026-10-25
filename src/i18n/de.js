@@ -112,11 +112,10 @@ export default {
   results: {
     eyebrow: 'Ergebnis',
     title: 'Ein Unterschied, den man nicht übersehen kann',
-    text: 'Ziehen Sie den Regler zum Vergleichen. Jedes Auto wird vorher und nachher unter gleichem Licht fotografiert – Sie sehen das ehrliche Ergebnis.',
+    text: 'Jedes Auto bekommt dieselbe Sorgfalt: Reinigung, Politur und Schutz – das Ergebnis sehen Sie im Licht.',
     points: ['Tiefe und Farbsättigung', 'Ohne Hologramme und Swirls', 'Spiegelgleiche Reflexion', 'Schutz, der das Ergebnis bewahrt'],
     cta: 'Ich will dieses Ergebnis',
-    before: 'VORHER',
-    after: 'NACHHER',
+    alt: 'Mercedes-AMG G63 nach dem Detailing',
   },
   packages: {
     overline: 'Pakete',

@@ -1,5 +1,4 @@
 import { Box, Container, Fab, IconButton, Stack, Typography } from '@mui/material';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Logo } from './Header';
 import { brand, navHrefs } from '../data';
@@ -38,15 +37,6 @@ export default function Footer() {
             ))}
           </Stack>
           <Stack direction="row" spacing={1}>
-            <IconButton
-              href={brand.instagram}
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram"
-              sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
-            >
-              <InstagramIcon fontSize="small" />
-            </IconButton>
             <IconButton
               href={whatsapp}
               target="_blank"

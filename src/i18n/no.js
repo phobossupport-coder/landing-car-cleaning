@@ -104,11 +104,10 @@ export default {
   results: {
     eyebrow: 'Resultat',
     title: 'En forskjell du ikke kan overse',
-    text: 'Dra i glidebryteren for å sammenligne. Hver bil fotograferes før og etter under samme lys – du ser det ærlige resultatet.',
+    text: 'Hver bil får samme grundighet: rens, polering og beskyttelse – resultatet ser du i lyset.',
     points: ['Dybde og fargemetning', 'Uten hologrammer og swirls', 'Speilblank refleksjon', 'Beskyttelse som bevarer resultatet'],
     cta: 'Jeg vil ha dette resultatet',
-    before: 'FØR',
-    after: 'ETTER',
+    alt: 'Mercedes-AMG G63 etter detailing',
   },
   packages: {
     overline: 'Pakker',

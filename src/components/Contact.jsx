@@ -3,7 +3,6 @@ import { Alert, Box, Button, Collapse, Grid, MenuItem, Snackbar, Stack, TextFiel
 import PhoneIcon from '@mui/icons-material/Phone';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
 import { brand, whatsappLink } from '../data';
@@ -22,7 +21,6 @@ export default function Contact() {
   const f = c.form;
   const contacts = [
     { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
-    { icon: MailOutlineIcon, label: brand.email, href: `mailto:${brand.email}` },
     { icon: PlaceOutlinedIcon, label: c.area },
     { icon: AccessTimeIcon, label: c.hours },
   ];

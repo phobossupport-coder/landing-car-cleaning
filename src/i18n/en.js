@@ -109,11 +109,10 @@ export default {
   results: {
     eyebrow: 'Result',
     title: 'A difference you cannot miss',
-    text: 'Drag the slider to compare. Every car is photographed before and after under the same light – you see the honest result.',
+    text: 'Every car gets the same thoroughness: cleaning, polishing and protection – you see the result in the light.',
     points: ['Depth and colour saturation', 'No holograms or swirls', 'Mirror-like reflection', 'Protection that keeps the result'],
     cta: 'I want this result',
-    before: 'BEFORE',
-    after: 'AFTER',
+    alt: 'Mercedes-AMG G63 after detailing',
   },
   packages: {
     overline: 'Packages',
