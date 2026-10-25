@@ -5,11 +5,11 @@ const img = (id, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit
 export const brand = {
   name: 'STELLA',
   tagline: 'Detailing Studio',
-  phone: '+380 67 000 00 00', // TODO: замініть на реальний номер (для Норвегії — формат +47 ...)
-  phoneHref: 'tel:+380670000000',
+  phone: '+47 939 38 230',
+  phoneHref: 'tel:+4793938230',
   email: 'hello@stella-detailing.no',
   instagram: 'https://instagram.com/',
-  whatsapp: 'https://wa.me/380670000000',
+  whatsapp: 'https://wa.me/4793938230',
   since: 2017,
 };
 
