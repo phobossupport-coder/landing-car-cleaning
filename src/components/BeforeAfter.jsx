@@ -7,7 +7,6 @@ import Reveal from './Reveal';
 import { images } from '../data';
 import { useLang } from '../i18n';
 
-
 // Інтерактивний слайдер «до / після». Замість демо-фільтра покладіть
 // власні фото у public/ і передайте шляхи в before/after.
 function Slider({ before, after, labels }) {
@@ -83,24 +82,24 @@ export default function BeforeAfter() {
       <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
         <Grid size={{ xs: 12, md: 5 }}>
           <Reveal>
-          <Eyebrow align="left">{r.eyebrow}</Eyebrow>
-          <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
-            {r.title}
-          </Typography>
-          <Typography color="text.secondary" sx={{ mb: 4 }}>
-            {r.text}
-          </Typography>
-          <Stack spacing={2} mb={5}>
-            {r.points.map((p) => (
-              <Stack key={p} direction="row" spacing={2} alignItems="center">
-                <CheckIcon color="primary" />
-                <Typography>{p}</Typography>
-              </Stack>
-            ))}
-          </Stack>
-          <Button href="#contact" variant="contained" size="large">
-            {r.cta}
-          </Button>
+            <Eyebrow align="left">{r.eyebrow}</Eyebrow>
+            <Typography variant="h2" sx={{ mt: 2, mb: 3 }}>
+              {r.title}
+            </Typography>
+            <Typography color="text.secondary" sx={{ mb: 4 }}>
+              {r.text}
+            </Typography>
+            <Stack spacing={2} mb={5}>
+              {r.points.map((p) => (
+                <Stack key={p} direction="row" spacing={2} alignItems="center">
+                  <CheckIcon color="primary" />
+                  <Typography>{p}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+            <Button href="#contact" variant="contained" size="large">
+              {r.cta}
+            </Button>
           </Reveal>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>

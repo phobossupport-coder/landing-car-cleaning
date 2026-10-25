@@ -34,12 +34,14 @@
 ### Task 1: Scroll math + test tooling
 
 **Files:**
+
 - Modify: `package.json` (devDeps `vitest`, `jsdom`; script `"test": "vitest run"`)
 - Create: `vitest.config.js` (environment `jsdom`)
 - Create: `src/hero/scroll.js`
 - Test: `src/hero/scroll.test.js`
 
 **Interfaces:**
+
 - Produces:
   - `INTRO_END = 0.12`; `STOP_BOUNDS = [[0.12, 0.34], [0.34, 0.56], [0.56, 0.78], [0.78, 1]]`
   - `clamp01(p: number): number`
@@ -57,12 +59,14 @@
 ### Task 2: Hero frames pipeline and assets
 
 **Files:**
+
 - Modify: `package.json` (devDep `ffmpeg-static`; script `"hero:frames": "node scripts/hero-frames.mjs"`)
 - Create: `scripts/hero-frames.mjs`
 - Create: `public/hero/frames/0001.webp …`, `public/hero/poster.jpg`, `public/hero/manifest.json`
 - Test: `src/hero/manifest.test.js`
 
 **Interfaces:**
+
 - Produces: `public/hero/manifest.json` = `{ "count": N, "width": 600, "height": 1066, "fps": number, "stops": [{ "id": "paint"|"ceramic"|"wheels"|"interior", "from": int, "to": int }] }`; frames named `frames/%04d.webp` (1-based file names, 0-based indices in code).
 
 - [ ] **Step 1: Write failing test** `manifest.test.js`: manifest exists; `stops.length===4`, ids in order; `stops[0].from===0`, `stops[3].to===count-1`, each `from<to`, consecutive stops touch or overlap by ≤ crossfade frames; `count` files exist; sum of frame sizes ≤ 2.5·1024·1024; poster ≤ 80·1024.
@@ -74,11 +78,13 @@
 ### Task 3: HeroStory component
 
 **Files:**
+
 - Create: `src/hero/useHeroFrames.js` (fetch manifest, progressive `Image` loading via `loadOrder`, returns `{ manifest, images, loaded, failed }`)
 - Create: `src/components/HeroStory.jsx` (replaces `Hero.jsx` usage; `Hero.jsx` keeps only the `Marquee` export → move it to `src/components/Marquee.jsx` and delete `Hero.jsx`)
 - Modify: `src/App.jsx`, `src/components/MobileBar.jsx`, `src/i18n/*.js` (`hero.stops[]`, `hero.skip`), `src/data.js` (`heroStopMeta = [{ id:'paint', service:0 }, { id:'ceramic', service:1 }, { id:'wheels', service:null }, { id:'interior', service:2 }]`)
 
 **Interfaces:**
+
 - Consumes: Task 1 functions; Task 2 manifest.
 - Produces: `<HeroStory />` with `id="top"`; `MobileBar` visibility = hero out of view (IntersectionObserver on `#top`) && form/footer not visible.
 
@@ -90,6 +96,7 @@
 ### Task 4: Mono typography, header, numbered eyebrows
 
 **Files:**
+
 - Modify: `package.json` (`@fontsource/jetbrains-mono`), `src/main.jsx` (400, 500), `src/theme.js` (export `mono`), `src/components/Header.jsx`, `src/components/Section.jsx` (`Eyebrow` gets `index?: number` → renders `0X — LABEL` in mono), section components passing indices in page order, number labels in Services/Winter/Process/Yachts/Packages to `mono`, `src/components/Footer.jsx` nav to mono.
 - Copy: `t.header.tagline = ['Mobile detailing', 'Oslo · est. 2017']` (same in all languages — brand line).
 
@@ -100,11 +107,13 @@
 ### Task 5: Tachometer spec strip
 
 **Files:**
+
 - Create: `src/components/stats.js`, `src/components/SpecStrip.jsx`
 - Test: `src/components/stats.test.js`
 - Modify: `src/App.jsx` (SpecStrip right after HeroStory, Marquee inside it)
 
 **Interfaces:**
+
 - Produces: `parseStat(value: string): { number: number, prefix: string, suffix: string }`; `formatStat(n: number, parsed): string` (groups thousands with a regular space like the source); `easeOutCubic(t)`; `countAt(target: number, t: number): number` (rounded, `t` clamped to [0,1]).
 
 - [ ] **Step 1: Write failing tests** — `formatStat(parseStat(v).number, parseStat(v)) === v` for `'1 200+'`, `'100%'`, `'9'`; `countAt(1200, 0)===0`, `countAt(1200, 1)===1200`, `countAt(1200, 2)===1200`, monotonic.
@@ -116,12 +125,14 @@
 ### Task 6: Portfolio photo pipeline and assets
 
 **Files:**
+
 - Modify: `package.json` (devDep `sharp`; script `"portfolio:photos": "node scripts/portfolio-photos.mjs"`)
 - Create: `scripts/portfolio-photos.mjs`, `public/portfolio/<case>/<n>-640.webp`, `…-1080.webp`
 - Modify: `src/data.js` (`portfolioCases` replaces `galleryMeta`)
 - Test: `src/portfolio.test.js`
 
 **Interfaces:**
+
 - Produces: `portfolioCases: { id: string, name: string, photos: string[] }[]` with ids `bmw-m5-matte`, `bmw-m5-touring`, `corvette-c8`, `amg-g63`, `touareg`; photo names `'1'|'2'|'3'` (1 = cover). Helper `portfolioSrc(id, n, w: 640|1080)` → `${BASE_URL}portfolio/${id}/${n}-${w}.webp`.
 
 - [ ] **Step 1: Write failing test** — every `portfolioCases` photo exists in both widths; each 1080 file ≤ 160 KB; 5 cases; 2–3 photos each.
@@ -133,6 +144,7 @@
 ### Task 7: Portfolio section and navigation
 
 **Files:**
+
 - Create: `src/components/Portfolio.jsx`; delete `src/components/Gallery.jsx`
 - Modify: `src/App.jsx`, `src/i18n/*.js` (`gallery` → `portfolio: { overline, title, subtitle, work }`, nav label → Портфоліо/Portfolio/Portefølje/Portfolio/Портфолио)
 

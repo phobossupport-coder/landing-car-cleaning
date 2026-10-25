@@ -15,19 +15,19 @@ Non-goals: replacing stock photos and placeholder contacts, analytics, cookie ba
 
 ## 2. Decisions (from brainstorming)
 
-| Topic | Decision |
-|---|---|
-| Hosting | S3 (private) + CloudFront with Origin Access Control |
-| Infrastructure as code | CloudFormation YAML templates in `infra/`, deployed with AWS CLI |
-| Region | `eu-north-1` (Stockholm) for S3, Lambda, DynamoDB, SES, API; `us-east-1` for the CloudFront certificate (ACM requirement) |
-| Domain | Bought through Route 53 (`.com` / `.eu` / `.studio`; exact name chosen by the owner). Hosted zone created by the registration |
-| Form backend | API Gateway HTTP API → Lambda (Node.js 22) → DynamoDB + SES + Telegram |
-| Secrets | SSM Parameter Store `SecureString`, created once by CLI, never in git |
-| Deploy of the site | Existing GitHub Actions `deploy.yml`, OIDC role, no long-lived keys |
-| Deploy of infrastructure | Locally via `aws cloudformation deploy`, run by Claude with the owner confirming each step |
-| GitHub Pages | Disabled after cutover; `pages.yml` deleted |
-| Cost control | AWS Budget, $5/month alert to the owner's email |
-| Documentation language | English. Commit messages stay Ukrainian (matches history) |
+| Topic                    | Decision                                                                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Hosting                  | S3 (private) + CloudFront with Origin Access Control                                                                          |
+| Infrastructure as code   | CloudFormation YAML templates in `infra/`, deployed with AWS CLI                                                              |
+| Region                   | `eu-north-1` (Stockholm) for S3, Lambda, DynamoDB, SES, API; `us-east-1` for the CloudFront certificate (ACM requirement)     |
+| Domain                   | Bought through Route 53 (`.com` / `.eu` / `.studio`; exact name chosen by the owner). Hosted zone created by the registration |
+| Form backend             | API Gateway HTTP API → Lambda (Node.js 22) → DynamoDB + SES + Telegram                                                        |
+| Secrets                  | SSM Parameter Store `SecureString`, created once by CLI, never in git                                                         |
+| Deploy of the site       | Existing GitHub Actions `deploy.yml`, OIDC role, no long-lived keys                                                           |
+| Deploy of infrastructure | Locally via `aws cloudformation deploy`, run by Claude with the owner confirming each step                                    |
+| GitHub Pages             | Disabled after cutover; `pages.yml` deleted                                                                                   |
+| Cost control             | AWS Budget, $5/month alert to the owner's email                                                                               |
+| Documentation language   | English. Commit messages stay Ukrainian (matches history)                                                                     |
 
 ### Alternatives considered
 
@@ -41,6 +41,7 @@ Non-goals: replacing stock photos and placeholder contacts, analytics, cookie ba
 ### 3.1 `CLAUDE.md`
 
 English, concise. Sections:
+
 - Project summary and stack; `nvm use` / Node 22.
 - Commands: `npm run dev`, `build`, `preview`, `lint`, `format`, `test`, `test:watch`.
 - Code map: `src/data.js` (language-independent data, prices in NOK), `src/i18n/*` (five languages, identical key structure, arrays matched by index), `src/theme.js`, `src/components/*`, `infra/*`, `docs/*`.
@@ -105,6 +106,7 @@ Note: the API Gateway custom domain in `eu-north-1` needs a regional certificate
 Parameters: `DomainName`, `HostedZoneId`, `CertificateArn`, `GitHubRepo` (`owner/name`), `GitHubBranch` (`main`).
 
 Resources:
+
 - S3 bucket: all public access blocked, versioning on, server-side encryption, lifecycle rule expiring non-current versions after 30 days. Bucket policy allows `s3:GetObject` only to the CloudFront distribution via OAC (`AWS:SourceArn` condition).
 - CloudFront distribution: origin = bucket regional endpoint with OAC; `DefaultRootObject: index.html`; HTTPS redirect; HTTP/2 + HTTP/3; price class 100 (Europe + North America); aliases `<domain>` and `www.<domain>`; custom error responses 403 and 404 → `/index.html` with 200 (so `/?lang=en` and deep links work); cache policy `CachingOptimized`; response headers policy with HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, and a `Content-Security-Policy` allowing self, `images.unsplash.com`, `api.<domain>`, and Emotion inline styles (`style-src 'unsafe-inline'`).
 - CloudFront Function (viewer-request): if host starts with `www.`, 301 to apex.
@@ -117,6 +119,7 @@ Resources:
 Parameters: `DomainName`, `HostedZoneId`, `NotifyEmail` (studio inbox), `FromAddress` (default `noreply@<domain>`), `TelegramTokenParam` (SSM name, default `/stella/telegram/token`), `TelegramChatIdParam` (default `/stella/telegram/chat-id`), `AllowedOrigin` (default `https://<domain>`).
 
 Resources:
+
 - Regional ACM certificate for `api.<domain>` with DNS validation; API Gateway custom domain `api.<domain>`; Route 53 A/AAAA alias to it.
 - `AWS::ApiGatewayV2::Api` (HTTP), CORS: origin `AllowedOrigin`, methods `POST, OPTIONS`, headers `content-type`; stage `$default` with throttling `RateLimit: 5`, `BurstLimit: 10`; route `POST /lead` → Lambda integration (payload format 2.0).
 - Lambda `stella-lead-handler`: `nodejs22.x`, 256 MB, 10 s timeout, code packaged from `infra/form/handler.mjs` with `aws cloudformation package`. Environment: `TABLE_NAME`, `NOTIFY_EMAIL`, `FROM_ADDRESS`, `TELEGRAM_TOKEN_PARAM`, `TELEGRAM_CHAT_ID_PARAM`, `ALLOWED_ORIGIN`. Role: `dynamodb:PutItem` on the table, `ses:SendEmail` restricted to the domain identity, `ssm:GetParameter(s)` + `kms:Decrypt` for the two parameters, CloudWatch logs.
@@ -146,6 +149,7 @@ Tests (`infra/form/handler.test.mjs`, Vitest, AWS SDK clients mocked): valid lea
 ### 4.6 CI/CD for the site
 
 `.github/workflows/deploy.yml` changes:
+
 - Keep the `if: vars.S3_BUCKET != ''` guard.
 - Build with `VITE_API_URL: ${{ vars.VITE_API_URL }}`.
 - Assume `secrets.AWS_ROLE_ARN` in `vars.AWS_REGION` (`eu-north-1`).

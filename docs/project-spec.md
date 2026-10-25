@@ -11,14 +11,14 @@ Primary market is Norway; secondary audiences are English-, German-, Ukrainian- 
 
 ## 2. Tech stack
 
-| Layer | Choice | Version (installed) |
-|---|---|---|
-| UI | React | 18.3 |
-| Components / styling | MUI (Material UI) + Emotion | 7.3 |
-| Icons | `@mui/icons-material` | 7.3 |
-| Fonts | `@fontsource/inter`, `@fontsource/cormorant-garamond` (self-hosted) | 5.x |
-| Build | Vite + `@vitejs/plugin-react` | 5.4 |
-| Runtime | Node.js | 22 (`.nvmrc`), `engines.node >= 20` |
+| Layer                | Choice                                                              | Version (installed)                 |
+| -------------------- | ------------------------------------------------------------------- | ----------------------------------- |
+| UI                   | React                                                               | 18.3                                |
+| Components / styling | MUI (Material UI) + Emotion                                         | 7.3                                 |
+| Icons                | `@mui/icons-material`                                               | 7.3                                 |
+| Fonts                | `@fontsource/inter`, `@fontsource/cormorant-garamond` (self-hosted) | 5.x                                 |
+| Build                | Vite + `@vitejs/plugin-react`                                       | 5.4                                 |
+| Runtime              | Node.js                                                             | 22 (`.nvmrc`), `engines.node >= 20` |
 
 No router, no state library, no CSS files, no backend, no tests, no linter.
 
@@ -59,23 +59,24 @@ All styling is done with the MUI `sx` prop. Components use MUI Grid v2 (`size={{
 
 ## 5. Page structure (`src/App.jsx` order)
 
-| # | Component | `id` | Content |
-|---|---|---|---|
-| 1 | `Header` | — | Fixed AppBar, blur on scroll, logo, desktop nav (≥ lg), `LanguageSwitch`, phone (≥ xl), "Book" CTA, mobile Drawer |
-| 2 | `Hero` | `top` | Full-viewport hero: Unsplash background with slow zoom, eyebrow, two-line H1, text, two CTAs, 4 stats, two `Marquee` rows (car brands, yacht brands) |
-| 3 | `Services` | `services` | 6 service cards in a 3-column bordered grid, icon, number, "from" price; 6th card links to `#yachts` |
-| 4 | `Winter` | `winter` | Seasonal winter-prep programme: image with season label, 8 steps, price, duration, CTA |
-| 5 | `BeforeAfter` | `results` | Text + pointer-driven before/after slider (currently same image with a filter on the "before" side) |
-| 6 | `Yachts` | `yachts` | Full-bleed yacht background, intro, 4 points, price per foot, CTA |
-| 7 | `Packages` | `packages` | 3 packages (Gloss / Correction / Concours), middle one featured and raised; features, duration, price, CTA |
-| 8 | `Process` | `process` | 5 numbered steps with sticky image column |
-| 9 | `Gallery` | `gallery` | 6 Unsplash images in an asymmetric 4-column grid, hover captions |
-| 10 | `Reviews` | `reviews` | 3 testimonials with client car |
-| 11 | `Faq` | `faq` | 6 accordion items, first expanded |
-| 12 | `Contact` | `contact` | 4 trust points, contact details, form (name, phone, car, service select, message), success Snackbar |
-| 13 | `Footer` | — | Logo, nav links, Instagram/WhatsApp buttons, copyright, `LanguageSwitch`, floating WhatsApp FAB |
+| #   | Component     | `id`       | Content                                                                                                                                              |
+| --- | ------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `Header`      | —          | Fixed AppBar, blur on scroll, logo, desktop nav (≥ lg), `LanguageSwitch`, phone (≥ xl), "Book" CTA, mobile Drawer                                    |
+| 2   | `Hero`        | `top`      | Full-viewport hero: Unsplash background with slow zoom, eyebrow, two-line H1, text, two CTAs, 4 stats, two `Marquee` rows (car brands, yacht brands) |
+| 3   | `Services`    | `services` | 6 service cards in a 3-column bordered grid, icon, number, "from" price; 6th card links to `#yachts`                                                 |
+| 4   | `Winter`      | `winter`   | Seasonal winter-prep programme: image with season label, 8 steps, price, duration, CTA                                                               |
+| 5   | `BeforeAfter` | `results`  | Text + pointer-driven before/after slider (currently same image with a filter on the "before" side)                                                  |
+| 6   | `Yachts`      | `yachts`   | Full-bleed yacht background, intro, 4 points, price per foot, CTA                                                                                    |
+| 7   | `Packages`    | `packages` | 3 packages (Gloss / Correction / Concours), middle one featured and raised; features, duration, price, CTA                                           |
+| 8   | `Process`     | `process`  | 5 numbered steps with sticky image column                                                                                                            |
+| 9   | `Gallery`     | `gallery`  | 6 Unsplash images in an asymmetric 4-column grid, hover captions                                                                                     |
+| 10  | `Reviews`     | `reviews`  | 3 testimonials with client car                                                                                                                       |
+| 11  | `Faq`         | `faq`      | 6 accordion items, first expanded                                                                                                                    |
+| 12  | `Contact`     | `contact`  | 4 trust points, contact details, form (name, phone, car, service select, message), success Snackbar                                                  |
+| 13  | `Footer`      | —          | Logo, nav links, Instagram/WhatsApp buttons, copyright, `LanguageSwitch`, floating WhatsApp FAB                                                      |
 
 Shared helpers:
+
 - `Section` (padding, optional dark background, `scrollMarginTop: 72`), `SectionTitle`, `Eyebrow`.
 - `Reveal` fades/slides children in on first intersection; disabled under `prefers-reduced-motion`.
 - `LanguageSwitch` text buttons NO · EN · DE · UA · RU.

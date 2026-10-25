@@ -19,7 +19,10 @@ export default [
     rules: {
       'react/prop-types': 'off',
       // Провайдери контексту експортують і свої хуки/константи — це нормально для fast refresh.
-      'react-refresh/only-export-components': ['error', { allowConstantExport: true, allowExportNames: ['languages', 'useLang', 'serviceOptions', 'useBooking', 'useWhatsappLink'] }],
+      'react-refresh/only-export-components': [
+        'error',
+        { allowConstantExport: true, allowExportNames: ['languages', 'useLang', 'serviceOptions', 'useBooking', 'useWhatsappLink'] },
+      ],
     },
   },
   // Скрипти медіа і конфіги виконуються в Node.

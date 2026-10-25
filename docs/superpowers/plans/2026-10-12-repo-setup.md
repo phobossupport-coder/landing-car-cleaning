@@ -34,10 +34,12 @@
 ### Task 1: ESLint + Prettier
 
 **Files:**
+
 - Create: `eslint.config.js`, `.prettierrc`, `.prettierignore`
 - Modify: `package.json` (scripts, devDependencies)
 
 **Interfaces:**
+
 - Produces: npm scripts `lint`, `lint:fix`, `format`, `format:check` used by Task 6 CI.
 
 - [ ] **Step 1: Install dev dependencies**
@@ -91,10 +93,12 @@ git commit -m "Форматування коду Prettier (printWidth 160)"
 ### Task 2: Vitest setup and `formatPrice` tests
 
 **Files:**
+
 - Create: `src/test/setup.js`, `src/i18n/currency.test.js`
 - Modify: `vite.config.js` (test block), `package.json` (scripts, devDependencies)
 
 **Interfaces:**
+
 - Produces: `npm test` (`vitest run`), `npm run test:watch`; `src/test/setup.js` registering jest-dom matchers and a `window.matchMedia` stub, used by every later test.
 
 - [ ] **Step 1: Install dev dependencies**
@@ -113,6 +117,7 @@ test: {
   css: false,
 },
 ```
+
 Keep the existing `base` line untouched (GitHub Pages still uses it).
 
 - [ ] **Step 3: Create `src/test/setup.js`**
@@ -184,10 +189,12 @@ git commit -m "Vitest + Testing Library, тести formatPrice"
 ### Task 3: Language detection tests
 
 **Files:**
+
 - Modify: `src/i18n/index.jsx` (export `detect`)
 - Create: `src/i18n/detect.test.jsx`
 
 **Interfaces:**
+
 - Produces: `export function detect(): 'no' | 'en' | 'de' | 'uk' | 'ru'` from `src/i18n/index.jsx` (same body as today, now exported).
 
 - [ ] **Step 1: Write the failing test `src/i18n/detect.test.jsx`**
@@ -251,6 +258,7 @@ describe('detect', () => {
   });
 });
 ```
+
 Note on the last test: the current implementation wraps everything in one `try`, so a throwing `localStorage` skips URL and navigator detection and returns `'no'`. The test pins that it does not crash; the expected value is `'no'`.
 
 - [ ] **Step 2: Run the test to verify it fails**
@@ -279,9 +287,11 @@ git commit -m "Тести визначення мови, експорт detect()
 ### Task 4: Translation structure test
 
 **Files:**
+
 - Create: `src/i18n/structure.test.js`
 
 **Interfaces:**
+
 - Produces: nothing reused; guards `project-spec.md` §6.2 invariants.
 
 - [ ] **Step 1: Write the test**
@@ -352,9 +362,11 @@ git commit -m "Тест узгодженості структури перекл
 ### Task 5: App smoke test and render helper
 
 **Files:**
+
 - Create: `src/test/render.jsx`, `src/App.test.jsx`
 
 **Interfaces:**
+
 - Produces: `renderWithProviders(ui, { lang = 'en' } = {})` from `src/test/render.jsx`: sets `localStorage['stella-lang']`, wraps `ui` in `ThemeProvider theme={theme}` + `LanguageProvider`, returns Testing Library's render result. Used by the Contact test in the AWS plan.
 
 - [ ] **Step 1: Create `src/test/render.jsx`**
@@ -388,6 +400,7 @@ describe('App', () => {
   });
 });
 ```
+
 `en.js` has `hero.title1: 'Perfection'`, so the regex matches the rendered H1.
 
 - [ ] **Step 3: Run to verify it fails, then passes**
@@ -412,10 +425,12 @@ git commit -m "Smoke-тест App і хелпер рендеру з провай
 ### Task 6: `CLAUDE.md`, English `README.md`, CI workflow
 
 **Files:**
+
 - Create: `CLAUDE.md`, `.github/workflows/ci.yml`
 - Modify: `README.md` (rewrite in English)
 
 **Interfaces:**
+
 - Consumes: scripts from Tasks 1–2.
 - Produces: CI job `check` that the AWS plan extends with `cfn-lint`.
 

@@ -70,7 +70,11 @@ export default function Contact() {
                   <Box sx={{ width: 44, height: 44, border: '1px solid', borderColor: 'divider', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <Icon color="primary" sx={{ fontSize: 18 }} />
                   </Box>
-                  <Typography component={href ? 'a' : 'span'} href={href} sx={{ color: 'text.primary', textDecoration: 'none', transition: 'color .3s', '&:hover': href && { color: 'primary.main' } }}>
+                  <Typography
+                    component={href ? 'a' : 'span'}
+                    href={href}
+                    sx={{ color: 'text.primary', textDecoration: 'none', transition: 'color .3s', '&:hover': href && { color: 'primary.main' } }}
+                  >
                     {label}
                   </Typography>
                 </Stack>
@@ -99,7 +103,16 @@ export default function Contact() {
                 </Grid>
                 <Grid size={12}>
                   {!details && (
-                    <Button onClick={() => setDetails(true)} sx={{ px: 0, textTransform: 'none', letterSpacing: 0, color: 'text.secondary', '&:hover': { color: 'primary.main', bgcolor: 'transparent' } }}>
+                    <Button
+                      onClick={() => setDetails(true)}
+                      sx={{
+                        px: 0,
+                        textTransform: 'none',
+                        letterSpacing: 0,
+                        color: 'text.secondary',
+                        '&:hover': { color: 'primary.main', bgcolor: 'transparent' },
+                      }}
+                    >
                       {f.more}
                     </Button>
                   )}

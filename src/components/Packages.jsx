@@ -14,11 +14,7 @@ export default function Packages() {
   const packages = t.packages.items.map((p, i) => ({ ...p, ...packageMeta[i] }));
   return (
     <Section id="packages">
-      <SectionTitle
-        overline={t.packages.overline}
-        title={t.packages.title}
-        subtitle={`${t.packages.subtitle} ${t.common.vat}`}
-      />
+      <SectionTitle overline={t.packages.overline} title={t.packages.title} subtitle={`${t.packages.subtitle} ${t.common.vat}`} />
       <Grid container spacing={{ xs: 3, md: 0 }} alignItems="stretch">
         {packages.map((p, i) => (
           <Grid key={p.name} size={{ xs: 12, md: 4 }}>
@@ -42,7 +38,12 @@ export default function Packages() {
                 }}
               >
                 {p.featured && (
-                  <Typography variant="overline" color="primary" component="p" sx={{ position: { xs: 'static', md: 'absolute' }, top: 18, right: 24, fontSize: '0.6rem', mb: { xs: 2, md: 0 } }}>
+                  <Typography
+                    variant="overline"
+                    color="primary"
+                    component="p"
+                    sx={{ position: { xs: 'static', md: 'absolute' }, top: 18, right: 24, fontSize: '0.6rem', mb: { xs: 2, md: 0 } }}
+                  >
                     {t.packages.featured}
                   </Typography>
                 )}
@@ -53,7 +54,9 @@ export default function Packages() {
                   {p.name}
                 </Typography>
                 <Stack direction="row" alignItems="baseline" spacing={1}>
-                  <Typography variant="overline" color="text.secondary">{t.common.from}</Typography>
+                  <Typography variant="overline" color="text.secondary">
+                    {t.common.from}
+                  </Typography>
                   <Typography sx={{ fontFamily: serif, fontSize: 52, lineHeight: 1, color: p.featured ? 'primary.light' : 'text.primary' }}>
                     {formatPrice(p.price, t.currency)}
                   </Typography>

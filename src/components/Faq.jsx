@@ -19,7 +19,12 @@ export default function Faq() {
               <Accordion key={f.q} disableGutters elevation={0} defaultExpanded={i === 0}>
                 <AccordionSummary
                   expandIcon={<AddIcon color="primary" />}
-                  sx={{ px: 0, py: 1.5, '& .MuiAccordionSummary-expandIconWrapper': { transition: 'transform .35s' }, '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': { transform: 'rotate(45deg)' } }}
+                  sx={{
+                    px: 0,
+                    py: 1.5,
+                    '& .MuiAccordionSummary-expandIconWrapper': { transition: 'transform .35s' },
+                    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': { transform: 'rotate(45deg)' },
+                  }}
                 >
                   <Typography variant="h5" component="h3">
                     {f.q}

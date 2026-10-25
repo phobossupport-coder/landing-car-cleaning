@@ -5,7 +5,8 @@ export default {
   name: 'Deutsch',
   meta: {
     title: 'Stella Detailing — mobiles Auto-Detailing in Oslo',
-    description: 'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
+    description:
+      'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
   },
   nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Portfolio', 'Bewertungen', 'FAQ'],
   header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
@@ -49,19 +50,35 @@ export default {
     title: 'Rundum-Pflege für Ihr Auto',
     subtitle: 'Von der schonenden Wäsche bis zur mehrstufigen Lackkorrektur, Keramik und Saisonschutz.',
     items: [
-      { title: 'Lackkorrektur', text: 'Mehrstufige Maschinenpolitur unter starkem LED-Licht: entfernt Hologramme, Swirls und Kratzer bis zu 90 % der Defekttiefe.' },
-      { title: 'Keramikversiegelung', text: 'Professionelle 9H-Keramik mit bis zu 5 Jahren Garantie: Farbtiefe, Hydrophobie und Schutz vor Streusalz, Chemie und UV.' },
-      { title: 'Innenraum-Detailing', text: 'Tiefenreinigung, Auffrischung und Schutz von Nappaleder und Alcantara, Ozonbehandlung. Innenraum wie am Tag der Auslieferung.' },
+      {
+        title: 'Lackkorrektur',
+        text: 'Mehrstufige Maschinenpolitur unter starkem LED-Licht: entfernt Hologramme, Swirls und Kratzer bis zu 90 % der Defekttiefe.',
+      },
+      {
+        title: 'Keramikversiegelung',
+        text: 'Professionelle 9H-Keramik mit bis zu 5 Jahren Garantie: Farbtiefe, Hydrophobie und Schutz vor Streusalz, Chemie und UV.',
+      },
+      {
+        title: 'Innenraum-Detailing',
+        text: 'Tiefenreinigung, Auffrischung und Schutz von Nappaleder und Alcantara, Ozonbehandlung. Innenraum wie am Tag der Auslieferung.',
+      },
       { title: 'Detailing-Wäsche', text: 'Berührungslose Zweiphasenwäsche, Flugrost- und Teerentfernung, Reinigungsknete, Wachs- oder Sealant-Schutz.' },
-      { title: 'Scheinwerfer- & Glaspolitur', text: 'Wir bringen die Klarheit der Optik zurück, entfernen Vergilbung und tragen Regenabweiser auf das Glas auf.' },
-      { title: 'Yacht- & Boots-Detailing', text: 'Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Edelstahl. In der Marina oder an Land.' },
+      {
+        title: 'Scheinwerfer- & Glaspolitur',
+        text: 'Wir bringen die Klarheit der Optik zurück, entfernen Vergilbung und tragen Regenabweiser auf das Glas auf.',
+      },
+      {
+        title: 'Yacht- & Boots-Detailing',
+        text: 'Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Edelstahl. In der Marina oder an Land.',
+      },
     ],
   },
   winter: {
     eyebrow: 'Saisonprogramm',
     title1: 'Wintervorbereitung.',
     title2: 'Der komplette Zyklus.',
-    intro: 'Streusalz, Splitt und Frost fressen den Glanz in einem einzigen Winter und hinterlassen Mikrokratzer, die sich im Sommer nicht mehr verbergen lassen. Wir versiegeln Karosserie, Optik, Glas, Felgen und Innenraum vor dem ersten Frost.',
+    intro:
+      'Streusalz, Splitt und Frost fressen den Glanz in einem einzigen Winter und hinterlassen Mikrokratzer, die sich im Sommer nicht mehr verbergen lassen. Wir versiegeln Karosserie, Optik, Glas, Felgen und Innenraum vor dem ersten Frost.',
     season: 'Saison',
     note: 'Begrenzte Plätze im November–Dezember: wir nehmen bis zu 3 Autos pro Tag, damit nichts überhastet wird.',
     duration: '1–2 Tage',
@@ -81,7 +98,8 @@ export default {
     eyebrow: 'Auch Yachten',
     title1: 'Yachten und Boote.',
     title2: 'Dasselbe Niveau.',
-    intro: 'Gelcoat oxidiert durch Sonne und Salz schneller als Autolack. Wir stellen den tiefen Glanz des Rumpfes wieder her, schützen ihn mit Marine-Keramik und pflegen jede Oberfläche an Bord.',
+    intro:
+      'Gelcoat oxidiert durch Sonne und Salz schneller als Autolack. Wir stellen den tiefen Glanz des Rumpfes wieder her, schützen ihn mit Marine-Keramik und pflegen jede Oberfläche an Bord.',
     where: 'Wir kommen in Ihre Marina oder dorthin, wo das Boot an Land steht.',
     cta: 'Angebot für meine Yacht',
     points: [
@@ -107,9 +125,33 @@ export default {
     featured: 'Am häufigsten gewählt',
     choose: 'Wählen',
     items: [
-      { subtitle: 'Glanzauffrischung', duration: '1 Tag', features: ['Detailing-Wäsche und Dekontamination', 'Einstufige Politur', 'Entfernt bis zu 60 % der Defekte', 'Schutzwachs für 3 Monate'] },
-      { subtitle: 'Korrektur + Keramik', duration: '2–3 Tage', features: ['Schichtdickenmessung an jedem Bauteil', 'Zweistufige Lackkorrektur', 'Entfernt bis zu 90 % der Defekte', 'Keramikversiegelung, 3 Jahre Garantie', 'Keramik auf Felgen und Glas'] },
-      { subtitle: 'Maximales Ergebnis', duration: '4–5 Tage', features: ['Mehrstufige Korrektur „bis zum Spiegel“', '9H-Keramik, 5 Jahre Garantie', 'Komplettes Innenraum-Detailing', 'Keramik auf Leder und Kunststoff', 'Kostenlose Pflege für 12 Monate'] },
+      {
+        subtitle: 'Glanzauffrischung',
+        duration: '1 Tag',
+        features: ['Detailing-Wäsche und Dekontamination', 'Einstufige Politur', 'Entfernt bis zu 60 % der Defekte', 'Schutzwachs für 3 Monate'],
+      },
+      {
+        subtitle: 'Korrektur + Keramik',
+        duration: '2–3 Tage',
+        features: [
+          'Schichtdickenmessung an jedem Bauteil',
+          'Zweistufige Lackkorrektur',
+          'Entfernt bis zu 90 % der Defekte',
+          'Keramikversiegelung, 3 Jahre Garantie',
+          'Keramik auf Felgen und Glas',
+        ],
+      },
+      {
+        subtitle: 'Maximales Ergebnis',
+        duration: '4–5 Tage',
+        features: [
+          'Mehrstufige Korrektur „bis zum Spiegel“',
+          '9H-Keramik, 5 Jahre Garantie',
+          'Komplettes Innenraum-Detailing',
+          'Keramik auf Leder und Kunststoff',
+          'Kostenlose Pflege für 12 Monate',
+        ],
+      },
     ],
   },
   process: {
@@ -137,9 +179,18 @@ export default {
     overline: 'Bewertungen',
     title: 'Sie vertrauen uns, was ihnen wichtig ist',
     items: [
-      { name: 'Alexander K.', text: 'Der schwarze Lack war nach Waschanlagen voller Swirls. Jetzt sieht das Auto besser aus als am Tag der Auslieferung. Jeder Schritt und jede Messung wurden gezeigt.' },
-      { name: 'Maria L.', text: 'Keramik und Wintervorbereitung. Nach einem Winter mit Streusalz ist der Lack wie neu, Schmutz haftet nicht, und die Wäsche dauert zehn Minuten.' },
-      { name: 'Andreas P.', text: 'Sie kamen zu mir ins Büro, während ich arbeitete. Abends fuhr ich mit korrigiertem Lack und Keramik nach Hause – spiegelglatt, kein einziges Hologramm.' },
+      {
+        name: 'Alexander K.',
+        text: 'Der schwarze Lack war nach Waschanlagen voller Swirls. Jetzt sieht das Auto besser aus als am Tag der Auslieferung. Jeder Schritt und jede Messung wurden gezeigt.',
+      },
+      {
+        name: 'Maria L.',
+        text: 'Keramik und Wintervorbereitung. Nach einem Winter mit Streusalz ist der Lack wie neu, Schmutz haftet nicht, und die Wäsche dauert zehn Minuten.',
+      },
+      {
+        name: 'Andreas P.',
+        text: 'Sie kamen zu mir ins Büro, während ich arbeitete. Abends fuhr ich mit korrigiertem Lack und Keramik nach Hause – spiegelglatt, kein einziges Hologramm.',
+      },
     ],
   },
   trust: [
@@ -153,12 +204,30 @@ export default {
     title: 'Häufige Fragen',
     subtitle: 'Keine Antwort gefunden? Rufen Sie an – die Beratung ist kostenlos.',
     items: [
-      { q: 'Kommen Sie zu mir?', a: 'Ja, wir arbeiten ausschließlich vor Ort. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina in Oslo und Umgebung. Ausrüstung und Produkte bringen wir mit; Sie brauchen nur einen Stellplatz.' },
-      { q: 'Wie lange dauert die Arbeit?', a: 'Von einem Tag für die Glanzauffrischung bis zu 4–5 Tagen für die mehrstufige Korrektur mit Keramik. Die Wintervorbereitung dauert 1–2 Tage. Die genaue Dauer nennen wir nach der Besichtigung.' },
-      { q: '„Frisst“ die Politur den Lack?', a: 'Vor der Arbeit messen wir die Schichtdicke an jedem Bauteil und tragen nur die minimal nötige Schicht ab – meist wenige Mikrometer.' },
-      { q: 'Was gehört zur Wintervorbereitung?', a: 'Der komplette Zyklus: Dekontamination, Lackauffrischung, Saisonschutz für Karosserie und Felgen, Regenabweiser, Konservierung von Unterboden und Radhäusern, Dichtungspflege und Innenraum. Details im Abschnitt „Winter“.' },
-      { q: 'Arbeiten Sie mit Yachten und Booten?', a: 'Ja. Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Interieur. Wir kommen in die Marina oder dorthin, wo das Boot an Land steht.' },
-      { q: 'Wie pflege ich das Auto nach der Keramik?', a: 'Die ersten 7 Tage keine Wäsche. Danach schonende Wäsche ohne Bürsten. Sie erhalten eine Pflegeanleitung, und wir bieten regelmäßige Pflege an.' },
+      {
+        q: 'Kommen Sie zu mir?',
+        a: 'Ja, wir arbeiten ausschließlich vor Ort. Wir kommen zu Ihnen nach Hause, ins Büro, auf den Parkplatz oder in die Marina in Oslo und Umgebung. Ausrüstung und Produkte bringen wir mit; Sie brauchen nur einen Stellplatz.',
+      },
+      {
+        q: 'Wie lange dauert die Arbeit?',
+        a: 'Von einem Tag für die Glanzauffrischung bis zu 4–5 Tagen für die mehrstufige Korrektur mit Keramik. Die Wintervorbereitung dauert 1–2 Tage. Die genaue Dauer nennen wir nach der Besichtigung.',
+      },
+      {
+        q: '„Frisst“ die Politur den Lack?',
+        a: 'Vor der Arbeit messen wir die Schichtdicke an jedem Bauteil und tragen nur die minimal nötige Schicht ab – meist wenige Mikrometer.',
+      },
+      {
+        q: 'Was gehört zur Wintervorbereitung?',
+        a: 'Der komplette Zyklus: Dekontamination, Lackauffrischung, Saisonschutz für Karosserie und Felgen, Regenabweiser, Konservierung von Unterboden und Radhäusern, Dichtungspflege und Innenraum. Details im Abschnitt „Winter“.',
+      },
+      {
+        q: 'Arbeiten Sie mit Yachten und Booten?',
+        a: 'Ja. Gelcoat-Politur, Oxidationsentfernung, Marine-Keramik, Pflege von Teak und Interieur. Wir kommen in die Marina oder dorthin, wo das Boot an Land steht.',
+      },
+      {
+        q: 'Wie pflege ich das Auto nach der Keramik?',
+        a: 'Die ersten 7 Tage keine Wäsche. Danach schonende Wäsche ohne Bürsten. Sie erhalten eine Pflegeanleitung, und wir bieten regelmäßige Pflege an.',
+      },
       { q: 'Geben Sie Garantie?', a: 'Ja, auf Keramikversiegelungen bis zu 5 Jahre mit Zertifikat. Auf Marine-Keramik bis zu 24 Monate.' },
     ],
   },
@@ -184,5 +253,5 @@ export default {
   },
   footer: { rights: 'Autos und Yachten. Alle Rechte vorbehalten.', whatsapp: 'Schreiben Sie uns auf WhatsApp' },
   bar: { call: 'Anrufen', whatsapp: 'WhatsApp', book: 'Termin' },
-  whatsappText: { hello: "Hallo! Ich möchte eine kostenlose Begutachtung buchen.", service: "Hallo! Ich möchte buchen: {service}." },
+  whatsappText: { hello: 'Hallo! Ich möchte eine kostenlose Begutachtung buchen.', service: 'Hallo! Ich möchte buchen: {service}.' },
 };

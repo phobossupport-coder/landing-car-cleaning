@@ -30,7 +30,17 @@ export default function MobileBar() {
     };
   }, []);
 
-  const item = { flex: 1, minWidth: 0, px: 1, py: 1.75, borderRadius: 0, fontSize: 11.5, letterSpacing: '0.06em', whiteSpace: 'nowrap', '& .MuiButton-startIcon': { mr: 0.75 } };
+  const item = {
+    flex: 1,
+    minWidth: 0,
+    px: 1,
+    py: 1.75,
+    borderRadius: 0,
+    fontSize: 11.5,
+    letterSpacing: '0.06em',
+    whiteSpace: 'nowrap',
+    '& .MuiButton-startIcon': { mr: 0.75 },
+  };
   return (
     <Slide direction="up" in={!heroVisible && !formVisible}>
       <Box
@@ -51,7 +61,14 @@ export default function MobileBar() {
         <Button href={brand.phoneHref} color="inherit" startIcon={<PhoneIcon sx={{ fontSize: 18 }} />} sx={item}>
           {t.bar.call}
         </Button>
-        <Button href={whatsapp} target="_blank" rel="noopener" color="inherit" startIcon={<WhatsAppIcon sx={{ fontSize: 18 }} />} sx={{ ...item, borderLeft: '1px solid', borderRight: '1px solid', borderColor: 'divider' }}>
+        <Button
+          href={whatsapp}
+          target="_blank"
+          rel="noopener"
+          color="inherit"
+          startIcon={<WhatsAppIcon sx={{ fontSize: 18 }} />}
+          sx={{ ...item, borderLeft: '1px solid', borderRight: '1px solid', borderColor: 'divider' }}
+        >
           {t.bar.whatsapp}
         </Button>
         <Button href="#contact" variant="contained" sx={item}>

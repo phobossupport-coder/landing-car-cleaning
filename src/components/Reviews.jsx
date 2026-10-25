@@ -15,7 +15,16 @@ export default function Reviews() {
         {reviews.map((r, i) => (
           <Grid key={r.name} size={{ xs: 12, md: 4 }} sx={{ borderRight: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
             <Reveal delay={i * 140} sx={{ height: 1 }}>
-              <Box sx={{ height: 1, p: { xs: 4, md: 5 }, display: 'flex', flexDirection: 'column', transition: 'background .4s', '&:hover': { bgcolor: 'background.paper' } }}>
+              <Box
+                sx={{
+                  height: 1,
+                  p: { xs: 4, md: 5 },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'background .4s',
+                  '&:hover': { bgcolor: 'background.paper' },
+                }}
+              >
                 <Typography sx={{ fontFamily: serif, fontSize: 72, lineHeight: 0.6, color: 'primary.main', mb: 3, opacity: 0.8 }}>“</Typography>
                 <Typography sx={{ flex: 1, mb: 4, fontFamily: serif, fontSize: '1.35rem', lineHeight: 1.45 }}>{r.text}</Typography>
                 <Stack direction="row" spacing={2} alignItems="center">

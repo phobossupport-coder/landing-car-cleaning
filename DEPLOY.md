@@ -13,6 +13,7 @@ VS Code ──commit/push──▶ GitHub (код) ──GitHub Actions──▶
 ## 0. Підготовка комп’ютера
 
 ### Node.js 20+ (обов’язково)
+
 На машині зараз стоїть Node **12** — він застарий для Vite і сайт не збереться. Встановіть Node 22 через nvm:
 
 ```bash
@@ -25,6 +26,7 @@ node -v          # має бути v22.x
 ```
 
 ### Запуск сайту локально
+
 ```bash
 npm install
 npm run dev      # відкрийте http://localhost:5173
@@ -32,6 +34,7 @@ npm run build    # production-збірка в папку dist/
 ```
 
 ### Розширення VS Code (Ctrl+Shift+X)
+
 - **GitHub Pull Requests** (GitHub) — вхід у GitHub і робота з репозиторієм
 - **GitHub Actions** (GitHub) — статус деплою прямо у VS Code
 - **AWS Toolkit** (Amazon Web Services) — перегляд S3, CloudFront, логів
@@ -42,21 +45,26 @@ npm run build    # production-збірка в папку dist/
 ## 1. GitHub: зберігання коду
 
 ### 1.1 Налаштування git (один раз)
+
 ```bash
 git config --global user.name "Ваше Ім’я"
 git config --global user.email "you@example.com"   # той самий email, що в GitHub
 ```
 
 ### 1.2 Вхід у GitHub з VS Code
+
 1. Ліва нижня іконка **Accounts** (людина) → **Sign in with GitHub** → підтвердіть у браузері.
 
 ### 1.3 Створення репозиторію
+
 **Варіант A — кнопками у VS Code (найпростіше):**
+
 1. Відкрийте папку `landing1` у VS Code (`code ~/Projects/landing1`).
 2. Вкладка **Source Control** (Ctrl+Shift+G) → **Publish to GitHub** → оберіть **private** repository.
 3. VS Code сам зробить `git init`, перший коміт і push. Перевірте, що `node_modules` і `dist` **не** потрапили в список (їх відсікає `.gitignore`).
 
 **Варіант B — терміналом:**
+
 ```bash
 cd ~/Projects/landing1
 git init -b main
@@ -68,6 +76,7 @@ git push -u origin main
 ```
 
 ### 1.4 Щоденна робота
+
 Source Control → введіть повідомлення → **Commit** → **Sync Changes** (push). Усе.
 
 ---
@@ -91,14 +100,15 @@ Source Control → введіть повідомлення → **Commit** → **
 
 ## 3. Хостинг: оберіть один варіант
 
-| | **A. AWS Amplify Hosting** | **B. S3 + CloudFront + GitHub Actions** |
-|---|---|---|
-| Складність | 10 хвилин, лише кліки | 30–40 хвилин |
-| Вартість лендінгу | ~0–2 $/міс | ~0–1 $/міс |
-| Контроль | менше | повний, все в коді |
-| Файл `.github/workflows/deploy.yml` | **видаліть** | потрібен |
+|                                     | **A. AWS Amplify Hosting** | **B. S3 + CloudFront + GitHub Actions** |
+| ----------------------------------- | -------------------------- | --------------------------------------- |
+| Складність                          | 10 хвилин, лише кліки      | 30–40 хвилин                            |
+| Вартість лендінгу                   | ~0–2 $/міс                 | ~0–1 $/міс                              |
+| Контроль                            | менше                      | повний, все в коді                      |
+| Файл `.github/workflows/deploy.yml` | **видаліть**               | потрібен                                |
 
 ### Варіант A — AWS Amplify (рекомендую для старту)
+
 1. Консоль AWS → **Amplify** → **Create new app** → **GitHub** → авторизуйте доступ до репозиторію `landing1`, гілка `main`.
 2. Amplify сам визначить Vite: build command `npm run build`, output `dist`. Підтвердіть.
 3. Через 2–3 хв отримаєте адресу `https://main.xxxx.amplifyapp.com`.
@@ -108,10 +118,12 @@ Source Control → введіть повідомлення → **Commit** → **
 ### Варіант B — S3 + CloudFront (workflow вже є в проєкті)
 
 **4.1 S3 бакет**
+
 1. S3 → **Create bucket** → назва, напр. `lustra-landing-site`, регіон `eu-central-1`.
 2. **Block all public access — залишити УВІМКНЕНИМ** (доступ буде лише через CloudFront).
 
 **4.2 CloudFront**
+
 1. CloudFront → **Create distribution** → Origin: ваш S3 бакет.
 2. **Origin access → Origin access control (OAC)** → Create new OAC.
 3. **Default root object:** `index.html`. Viewer protocol: **Redirect HTTP to HTTPS**.
@@ -119,6 +131,7 @@ Source Control → введіть повідомлення → **Commit** → **
 5. Запишіть **Distribution ID** (напр. `E1ABCDEF2GHIJ`) і домен `dxxxx.cloudfront.net`.
 
 **4.3 Доступ GitHub → AWS без ключів (OIDC)**
+
 1. IAM → **Identity providers** → Add provider → **OpenID Connect**:
    - Provider URL: `https://token.actions.githubusercontent.com`
    - Audience: `sts.amazonaws.com`
@@ -151,6 +164,7 @@ Source Control → введіть повідомлення → **Commit** → **
 
 **4.4 Змінні в GitHub**
 Репозиторій на github.com → **Settings → Secrets and variables → Actions**:
+
 - вкладка **Secrets** → `AWS_ROLE_ARN` = ARN ролі
 - вкладка **Variables**:
   - `AWS_REGION` = `eu-central-1`
@@ -163,6 +177,7 @@ Source Control → введіть повідомлення → **Commit** → **
 ---
 
 ## 5. Власний домен (за бажанням)
+
 1. **Route 53 → Registered domains** — купіть домен (або перенесіть DNS існуючого в Route 53 Hosted zone).
 2. **Amplify:** App → Hosting → **Custom domains** → Add domain — сертифікат і DNS налаштуються самі.
 3. **CloudFront:** у **ACM**, регіон **us-east-1 (N. Virginia)** обов’язково, запросіть сертифікат на `example.com` і `www.example.com` (DNS validation → Create records in Route 53). Потім у distribution → Edit → Alternate domain names + цей сертифікат. У Route 53 створіть записи **A (Alias) → CloudFront distribution**.
@@ -170,7 +185,9 @@ Source Control → введіть повідомлення → **Commit** → **
 ---
 
 ## 6. Форма заявки
+
 Зараз форма лише показує повідомлення «Дякуємо». Найпростіше підключення — [Web3Forms](https://web3forms.com) (безкоштовно, заявки приходять на пошту):
+
 1. Отримайте access key на сайті.
 2. У `src/components/Contact.jsx` замініть функцію `onSubmit`:
    ```js
@@ -184,11 +201,13 @@ Source Control → введіть повідомлення → **Commit** → **
      setSent(true);
    };
    ```
+
 Альтернатива в межах AWS: API Gateway + Lambda + SES (або відправка в Telegram-бот).
 
 ---
 
 ## 7. Що редагувати
+
 - **Тексти, ціни, контакти, фото:** `src/data.js`
 - **Кольори і шрифти:** `src/theme.js`
 - **Власні фото:** покладіть у `public/images/` і вкажіть шлях `'/images/назва.jpg'` у `src/data.js`.

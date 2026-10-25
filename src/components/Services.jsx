@@ -28,11 +28,7 @@ export default function Services() {
   const services = t.services.items.map((s, i) => ({ ...s, ...serviceMeta[i] }));
   return (
     <Section id="services">
-      <SectionTitle
-        overline={t.services.overline}
-        title={t.services.title}
-        subtitle={t.services.subtitle}
-      />
+      <SectionTitle overline={t.services.overline} title={t.services.title} subtitle={t.services.subtitle} />
       <Grid container spacing={0} sx={{ borderTop: '1px solid', borderLeft: '1px solid', borderColor: 'divider' }}>
         {services.map((s, i) => {
           const Icon = icons[s.icon];
@@ -72,7 +68,17 @@ export default function Services() {
                 >
                   <Typography
                     className="num"
-                    sx={{ position: 'absolute', top: 30, right: 32, fontFamily: mono, fontSize: 12, letterSpacing: '0.2em', color: 'text.secondary', opacity: 0.6, transition: 'all .4s' }}
+                    sx={{
+                      position: 'absolute',
+                      top: 30,
+                      right: 32,
+                      fontFamily: mono,
+                      fontSize: 12,
+                      letterSpacing: '0.2em',
+                      color: 'text.secondary',
+                      opacity: 0.6,
+                      transition: 'all .4s',
+                    }}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </Typography>
@@ -86,13 +92,22 @@ export default function Services() {
                   <Stack direction="row" alignItems="baseline" justifyContent="space-between">
                     <Typography sx={{ fontFamily: serif, fontSize: 22, color: 'primary.light' }}>
                       {!s.price ? (
-                        <Box component="span" sx={{ fontStyle: 'italic' }}>{t.common.onRequest}</Box>
+                        <Box component="span" sx={{ fontStyle: 'italic' }}>
+                          {t.common.onRequest}
+                        </Box>
                       ) : (
                         <>
-                          <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', mr: 1, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t.common.from}</Box>
+                          <Box
+                            component="span"
+                            sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', mr: 1, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                          >
+                            {t.common.from}
+                          </Box>
                           {formatPrice(s.price, cur)}
                           {s.perFoot && (
-                            <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', ml: 1 }}>/ {t.common.perFoot}</Box>
+                            <Box component="span" sx={{ fontFamily: 'Inter', fontSize: 12, color: 'text.secondary', ml: 1 }}>
+                              / {t.common.perFoot}
+                            </Box>
                           )}
                         </>
                       )}

@@ -27,12 +27,13 @@ export function Logo() {
   const { t } = useLang();
   return (
     <Box component="a" href="#top" sx={{ display: 'flex', alignItems: 'center', gap: 2, color: 'inherit', textDecoration: 'none' }}>
-      <Typography sx={{ fontFamily: serif, fontWeight: 600, fontSize: 26, letterSpacing: '0.28em', lineHeight: 1 }}>
-        {brand.name}
-      </Typography>
+      <Typography sx={{ fontFamily: serif, fontWeight: 600, fontSize: 26, letterSpacing: '0.28em', lineHeight: 1 }}>{brand.name}</Typography>
       <Box sx={{ display: { xs: 'none', sm: 'block' }, pl: 2, borderLeft: '1px solid', borderColor: 'divider' }}>
         {t.header.tagline.map((line) => (
-          <Typography key={line} sx={{ fontFamily: mono, fontSize: 9, letterSpacing: '0.16em', lineHeight: 1.6, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+          <Typography
+            key={line}
+            sx={{ fontFamily: mono, fontSize: 9, letterSpacing: '0.16em', lineHeight: 1.6, color: 'text.secondary', whiteSpace: 'nowrap' }}
+          >
             {line}
           </Typography>
         ))}
@@ -79,7 +80,16 @@ export default function Header() {
                   textTransform: 'uppercase',
                   position: 'relative',
                   transition: 'color .3s',
-                  '&::after': { content: '""', position: 'absolute', left: 0, bottom: -6, width: 0, height: '1px', bgcolor: 'primary.main', transition: 'width .35s' },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    left: 0,
+                    bottom: -6,
+                    width: 0,
+                    height: '1px',
+                    bgcolor: 'primary.main',
+                    transition: 'width .35s',
+                  },
                   '&:hover': { color: 'text.primary' },
                   '&:hover::after': { width: '100%' },
                 }}
@@ -99,17 +109,45 @@ export default function Header() {
               {brand.phone}
             </Button>
             {/* Золоте текстове посилання замість кнопки — як «Private viewing» у Valmora */}
-            <Typography component="a" href="#contact" sx={{ display: { xs: 'none', sm: 'block' }, fontFamily: mono, fontSize: 10.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'primary.main', textDecoration: 'none', whiteSpace: 'nowrap', pb: 0.5, borderBottom: '1px solid', borderColor: 'rgba(201,168,106,0.5)', '&:hover': { color: 'primary.light', borderColor: 'primary.light' } }}>
+            <Typography
+              component="a"
+              href="#contact"
+              sx={{
+                display: { xs: 'none', sm: 'block' },
+                fontFamily: mono,
+                fontSize: 10.5,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'primary.main',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                pb: 0.5,
+                borderBottom: '1px solid',
+                borderColor: 'rgba(201,168,106,0.5)',
+                '&:hover': { color: 'primary.light', borderColor: 'primary.light' },
+              }}
+            >
               {t.header.cta}
             </Typography>
-            <Button color="inherit" onClick={() => setOpen(true)} endIcon={<MenuIcon />} aria-label={t.header.menu} sx={{ display: { lg: 'none' }, fontFamily: mono, fontSize: 10.5, letterSpacing: '0.22em', minWidth: 0, px: 1 }}>
+            <Button
+              color="inherit"
+              onClick={() => setOpen(true)}
+              endIcon={<MenuIcon />}
+              aria-label={t.header.menu}
+              sx={{ display: { lg: 'none' }, fontFamily: mono, fontSize: 10.5, letterSpacing: '0.22em', minWidth: 0, px: 1 }}
+            >
               {t.header.menu}
             </Button>
           </Stack>
         </Toolbar>
       </Container>
 
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)} slotProps={{ paper: { sx: { width: '100%', maxWidth: 380, p: 3, bgcolor: '#0A0A0B' } } }}>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={() => setOpen(false)}
+        slotProps={{ paper: { sx: { width: '100%', maxWidth: 380, p: 3, bgcolor: '#0A0A0B' } } }}
+      >
         <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
           <Logo />
           <IconButton onClick={() => setOpen(false)} aria-label={t.header.close}>
@@ -119,7 +157,13 @@ export default function Header() {
         <LanguageSwitch size="large" sx={{ py: 2, borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }} />
         <List>
           {nav.map((item) => (
-            <ListItemButton key={item.href} component="a" href={item.href} onClick={() => setOpen(false)} sx={{ px: 1, borderBottom: '1px solid', borderColor: 'divider' }}>
+            <ListItemButton
+              key={item.href}
+              component="a"
+              href={item.href}
+              onClick={() => setOpen(false)}
+              sx={{ px: 1, borderBottom: '1px solid', borderColor: 'divider' }}
+            >
               <ListItemText primary={item.label} slotProps={{ primary: { fontSize: 26, fontFamily: serif, fontWeight: 500 } }} />
             </ListItemButton>
           ))}

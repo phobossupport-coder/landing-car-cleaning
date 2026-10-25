@@ -16,19 +16,19 @@ Non-goals: a full-page pinned scroll story, 3D/Three.js, a camera orbit (the sou
 
 ## 2. Decisions (from brainstorming)
 
-| Topic | Decision |
-|---|---|
-| Scope | Cinematic hero + restyle of the rest; the rest scrolls normally (no pinning) |
-| Visual style | "A · Evolution": keep gold `#C9A86A` gradient, Cormorant Garamond + Inter; add JetBrains Mono for labels, hairlines, stop counters, more air in the hero |
-| Hero story | 4 stops built from close-ups (paint → ceramic → wheels → interior), no orbit |
-| Hero scroll length | ~2 extra screens (section height ≈ 300svh); CTA visible the whole time |
-| Hero source | Owner's reel `Перетворили та захистили цей суперкар…mp4` (Corvette C8, 720×1280, 26 s). Owner confirmed it is their team's work and they hold the rights |
-| Hard constraint | Nothing of DD73 (former partner) may appear: no logo card, no "DD73"/"73" facade lettering, no orange numbered garage doors, no reflections of them |
-| Also excluded | Shots implying a studio (site says mobile-only) and film/PPF wrapping shots (Stella does not offer PPF) |
-| Rendering technique | Pre-extracted WebP frame sequence drawn on `<canvas>` by scroll position (not `<video>` scrubbing: choppy on iOS Safari) |
-| Portfolio | 14 of the owner's 42 photos across 5 cars, graded and cropped; replaces stock gallery; nav label "Роботи" → "Портфоліо" |
-| Tests | Add Vitest for pure logic; visual checks with headless Chrome at 390 px and 1440 px |
-| Delivery | Work on branch `redesign-valmora`; merging to `main` (= deploy to GitHub Pages) only with the owner's explicit OK |
+| Topic               | Decision                                                                                                                                                 |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scope               | Cinematic hero + restyle of the rest; the rest scrolls normally (no pinning)                                                                             |
+| Visual style        | "A · Evolution": keep gold `#C9A86A` gradient, Cormorant Garamond + Inter; add JetBrains Mono for labels, hairlines, stop counters, more air in the hero |
+| Hero story          | 4 stops built from close-ups (paint → ceramic → wheels → interior), no orbit                                                                             |
+| Hero scroll length  | ~2 extra screens (section height ≈ 300svh); CTA visible the whole time                                                                                   |
+| Hero source         | Owner's reel `Перетворили та захистили цей суперкар…mp4` (Corvette C8, 720×1280, 26 s). Owner confirmed it is their team's work and they hold the rights |
+| Hard constraint     | Nothing of DD73 (former partner) may appear: no logo card, no "DD73"/"73" facade lettering, no orange numbered garage doors, no reflections of them      |
+| Also excluded       | Shots implying a studio (site says mobile-only) and film/PPF wrapping shots (Stella does not offer PPF)                                                  |
+| Rendering technique | Pre-extracted WebP frame sequence drawn on `<canvas>` by scroll position (not `<video>` scrubbing: choppy on iOS Safari)                                 |
+| Portfolio           | 14 of the owner's 42 photos across 5 cars, graded and cropped; replaces stock gallery; nav label "Роботи" → "Портфоліо"                                  |
+| Tests               | Add Vitest for pure logic; visual checks with headless Chrome at 390 px and 1440 px                                                                      |
+| Delivery            | Work on branch `redesign-valmora`; merging to `main` (= deploy to GitHub Pages) only with the owner's explicit OK                                        |
 
 ## 3. Hero scroll story
 
@@ -36,13 +36,13 @@ Non-goals: a full-page pinned scroll story, 3D/Three.js, a camera orbit (the sou
 
 `<section id="top">` is ~300svh tall; inside it a `position: sticky` stage fills the viewport. Scroll progress `p ∈ [0, 1]` = how far the section has scrolled past the top, divided by (section height − viewport height).
 
-| State | `p` range | Text over the frame |
-|---|---|---|
-| Intro | 0 – 0.12 | Eyebrow, H1 "Досконалість / у кожному відблиску", lead text, CTA, note (current hero copy) |
-| 01 Paint correction | 0.12 – 0.34 | Counter `01 / 04` + hairline, title, one-line benefit, price "від 5 500 kr" |
-| 02 Ceramic coating | 0.34 – 0.56 | `02 / 04`, "9H, гарантія до 5 років", "від 7 500 kr" |
-| 03 Wheels & calipers | 0.56 – 0.78 | `03 / 04`, "очищення й кераміка проти пилу та солі" (no price) |
-| 04 Interior detailing | 0.78 – 1 | `04 / 04`, "шкіра, Alcantara", "від 3 800 kr" |
+| State                 | `p` range   | Text over the frame                                                                        |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------ |
+| Intro                 | 0 – 0.12    | Eyebrow, H1 "Досконалість / у кожному відблиску", lead text, CTA, note (current hero copy) |
+| 01 Paint correction   | 0.12 – 0.34 | Counter `01 / 04` + hairline, title, one-line benefit, price "від 5 500 kr"                |
+| 02 Ceramic coating    | 0.34 – 0.56 | `02 / 04`, "9H, гарантія до 5 років", "від 7 500 kr"                                       |
+| 03 Wheels & calipers  | 0.56 – 0.78 | `03 / 04`, "очищення й кераміка проти пилу та солі" (no price)                             |
+| 04 Interior detailing | 0.78 – 1    | `04 / 04`, "шкіра, Alcantara", "від 3 800 kr"                                              |
 
 - During Intro the stage holds frame 0 (first frame of stop 01). Within a stop's `p` range, `p` maps linearly onto that stop's frame range from `manifest.json` (`from`–`to`), so each shot plays across its own scroll range; crossfade frames sit at the range edges.
 - Intro text fades out as stop captions fade in (opacity + 12 px translate, 300 ms).
@@ -73,12 +73,12 @@ Non-goals: a full-page pinned scroll story, 3D/Three.js, a camera orbit (the sou
 - `scripts/hero-frames.mjs`, run as `npm run hero:frames -- <path-to-video>`. Uses `ffmpeg-static` (devDependency), so no system ffmpeg is needed.
 - The script holds the edit as data: for each stop the source in/out timecodes and a crop/zoom:
 
-| Stop | Source shot (s) | Crop |
-|---|---|---|
-| 01 Paint | 1.50 – 2.43, door panel with emblem | none |
-| 02 Ceramic | 13.00 – 13.87, applicator on carbon/leather | none |
-| 03 Wheels | 17.00 – 17.57, wheel and red caliper | zoom ×1.35 anchored low, hides facade lettering |
-| 04 Interior | 17.57 – 19.27, pan across seats | cut top 16 % (orange door frame, plant) |
+| Stop        | Source shot (s)                             | Crop                                            |
+| ----------- | ------------------------------------------- | ----------------------------------------------- |
+| 01 Paint    | 1.50 – 2.43, door panel with emblem         | none                                            |
+| 02 Ceramic  | 13.00 – 13.87, applicator on carbon/leather | none                                            |
+| 03 Wheels   | 17.00 – 17.57, wheel and red caliper        | zoom ×1.35 anchored low, hides facade lettering |
+| 04 Interior | 17.57 – 19.27, pan across seats             | cut top 16 % (orange door frame, plant)         |
 
 - Processing: drop audio; trim each shot (a few frames inside the cut points to avoid flashes); apply crop; grade (slightly lifted contrast, deeper shadows, warm highlights, saturation −10 %, soft vignette); join with 0.3 s crossfades.
 - The joined clip (~4 s at 30 fps) is resampled to ~72 frames so file size stays in budget.
@@ -99,13 +99,13 @@ Non-goals: a full-page pinned scroll story, 3D/Three.js, a camera orbit (the sou
 
 ### 6.1 Selection (owner's photos, `~/Pictures/Фото для сайта/`, all 1080×1920)
 
-| Case | Cover | Details |
-|---|---|---|
-| BMW M5 (matte) | 04 front ¾ | 06 wheel with blue caliper, 07 headlight |
-| BMW M5 Touring G99 | 05 tail light with M5 badge | 06 orange seat, 03 front ¾ |
-| Chevrolet Corvette C8 | 01 front | 03 rear, 05 wheel |
-| Mercedes-AMG G63 | 03 front ¾ | 05 grille, 08 "V8 Biturbo" badge |
-| Volkswagen Touareg | 05 deep black paint close-up | 03 front ¾ |
+| Case                  | Cover                        | Details                                  |
+| --------------------- | ---------------------------- | ---------------------------------------- |
+| BMW M5 (matte)        | 04 front ¾                   | 06 wheel with blue caliper, 07 headlight |
+| BMW M5 Touring G99    | 05 tail light with M5 badge  | 06 orange seat, 03 front ¾               |
+| Chevrolet Corvette C8 | 01 front                     | 03 rear, 05 wheel                        |
+| Mercedes-AMG G63      | 03 front ¾                   | 05 grille, 08 "V8 Biturbo" badge         |
+| Volkswagen Touareg    | 05 deep black paint close-up | 03 front ¾                               |
 
 Work done on every case: "Корекція лаку + кераміка" (translated).
 

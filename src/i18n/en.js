@@ -5,7 +5,8 @@ export default {
   name: 'English',
   meta: {
     title: 'Stella Detailing — mobile car detailing in Oslo',
-    description: 'Mobile car detailing in Oslo: paint correction, ceramic coating, complete winter preparation. We come to your home, office or car park. Yachts on request too.',
+    description:
+      'Mobile car detailing in Oslo: paint correction, ceramic coating, complete winter preparation. We come to your home, office or car park. Yachts on request too.',
   },
   nav: ['Services', 'Winter', 'Packages', 'Yachts', 'Portfolio', 'Reviews', 'FAQ'],
   header: { cta: 'Book', menu: 'Menu', close: 'Close', language: 'Language', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
@@ -49,19 +50,32 @@ export default {
     title: 'Complete care for your car',
     subtitle: 'From a gentle wash to multi-stage paint correction, ceramic coating and seasonal protection.',
     items: [
-      { title: 'Paint correction', text: 'Multi-stage machine polishing under powerful LED light: removes holograms, swirls and scratches up to 90% of defect depth.' },
-      { title: 'Ceramic coating', text: 'Professional 9H ceramic with up to 5 years of warranty: colour depth, hydrophobic effect and protection from road salt, chemicals and UV.' },
-      { title: 'Interior detailing', text: 'Deep cleaning, restoration and protection of Nappa leather and Alcantara, ozone treatment. The cabin as on delivery day.' },
+      {
+        title: 'Paint correction',
+        text: 'Multi-stage machine polishing under powerful LED light: removes holograms, swirls and scratches up to 90% of defect depth.',
+      },
+      {
+        title: 'Ceramic coating',
+        text: 'Professional 9H ceramic with up to 5 years of warranty: colour depth, hydrophobic effect and protection from road salt, chemicals and UV.',
+      },
+      {
+        title: 'Interior detailing',
+        text: 'Deep cleaning, restoration and protection of Nappa leather and Alcantara, ozone treatment. The cabin as on delivery day.',
+      },
       { title: 'Detailing wash', text: 'Touchless two-phase wash, iron and tar decontamination, clay, wax or sealant protection.' },
       { title: 'Headlight & glass polishing', text: 'We restore clarity to the optics, remove yellowing and apply rain repellent to the glass.' },
-      { title: 'Yacht & boat detailing', text: 'Gelcoat polishing, oxidation removal, marine ceramic, teak and stainless steel care. At the marina or on land.' },
+      {
+        title: 'Yacht & boat detailing',
+        text: 'Gelcoat polishing, oxidation removal, marine ceramic, teak and stainless steel care. At the marina or on land.',
+      },
     ],
   },
   winter: {
     eyebrow: 'Seasonal programme',
     title1: 'Winter preparation.',
     title2: 'The complete cycle.',
-    intro: 'Road salt, grit and frost eat the gloss in a single winter and leave micro-scratches that cannot be hidden by summer. We seal the body, optics, glass, wheels and interior before the first frost.',
+    intro:
+      'Road salt, grit and frost eat the gloss in a single winter and leave micro-scratches that cannot be hidden by summer. We seal the body, optics, glass, wheels and interior before the first frost.',
     season: 'Season',
     note: 'Limited slots in November–December: we take up to 3 cars a day so nothing is rushed.',
     duration: '1–2 days',
@@ -81,7 +95,8 @@ export default {
     eyebrow: 'Yachts too',
     title1: 'Yachts and boats.',
     title2: 'The same standard.',
-    intro: 'Gelcoat oxidises from sun and salt faster than automotive paint. We restore deep gloss to the hull, protect it with marine ceramic and care for every surface on board.',
+    intro:
+      'Gelcoat oxidises from sun and salt faster than automotive paint. We restore deep gloss to the hull, protect it with marine ceramic and care for every surface on board.',
     where: 'We come to your marina or wherever the boat is stored on land.',
     cta: 'Get a quote for my yacht',
     points: [
@@ -107,9 +122,33 @@ export default {
     featured: 'Most popular',
     choose: 'Choose',
     items: [
-      { subtitle: 'Gloss enhancement', duration: '1 day', features: ['Detailing wash and decontamination', 'Single-stage polish', 'Removes up to 60% of defects', 'Protective wax for 3 months'] },
-      { subtitle: 'Correction + ceramic', duration: '2–3 days', features: ['Paint thickness measured on every panel', 'Two-stage paint correction', 'Removes up to 90% of defects', 'Ceramic coating, 3-year warranty', 'Ceramic on wheels and glass'] },
-      { subtitle: 'Maximum result', duration: '4–5 days', features: ['Multi-stage “mirror” correction', '9H ceramic, 5-year warranty', 'Full interior detailing', 'Ceramic on leather and plastics', 'Free maintenance for 12 months'] },
+      {
+        subtitle: 'Gloss enhancement',
+        duration: '1 day',
+        features: ['Detailing wash and decontamination', 'Single-stage polish', 'Removes up to 60% of defects', 'Protective wax for 3 months'],
+      },
+      {
+        subtitle: 'Correction + ceramic',
+        duration: '2–3 days',
+        features: [
+          'Paint thickness measured on every panel',
+          'Two-stage paint correction',
+          'Removes up to 90% of defects',
+          'Ceramic coating, 3-year warranty',
+          'Ceramic on wheels and glass',
+        ],
+      },
+      {
+        subtitle: 'Maximum result',
+        duration: '4–5 days',
+        features: [
+          'Multi-stage “mirror” correction',
+          '9H ceramic, 5-year warranty',
+          'Full interior detailing',
+          'Ceramic on leather and plastics',
+          'Free maintenance for 12 months',
+        ],
+      },
     ],
   },
   process: {
@@ -137,9 +176,18 @@ export default {
     overline: 'Reviews',
     title: 'They trust us with what they value',
     items: [
-      { name: 'Alexander K.', text: 'The black paint was covered in swirls after car washes. Now the car looks better than on delivery day. They showed every stage and every measurement.' },
-      { name: 'Maria L.', text: 'Ceramic and winter preparation. After a winter of road salt the paint is like new, dirt does not stick and a wash takes ten minutes.' },
-      { name: 'Andreas P.', text: 'They came to my office while I was working. That evening I drove off with corrected paint and ceramic — a mirror finish, not a single hologram.' },
+      {
+        name: 'Alexander K.',
+        text: 'The black paint was covered in swirls after car washes. Now the car looks better than on delivery day. They showed every stage and every measurement.',
+      },
+      {
+        name: 'Maria L.',
+        text: 'Ceramic and winter preparation. After a winter of road salt the paint is like new, dirt does not stick and a wash takes ten minutes.',
+      },
+      {
+        name: 'Andreas P.',
+        text: 'They came to my office while I was working. That evening I drove off with corrected paint and ceramic — a mirror finish, not a single hologram.',
+      },
     ],
   },
   trust: [
@@ -153,12 +201,30 @@ export default {
     title: 'Frequently asked questions',
     subtitle: 'Didn’t find the answer? Call us – the consultation is free.',
     items: [
-      { q: 'Do you come to me?', a: 'Yes, we only work on site. We come to your home, office, car park or marina in Oslo and surroundings. We bring equipment and products; you only need a spot for the car.' },
-      { q: 'How long does the work take?', a: 'From one day for a gloss enhancement to 4–5 days for multi-stage correction with ceramic. Winter preparation takes 1–2 days. The exact time is confirmed after inspection.' },
-      { q: 'Will polishing “eat” the paint?', a: 'Before the work we measure the paint thickness on every panel and remove only the minimum layer required – usually a few microns.' },
-      { q: 'What is included in winter preparation?', a: 'The complete cycle: decontamination, paint refresh, seasonal protection of body and wheels, rain repellent, underbody and arch preservation, seal treatment and interior. See the “Winter” section.' },
-      { q: 'Do you work with yachts and boats?', a: 'Yes. Gelcoat polishing, oxidation removal, marine ceramic, teak and interior care. We come to the marina or wherever the boat is stored on land.' },
-      { q: 'How do I care for the car after ceramic?', a: 'No washing for the first 7 days. Then gentle washing without brushes. You receive a care guide and we offer regular maintenance.' },
+      {
+        q: 'Do you come to me?',
+        a: 'Yes, we only work on site. We come to your home, office, car park or marina in Oslo and surroundings. We bring equipment and products; you only need a spot for the car.',
+      },
+      {
+        q: 'How long does the work take?',
+        a: 'From one day for a gloss enhancement to 4–5 days for multi-stage correction with ceramic. Winter preparation takes 1–2 days. The exact time is confirmed after inspection.',
+      },
+      {
+        q: 'Will polishing “eat” the paint?',
+        a: 'Before the work we measure the paint thickness on every panel and remove only the minimum layer required – usually a few microns.',
+      },
+      {
+        q: 'What is included in winter preparation?',
+        a: 'The complete cycle: decontamination, paint refresh, seasonal protection of body and wheels, rain repellent, underbody and arch preservation, seal treatment and interior. See the “Winter” section.',
+      },
+      {
+        q: 'Do you work with yachts and boats?',
+        a: 'Yes. Gelcoat polishing, oxidation removal, marine ceramic, teak and interior care. We come to the marina or wherever the boat is stored on land.',
+      },
+      {
+        q: 'How do I care for the car after ceramic?',
+        a: 'No washing for the first 7 days. Then gentle washing without brushes. You receive a care guide and we offer regular maintenance.',
+      },
       { q: 'Do you offer a warranty?', a: 'Yes, up to 5 years with a certificate on ceramic coatings. Up to 24 months on marine ceramic.' },
     ],
   },

@@ -32,7 +32,10 @@ const fade = (visible) => ({
 
 function Counter({ i }) {
   return (
-    <Typography component="p" sx={{ fontFamily: mono, fontSize: 11, letterSpacing: '0.22em', color: 'primary.main', display: 'flex', alignItems: 'center', gap: 1.5 }}>
+    <Typography
+      component="p"
+      sx={{ fontFamily: mono, fontSize: 11, letterSpacing: '0.22em', color: 'primary.main', display: 'flex', alignItems: 'center', gap: 1.5 }}
+    >
       {String(i + 1).padStart(2, '0')} / {String(heroStopMeta.length).padStart(2, '0')}
       <Box component="span" sx={{ flex: 1, height: '1px', bgcolor: 'rgba(201,168,106,0.5)' }} />
     </Typography>
@@ -155,13 +158,25 @@ export default function HeroStory() {
   const visual = (
     <>
       <Box component="img" src={posterSrc} alt="" sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover' }} />
-      {story && <Box component="canvas" ref={canvasRef} aria-hidden sx={{ position: 'absolute', inset: 0, width: 1, height: 1, opacity: drawn ? 1 : 0, transition: 'opacity .4s' }} />}
+      {story && (
+        <Box
+          component="canvas"
+          ref={canvasRef}
+          aria-hidden
+          sx={{ position: 'absolute', inset: 0, width: 1, height: 1, opacity: drawn ? 1 : 0, transition: 'opacity .4s' }}
+        />
+      )}
     </>
   );
 
   const intro = (
     <>
-      <Typography variant="overline" color="primary" component="p" sx={{ fontFamily: mono, letterSpacing: '0.24em', display: 'flex', alignItems: 'center', gap: 2, mb: { xs: 2, md: 4 } }}>
+      <Typography
+        variant="overline"
+        color="primary"
+        component="p"
+        sx={{ fontFamily: mono, letterSpacing: '0.24em', display: 'flex', alignItems: 'center', gap: 2, mb: { xs: 2, md: 4 } }}
+      >
         <Box component="span" sx={{ width: 40, height: '1px', bgcolor: 'primary.main', flexShrink: 0 }} />
         {h.eyebrow}
       </Typography>
@@ -172,7 +187,17 @@ export default function HeroStory() {
         </Box>
       </Typography>
       {/* На низьких екранах комп'ютера абзац ховаємо, щоб список зупинок вміщався */}
-      <Typography sx={{ mt: { xs: 2, md: 3 }, fontSize: { xs: '0.95rem', md: '1.05rem' }, color: 'text.secondary', maxWidth: 540, '@media (min-width: 900px) and (max-height: 860px)': { display: 'none' } }}>{h.text}</Typography>
+      <Typography
+        sx={{
+          mt: { xs: 2, md: 3 },
+          fontSize: { xs: '0.95rem', md: '1.05rem' },
+          color: 'text.secondary',
+          maxWidth: 540,
+          '@media (min-width: 900px) and (max-height: 860px)': { display: 'none' },
+        }}
+      >
+        {h.text}
+      </Typography>
     </>
   );
 
@@ -182,9 +207,27 @@ export default function HeroStory() {
         <Button href="#contact" variant="contained" size="large" endIcon={<ArrowOutwardIcon />} sx={{ flex: { xs: 1, md: 'none' }, whiteSpace: 'nowrap' }}>
           {h.cta1}
         </Button>
-        <Typography component="a" href="#mobile" aria-label={h.skip} sx={{ fontFamily: mono, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'text.secondary', textDecoration: 'none', whiteSpace: 'nowrap', px: { xs: 1, sm: 0 }, '&:hover': { color: 'primary.main' } }}>
+        <Typography
+          component="a"
+          href="#mobile"
+          aria-label={h.skip}
+          sx={{
+            fontFamily: mono,
+            fontSize: 11,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'text.secondary',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+            px: { xs: 1, sm: 0 },
+            '&:hover': { color: 'primary.main' },
+          }}
+        >
           {/* На вузькому екрані лише стрілка — щоб кнопка вмістилась в один рядок */}
-          <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>{h.skip} </Box>↓
+          <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+            {h.skip}{' '}
+          </Box>
+          ↓
         </Typography>
       </Stack>
       <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, fontSize: 12.5 }}>
@@ -199,14 +242,24 @@ export default function HeroStory() {
         const active = !story || stop === i;
         return (
           <Box component="li" key={s.title} sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
-            <ButtonBase onClick={() => story && scrollToStop(i)} disabled={!story} sx={{ width: 1, justifyContent: 'flex-start', alignItems: 'baseline', gap: 2.5, py: 1.25, textAlign: 'left' }}>
-              <Typography sx={{ fontFamily: mono, fontSize: 11, letterSpacing: '0.2em', color: active ? 'primary.main' : 'text.secondary' }}>{String(i + 1).padStart(2, '0')}</Typography>
+            <ButtonBase
+              onClick={() => story && scrollToStop(i)}
+              disabled={!story}
+              sx={{ width: 1, justifyContent: 'flex-start', alignItems: 'baseline', gap: 2.5, py: 1.25, textAlign: 'left' }}
+            >
+              <Typography sx={{ fontFamily: mono, fontSize: 11, letterSpacing: '0.2em', color: active ? 'primary.main' : 'text.secondary' }}>
+                {String(i + 1).padStart(2, '0')}
+              </Typography>
               <Box>
                 <Typography sx={{ typography: 'h5', color: active ? 'text.primary' : 'text.secondary', transition: 'color .3s' }}>{s.title}</Typography>
                 {active && (
                   <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
                     {s.text}
-                    {priceOf(i) && <Box component="span" sx={{ fontFamily: mono, fontSize: 12, color: 'primary.light', ml: 1, whiteSpace: 'nowrap' }}>· {t.common.from} {priceOf(i)}</Box>}
+                    {priceOf(i) && (
+                      <Box component="span" sx={{ fontFamily: mono, fontSize: 12, color: 'primary.light', ml: 1, whiteSpace: 'nowrap' }}>
+                        · {t.common.from} {priceOf(i)}
+                      </Box>
+                    )}
                   </Typography>
                 )}
               </Box>
@@ -226,14 +279,41 @@ export default function HeroStory() {
             <Box component="img" src={posterSrc} alt="" sx={{ position: 'absolute', inset: 0, width: 1, height: 1, objectFit: 'cover' }} />
             {story && <Box component="canvas" ref={ambientRef} aria-hidden sx={{ position: 'absolute', inset: 0, width: 1, height: 1 }} />}
           </Box>
-          <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.4) 60%, rgba(10,10,11,0.2) 100%)' }} />
-          <Container maxWidth="lg" sx={{ position: 'relative', height: 1, display: 'grid', gridTemplateColumns: '1fr auto', columnGap: { md: 6, lg: 10 }, alignItems: 'center', pt: 10, pb: 4 }}>
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.4) 60%, rgba(10,10,11,0.2) 100%)',
+            }}
+          />
+          <Container
+            maxWidth="lg"
+            sx={{
+              position: 'relative',
+              height: 1,
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              columnGap: { md: 6, lg: 10 },
+              alignItems: 'center',
+              pt: 10,
+              pb: 4,
+            }}
+          >
             <Box sx={{ maxWidth: 600 }}>
               {intro}
               <Box sx={{ mt: 4 }}>{cta}</Box>
               {stopList}
             </Box>
-            <Box sx={{ position: 'relative', height: 'min(78svh, 900px)', aspectRatio: '9 / 16', border: '1px solid rgba(201,168,106,0.45)', outline: '1px solid rgba(201,168,106,0.12)', outlineOffset: 10 }}>
+            <Box
+              sx={{
+                position: 'relative',
+                height: 'min(78svh, 900px)',
+                aspectRatio: '9 / 16',
+                border: '1px solid rgba(201,168,106,0.45)',
+                outline: '1px solid rgba(201,168,106,0.12)',
+                outlineOffset: 10,
+              }}
+            >
               {visual}
             </Box>
           </Container>
@@ -246,7 +326,13 @@ export default function HeroStory() {
     <Box id="top" component="header" ref={sectionRef} sx={{ position: 'relative', height: story ? `${SCREENS * 100}svh` : 'auto' }}>
       <Box sx={{ position: story ? 'sticky' : 'relative', top: 0, height: '100svh', overflow: 'hidden' }}>
         {visual}
-        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0) 22%, rgba(10,10,11,0.35) 45%, rgba(10,10,11,0.94) 72%, #0A0A0B 100%)' }} />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0) 22%, rgba(10,10,11,0.35) 45%, rgba(10,10,11,0.94) 72%, #0A0A0B 100%)',
+          }}
+        />
         <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: 0, px: 2, pb: 'calc(20px + env(safe-area-inset-bottom))' }}>
           {/* Вступ і підписи зупинок займають одну клітинку сітки й змінюють одне одного */}
           <Box sx={{ display: 'grid', alignItems: 'end', mb: 3 }}>

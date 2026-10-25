@@ -37,6 +37,7 @@
 **Files:** none committed. `$SCRATCH/budget.json`, `$SCRATCH/budget-notifications.json`.
 
 **Interfaces:**
+
 - Produces: a working `aws` session (`aws login`), `$ACCOUNT`, budget `stella-monthly`.
 
 - [ ] **Step 1: Owner, in the AWS console:** add a payment method (Billing → Payment preferences) and enable MFA on the root user (Security credentials). Claude cannot do either.
@@ -59,10 +60,12 @@ Verify: `aws budgets describe-budgets --region us-east-1 --account-id "$ACCOUNT"
 ### Task 2: Domain registration and parameter files
 
 **Files:**
+
 - Create: `infra/params/certificate.example.json`, `infra/params/certificate.json` (ignored)
 - Modify: `.gitignore` (add `infra/params/*.json`, `!infra/params/*.example.json`, `coverage`)
 
 **Interfaces:**
+
 - Produces: `$DOMAIN`, `HostedZoneId` (without the `/hostedzone/` prefix), used by every stack.
 
 - [ ] **Step 1: Check availability of the owner's candidate names**
@@ -93,9 +96,11 @@ git commit -m "Параметри стеків: приклади, реальні
 ### Task 3: `stella-certificate` stack
 
 **Files:**
+
 - Create: `infra/certificate.yaml`, `infra/README.md`
 
 **Interfaces:**
+
 - Produces: output `CertificateArn` (us-east-1), consumed by Task 4.
 
 - [ ] **Step 1: Install cfn-lint**
@@ -119,10 +124,12 @@ Expected: "Successfully created/updated stack". Takes a few minutes while DNS va
 - [ ] **Step 5: Verify**
 
 Run:
+
 ```bash
 CERT_ARN=$(aws cloudformation describe-stacks --region us-east-1 --stack-name stella-certificate --query 'Stacks[0].Outputs[?OutputKey==`CertificateArn`].OutputValue' --output text)
 aws acm describe-certificate --region us-east-1 --certificate-arn "$CERT_ARN" --query 'Certificate.Status' --output text
 ```
+
 Expected: `ISSUED`.
 
 - [ ] **Step 6: Start `infra/README.md`** (one paragraph per template: purpose, region, parameters, outputs; add sections as stacks are added) and commit.
@@ -137,10 +144,12 @@ git commit -m "CloudFormation: сертифікат ACM для CloudFront"
 ### Task 4: `stella-site` stack and first upload
 
 **Files:**
+
 - Create: `infra/site.yaml`, `infra/params/site.example.json`, `infra/params/site.json` (ignored)
 - Modify: `infra/README.md`
 
 **Interfaces:**
+
 - Consumes: `CertificateArn` (Task 3), `HostedZoneId` (Task 2).
 - Produces: outputs `BucketName`, `DistributionId`, `DistributionDomainName`, `DeployRoleArn`, `SiteUrl`; consumed by Task 8.
 
@@ -149,6 +158,7 @@ git commit -m "CloudFormation: сертифікат ACM для CloudFront"
 Parameters: `DomainName`, `HostedZoneId`, `CertificateArn`, `GitHubRepo` (default `phobossupport-coder/landing-car-cleaning`), `GitHubBranch` (default `main`), `CreateOidcProvider` (`true|false`, default `true`). Condition `ShouldCreateOidc`.
 
 Resources (logical names are the contract):
+
 - `SiteBucket` — no explicit name; all four public-access blocks `true`; versioning enabled; SSE-S3; lifecycle `NoncurrentVersionExpiration: 30` days.
 - `OriginAccessControl` — `OriginAccessControlOriginType: s3`, `SigningBehavior: always`, `SigningProtocol: sigv4`.
 - `ResponseHeadersPolicy` — HSTS `max-age=63072000; includeSubDomains`, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, CSP exactly:
@@ -160,10 +170,16 @@ Resources (logical names are the contract):
     var host = request.headers.host.value;
     if (!host.startsWith('www.')) return request;
     var qs = Object.keys(request.querystring)
-      .map(function (k) { var v = request.querystring[k].value; return encodeURIComponent(k) + (v === '' ? '' : '=' + encodeURIComponent(v)); })
+      .map(function (k) {
+        var v = request.querystring[k].value;
+        return encodeURIComponent(k) + (v === '' ? '' : '=' + encodeURIComponent(v));
+      })
       .join('&');
-    return { statusCode: 301, statusDescription: 'Moved Permanently',
-      headers: { location: { value: 'https://' + host.slice(4) + request.uri + (qs ? '?' + qs : '') } } };
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: { location: { value: 'https://' + host.slice(4) + request.uri + (qs ? '?' + qs : '') } },
+    };
   }
   ```
 - `Distribution` — `Enabled`, `HttpVersion: http2and3`, `IPV6Enabled: true`, `PriceClass_100`, `Aliases` apex + www, `DefaultRootObject: index.html`; origin `S3Origin` = `!GetAtt SiteBucket.RegionalDomainName` with `OriginAccessControlId` and empty `S3OriginConfig.OriginAccessIdentity`; default behaviour: `redirect-to-https`, methods `GET HEAD OPTIONS`, `Compress: true`, managed cache policy `658327ea-f89d-4fab-a63d-7e88639e58f6` (CachingOptimized), the response headers policy, function association `viewer-request`; `CustomErrorResponses` 403 and 404 → `/index.html`, code 200, `ErrorCachingMinTTL: 10`; `ViewerCertificate` ACM arn, `sni-only`, `TLSv1.2_2021`.
@@ -189,6 +205,7 @@ aws s3 sync dist "s3://$BUCKET" --delete --exclude index.html --exclude favicon.
 aws s3 cp dist/index.html "s3://$BUCKET/index.html" --cache-control no-cache
 aws s3 cp dist/favicon.svg "s3://$BUCKET/favicon.svg" --cache-control no-cache
 ```
+
 `BASE_PATH` must be unset so assets resolve from `/`.
 
 - [ ] **Step 4: Verify**
@@ -198,6 +215,7 @@ curl -sI "https://$DOMAIN" | grep -iE '^(HTTP|strict-transport-security|content-
 curl -sI "https://www.$DOMAIN/?lang=en" | grep -iE '^(HTTP|location)'
 curl -s "https://$DOMAIN/?lang=de" | grep -c 'id="root"'
 ```
+
 Expected: `HTTP/2 200` with the three headers; `HTTP/2 301` and `location: https://$DOMAIN/?lang=en`; `1`. Owner opens the site in a browser and switches languages.
 
 - [ ] **Step 5: Commit**
@@ -212,10 +230,12 @@ git commit -m "CloudFormation: S3 + CloudFront + Route 53 + OIDC-роль для
 ### Task 5: Lambda lead handler (TDD)
 
 **Files:**
+
 - Create: `infra/form/src/handler.mjs`, `infra/form/handler.test.mjs`
 - Modify: `package.json` (devDependencies), `eslint.config.js` (node globals for `infra/**/*.mjs`)
 
 **Interfaces:**
+
 - Produces: `export async function handler(event)` → `{ statusCode: number, headers: { 'content-type': 'application/json' }, body: string }`; `export function validate(input)` → `{ ok: true, lead: object } | { ok: false, errors: string[] }`. Env: `TABLE_NAME`, `NOTIFY_EMAIL`, `FROM_ADDRESS`, `TELEGRAM_TOKEN_PARAM`, `TELEGRAM_CHAT_ID_PARAM`. SSM values cached in module scope.
 
 - [ ] **Step 1: Install SDK packages for local tests**
@@ -223,11 +243,13 @@ git commit -m "CloudFormation: S3 + CloudFront + Route 53 + OIDC-роль для
 ```bash
 npm install -D @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb @aws-sdk/client-sesv2 @aws-sdk/client-ssm
 ```
+
 Add to `eslint.config.js`: `{ files: ['infra/**/*.mjs'], languageOptions: { globals: globals.node } }`.
 
 - [ ] **Step 2: Write the failing tests `infra/form/handler.test.mjs`**
 
 Mocks (top of file, before importing the handler with `await import(...)` inside `beforeEach` after `vi.resetModules()`):
+
 - `@aws-sdk/lib-dynamodb`: `DynamoDBDocumentClient.from = () => ({ send: ddbSend })`, `PutCommand = class { constructor(input) { this.input = input; } }`.
 - `@aws-sdk/client-dynamodb`: `DynamoDBClient = class {}`.
 - `@aws-sdk/client-sesv2`: `SESv2Client = class { send = sesSend }`, `SendEmailCommand = class { constructor(input) { this.input = input; } }`.
@@ -238,6 +260,7 @@ Mocks (top of file, before importing the handler with `await import(...)` inside
 - `validLead = { name: 'Ola', phone: '+47 900 00 000', car: 'Porsche 911', service: 'Package Correction', message: 'Hei', lang: 'en', website: '', page: 'https://example.com/' }`.
 
 Tests:
+
 ```js
 it('stores, emails and notifies a valid lead', ...)
   // 200, body {"ok":true}, headers['content-type'] === 'application/json'
@@ -258,6 +281,7 @@ it('still succeeds when SES fails', ...)    // sesSend rejects → 200 ok; conso
 it('still succeeds when Telegram fails', ...) // fetch resolves { ok: false, status: 401 } → 200 ok; console.error called once
 it('reads SSM parameters once per container', ...) // two handler calls → GetParametersCommand constructed once
 ```
+
 Validation rules (exact): `name` 1–100 chars after trim; `phone` 5–30 chars, regex `/^[+\d\s()\-]+$/`; `car`, `service`, `page` ≤ 500; `message` ≤ 500; `lang` ∈ `no en de uk ru`; `website` must be empty (honeypot). Body limit 10 240 bytes measured on the raw (decoded) string.
 
 - [ ] **Step 3: Run tests to verify they fail**
@@ -286,10 +310,12 @@ git commit -m "Lambda-обробник заявок: валідація, DynamoD
 ### Task 6: `stella-form` stack
 
 **Files:**
+
 - Create: `infra/form.yaml`, `infra/params/form.example.json`, `infra/params/form.json` (ignored)
 - Modify: `infra/README.md`
 
 **Interfaces:**
+
 - Consumes: `infra/form/src/handler.mjs` (Task 5), `HostedZoneId`, `$DOMAIN`.
 - Produces: output `ApiUrl` = `https://api.$DOMAIN/lead`, consumed by Tasks 7–8.
 
@@ -300,6 +326,7 @@ aws ssm put-parameter --region eu-north-1 --name /stella/telegram/token --type S
 aws ssm put-parameter --region eu-north-1 --name /stella/telegram/chat-id --type SecureString --value "$TELEGRAM_CHAT_ID"
 aws sesv2 create-email-identity --region eu-north-1 --email-identity "$NOTIFY_EMAIL"
 ```
+
 Owner clicks the SES verification link. Verify: `aws sesv2 get-email-identity --region eu-north-1 --email-identity "$NOTIFY_EMAIL" --query VerifiedForSendingStatus` → `true`.
 
 - [ ] **Step 2: Write `infra/form.yaml`**
@@ -307,6 +334,7 @@ Owner clicks the SES verification link. Verify: `aws sesv2 get-email-identity --
 Parameters: `DomainName`, `HostedZoneId`, `NotifyEmail`, `AllowedOrigin` (`https://<domain>`, required), `FromLocalPart` (default `noreply`), `TelegramTokenParam` (default `/stella/telegram/token`), `TelegramChatIdParam` (default `/stella/telegram/chat-id`).
 
 Resources:
+
 - `ApiCertificate` — regional ACM for `api.${DomainName}`, DNS validation via `HostedZoneId`.
 - `LeadsTable` — `TableName: stella-leads`, `PAY_PER_REQUEST`, keys `pk` (HASH, S) + `sk` (RANGE, S), PITR enabled, `DeletionPolicy: Retain`, `UpdateReplacePolicy: Retain`.
 - `EmailIdentity` — `AWS::SES::EmailIdentity` for `DomainName`, DKIM signing enabled, `RSA_2048_BIT`; `Dkim1`, `Dkim2`, `Dkim3` CNAME records from `DkimDNSTokenName1..3` / `DkimDNSTokenValue1..3`, TTL 1800.
@@ -328,6 +356,7 @@ aws s3api head-bucket --bucket "stella-cfn-artifacts-$ACCOUNT" 2>/dev/null || aw
 aws cloudformation package --region eu-north-1 --template-file infra/form.yaml --s3-bucket "stella-cfn-artifacts-$ACCOUNT" --output-template-file "$SCRATCH/form.packaged.yaml"
 aws cloudformation deploy --region eu-north-1 --stack-name stella-form --template-file "$SCRATCH/form.packaged.yaml" --parameter-overrides file://infra/params/form.json --capabilities CAPABILITY_IAM
 ```
+
 Expected: success. Owner confirms the SNS subscription email.
 
 - [ ] **Step 4: Verify end to end**
@@ -340,6 +369,7 @@ curl -s -X POST "$API" -H 'content-type: application/json' -d '{"name":"Bot","ph
 aws dynamodb scan --region eu-north-1 --table-name stella-leads --select COUNT --query Count
 aws sesv2 get-email-identity --region eu-north-1 --email-identity "$DOMAIN" --query 'DkimAttributes.Status'
 ```
+
 Expected: preflight `HTTP/2 204` with `access-control-allow-origin: https://$DOMAIN`; first POST `{"ok":true}`; second `{"ok":false,"error":"validation"}`; count `1`; DKIM `SUCCESS` (may take up to an hour; if `PENDING`, re-check later, the email still sends once verified). Owner confirms the email and the Telegram message arrived.
 
 - [ ] **Step 5: Commit**
@@ -354,22 +384,24 @@ git commit -m "CloudFormation: HTTP API + Lambda + DynamoDB + SES + Telegram д�
 ### Task 7: Contact form posts to the API (TDD)
 
 **Files:**
+
 - Modify: `src/components/Contact.jsx`, `src/i18n/{no,en,de,uk,ru}.js` (`contact.form.error`, `contact.form.sending`)
 - Create: `src/components/Contact.test.jsx`, `.env.example`
 
 **Interfaces:**
+
 - Consumes: `renderWithProviders` (`src/test/render.jsx`), `import.meta.env.VITE_API_URL`.
 - Produces: JSON body `{ name, phone, car, service, message, lang, website, page }` matching Task 5's `validate`.
 
 - [ ] **Step 1: Add the i18n keys (exact copy)**
 
-| lang | `contact.form.error` | `contact.form.sending` |
-|---|---|---|
-| no | `Noe gikk galt. Ring oss eller prøv igjen.` | `Sender…` |
-| en | `Something went wrong. Please call us or try again.` | `Sending…` |
-| de | `Etwas ist schiefgelaufen. Rufen Sie uns an oder versuchen Sie es erneut.` | `Wird gesendet…` |
-| uk | `Щось пішло не так. Зателефонуйте нам або спробуйте ще раз.` | `Надсилаємо…` |
-| ru | `Что-то пошло не так. Позвоните нам или попробуйте ещё раз.` | `Отправляем…` |
+| lang | `contact.form.error`                                                       | `contact.form.sending` |
+| ---- | -------------------------------------------------------------------------- | ---------------------- |
+| no   | `Noe gikk galt. Ring oss eller prøv igjen.`                                | `Sender…`              |
+| en   | `Something went wrong. Please call us or try again.`                       | `Sending…`             |
+| de   | `Etwas ist schiefgelaufen. Rufen Sie uns an oder versuchen Sie es erneut.` | `Wird gesendet…`       |
+| uk   | `Щось пішло не так. Зателефонуйте нам або спробуйте ще раз.`               | `Надсилаємо…`          |
+| ru   | `Что-то пошло не так. Позвоните нам или попробуйте ещё раз.`               | `Отправляем…`          |
 
 Run: `npm test -- src/i18n/structure.test.js` → PASS (all five updated).
 
@@ -429,9 +461,11 @@ git commit -m "Форма заявки надсилає JSON на API, стан�
 ### Task 8: CI/CD cutover to AWS
 
 **Files:**
+
 - Modify: `.github/workflows/deploy.yml`, `.github/workflows/ci.yml`
 
 **Interfaces:**
+
 - Consumes: `DeployRoleArn`, `BucketName`, `DistributionId` (Task 4), `ApiUrl` (Task 6).
 
 - [ ] **Step 1: Update `deploy.yml`**
@@ -460,6 +494,7 @@ git commit -m "Деплой на AWS з GitHub Actions: VITE_API_URL, no-cache �
 git push
 gh run watch --exit-status $(gh run list --workflow "Deploy to AWS" --limit 1 --json databaseId -q '.[0].databaseId')
 ```
+
 Expected: `success`.
 
 - [ ] **Step 5: Verify**
@@ -468,6 +503,7 @@ Expected: `success`.
 curl -sI "https://$DOMAIN/" | grep -i '^cache-control'
 curl -s "https://$DOMAIN/" | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
 ```
+
 Expected: `cache-control: no-cache`; the asset hash equals the one in the workflow's build log (`dist/assets/index-*.js`). Owner submits a real lead from the live site; email and Telegram arrive.
 
 ---
@@ -475,6 +511,7 @@ Expected: `cache-control: no-cache`; the asset hash equals the one in the workfl
 ### Task 9: Switch off GitHub Pages
 
 **Files:**
+
 - Delete: `.github/workflows/pages.yml`
 - Modify: `vite.config.js` (`base: '/'`, remove the `BASE_PATH` comment)
 
@@ -492,6 +529,7 @@ git add -A
 git commit -m "Вимкнення GitHub Pages: лише AWS"
 git push
 ```
+
 Expected: `CI` and `Deploy to AWS` runs succeed; no `Deploy to GitHub Pages` run.
 
 - [ ] **Step 4: Verify**
@@ -504,6 +542,7 @@ Expected: `404` (may lag a few minutes).
 ### Task 10: Runbook and documentation cleanup
 
 **Files:**
+
 - Create: `docs/deploy-runbook.md`
 - Delete: `DEPLOY.md`
 - Modify: `README.md`, `CLAUDE.md` (Deployment section), `infra/README.md`
@@ -521,4 +560,5 @@ git add -A
 git commit -m "Runbook деплою, видалення застарілого DEPLOY.md"
 git push
 ```
+
 Expected: CI green. Done.

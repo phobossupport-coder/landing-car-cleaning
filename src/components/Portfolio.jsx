@@ -40,7 +40,15 @@ function CaseCard({ item, p }) {
         <Box
           ref={track}
           onScroll={onScroll}
-          sx={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' }, aspectRatio: '4 / 5', bgcolor: 'background.paper' }}
+          sx={{
+            display: 'flex',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': { display: 'none' },
+            aspectRatio: '4 / 5',
+            bgcolor: 'background.paper',
+          }}
         >
           {item.photos.map((n, i) => (
             <Box
@@ -56,7 +64,20 @@ function CaseCard({ item, p }) {
             />
           ))}
         </Box>
-        <Typography sx={{ position: 'absolute', top: { xs: 8, md: 14 }, right: { xs: 8, md: 14 }, fontFamily: mono, fontSize: { xs: 9, md: 11 }, letterSpacing: '0.2em', color: 'text.primary', bgcolor: 'rgba(10,10,11,0.55)', px: { xs: 0.75, md: 1.25 }, py: 0.5 }}>
+        <Typography
+          sx={{
+            position: 'absolute',
+            top: { xs: 8, md: 14 },
+            right: { xs: 8, md: 14 },
+            fontFamily: mono,
+            fontSize: { xs: 9, md: 11 },
+            letterSpacing: '0.2em',
+            color: 'text.primary',
+            bgcolor: 'rgba(10,10,11,0.55)',
+            px: { xs: 0.75, md: 1.25 },
+            py: 0.5,
+          }}
+        >
           {index + 1} / {total}
         </Typography>
         {index > 0 && (
@@ -72,7 +93,18 @@ function CaseCard({ item, p }) {
       </Box>
       <Box sx={{ pt: { xs: 1.5, md: 2.5 }, borderBottom: '1px solid', borderColor: 'divider', pb: { xs: 1.5, md: 2 } }}>
         <Typography sx={{ fontFamily: serif, fontSize: { xs: 17, md: 24 }, lineHeight: 1.15 }}>{item.name}</Typography>
-        <Typography sx={{ fontFamily: mono, fontSize: { xs: 8.5, md: 10.5 }, letterSpacing: { xs: '0.12em', md: '0.2em' }, textTransform: 'uppercase', color: 'primary.main', mt: 0.75 }}>{p.work}</Typography>
+        <Typography
+          sx={{
+            fontFamily: mono,
+            fontSize: { xs: 8.5, md: 10.5 },
+            letterSpacing: { xs: '0.12em', md: '0.2em' },
+            textTransform: 'uppercase',
+            color: 'primary.main',
+            mt: 0.75,
+          }}
+        >
+          {p.work}
+        </Typography>
       </Box>
     </Box>
   );

@@ -44,11 +44,17 @@ function Gauge({ t, stat }) {
           <circle cx={C} cy={C} r="2.2" fill="#C9A86A" />
         </Box>
         <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 0.75 }}>
-          <Typography sx={{ fontFamily: serif, fontWeight: 500, fontSize: { xs: 30, md: 38 }, lineHeight: 1 }}>{formatStat(countAt(parsed.number, t), parsed)}</Typography>
-          {stat.suffix && <Typography sx={{ fontFamily: serif, fontStyle: 'italic', fontSize: { xs: 15, md: 18 }, color: 'primary.main' }}>{stat.suffix}</Typography>}
+          <Typography sx={{ fontFamily: serif, fontWeight: 500, fontSize: { xs: 30, md: 38 }, lineHeight: 1 }}>
+            {formatStat(countAt(parsed.number, t), parsed)}
+          </Typography>
+          {stat.suffix && (
+            <Typography sx={{ fontFamily: serif, fontStyle: 'italic', fontSize: { xs: 15, md: 18 }, color: 'primary.main' }}>{stat.suffix}</Typography>
+          )}
         </Box>
       </Box>
-      <Typography sx={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'text.secondary', mt: 1.5, px: 1 }}>{stat.label}</Typography>
+      <Typography sx={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'text.secondary', mt: 1.5, px: 1 }}>
+        {stat.label}
+      </Typography>
     </Box>
   );
 }
@@ -88,7 +94,11 @@ export default function SpecStrip() {
 
   return (
     <Box component="section" sx={{ bgcolor: '#070708', borderBottom: '1px solid', borderColor: 'divider' }}>
-      <Container maxWidth="lg" ref={ref} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, rowGap: 5, py: { xs: 6, md: 8 } }}>
+      <Container
+        maxWidth="lg"
+        ref={ref}
+        sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, rowGap: 5, py: { xs: 6, md: 8 } }}
+      >
         {t.hero.stats.map((s) => (
           <Gauge key={s.label} t={progress} stat={s} />
         ))}

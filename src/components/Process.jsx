@@ -22,7 +22,13 @@ export default function Process() {
                 {p.text}
               </Typography>
               <Box sx={{ position: 'relative' }}>
-                <Box component="img" src={images.studio} alt={p.imageAlt} loading="lazy" sx={{ width: 1, aspectRatio: '4 / 3', objectFit: 'cover', filter: 'grayscale(0.35) contrast(1.05)', display: 'block' }} />
+                <Box
+                  component="img"
+                  src={images.studio}
+                  alt={p.imageAlt}
+                  loading="lazy"
+                  sx={{ width: 1, aspectRatio: '4 / 3', objectFit: 'cover', filter: 'grayscale(0.35) contrast(1.05)', display: 'block' }}
+                />
                 <Box sx={{ position: 'absolute', inset: 14, border: '1px solid rgba(255,255,255,0.18)', pointerEvents: 'none' }} />
               </Box>
             </Reveal>
@@ -32,8 +38,22 @@ export default function Process() {
           <Stack>
             {p.steps.map((s, i) => (
               <Reveal key={s.title} delay={i * 80}>
-                <Stack direction="row" spacing={{ xs: 3, md: 5 }} sx={{ py: { xs: 4, md: 5 }, borderBottom: '1px solid', borderColor: 'divider', '&:first-of-type': { pt: 0 } }}>
-                  <Typography sx={{ fontFamily: serif, fontStyle: 'italic', fontSize: { xs: 44, md: 64 }, lineHeight: 0.9, color: 'primary.main', opacity: 0.85, minWidth: { xs: 56, md: 88 } }}>
+                <Stack
+                  direction="row"
+                  spacing={{ xs: 3, md: 5 }}
+                  sx={{ py: { xs: 4, md: 5 }, borderBottom: '1px solid', borderColor: 'divider', '&:first-of-type': { pt: 0 } }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: serif,
+                      fontStyle: 'italic',
+                      fontSize: { xs: 44, md: 64 },
+                      lineHeight: 0.9,
+                      color: 'primary.main',
+                      opacity: 0.85,
+                      minWidth: { xs: 56, md: 88 },
+                    }}
+                  >
                     {String(i + 1).padStart(2, '0')}
                   </Typography>
                   <Box>

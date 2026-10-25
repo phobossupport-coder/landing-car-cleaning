@@ -19,16 +19,41 @@ export default function Footer() {
           <Logo />
           <Stack direction="row" flexWrap="wrap" columnGap={3} rowGap={1}>
             {nav.map((n) => (
-              <Typography key={n.href} component="a" href={n.href} variant="overline" sx={{ fontFamily: mono, letterSpacing: '0.22em', fontSize: '0.62rem', color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+              <Typography
+                key={n.href}
+                component="a"
+                href={n.href}
+                variant="overline"
+                sx={{
+                  fontFamily: mono,
+                  letterSpacing: '0.22em',
+                  fontSize: '0.62rem',
+                  color: 'text.secondary',
+                  textDecoration: 'none',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
                 {n.label}
               </Typography>
             ))}
           </Stack>
           <Stack direction="row" spacing={1}>
-            <IconButton href={brand.instagram} target="_blank" rel="noopener" aria-label="Instagram" sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}>
+            <IconButton
+              href={brand.instagram}
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
+            >
               <InstagramIcon fontSize="small" />
             </IconButton>
-            <IconButton href={whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp" sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}>
+            <IconButton
+              href={whatsapp}
+              target="_blank"
+              rel="noopener"
+              aria-label="WhatsApp"
+              sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
+            >
               <WhatsAppIcon fontSize="small" />
             </IconButton>
           </Stack>
@@ -47,7 +72,17 @@ export default function Footer() {
         target="_blank"
         rel="noopener"
         aria-label={t.footer.whatsapp}
-        sx={{ display: { xs: 'none', md: 'inline-flex' }, position: 'fixed', right: 20, bottom: 20, bgcolor: '#111113', color: '#F4F1EA', border: '1px solid', borderColor: 'divider', '&:hover': { bgcolor: '#1A1A1D', borderColor: 'primary.main', color: 'primary.main' } }}
+        sx={{
+          display: { xs: 'none', md: 'inline-flex' },
+          position: 'fixed',
+          right: 20,
+          bottom: 20,
+          bgcolor: '#111113',
+          color: '#F4F1EA',
+          border: '1px solid',
+          borderColor: 'divider',
+          '&:hover': { bgcolor: '#1A1A1D', borderColor: 'primary.main', color: 'primary.main' },
+        }}
       >
         <WhatsAppIcon />
       </Fab>

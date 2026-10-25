@@ -59,9 +59,33 @@ parts.push(`[joined]${GRADE},fps=${fps.toFixed(4)},scale=${OUT_W}:${OUT_H}:flags
 rmSync(OUT_DIR, { recursive: true, force: true });
 mkdirSync(join(OUT_DIR, 'frames'), { recursive: true });
 
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', video, '-filter_complex', parts.join(';'), '-map', '[out]', '-an', '-c:v', 'libwebp', '-quality', '72', '-compression_level', '6', join(OUT_DIR, 'frames', '%04d.webp')], { stdio: 'inherit' });
+execFileSync(
+  ffmpeg,
+  [
+    '-v',
+    'error',
+    '-y',
+    '-i',
+    video,
+    '-filter_complex',
+    parts.join(';'),
+    '-map',
+    '[out]',
+    '-an',
+    '-c:v',
+    'libwebp',
+    '-quality',
+    '72',
+    '-compression_level',
+    '6',
+    join(OUT_DIR, 'frames', '%04d.webp'),
+  ],
+  { stdio: 'inherit' },
+);
 
-const frames = readdirSync(join(OUT_DIR, 'frames')).filter((f) => f.endsWith('.webp')).sort();
+const frames = readdirSync(join(OUT_DIR, 'frames'))
+  .filter((f) => f.endsWith('.webp'))
+  .sort();
 const count = frames.length;
 const bounds = cuts.map((t) => Math.min(count - 1, Math.round(t * fps)));
 const edges = [0, ...bounds, count - 1];
@@ -73,7 +97,20 @@ execFileSync(ffmpeg, ['-v', 'error', '-y', '-i', join(OUT_DIR, 'frames', frames[
 // Контактний аркуш для перевірки «жодного DD73» перед комітом.
 const sheetDir = mkdtempSync(join(tmpdir(), 'hero-sheet-'));
 const sheet = join(sheetDir, 'sheet.jpg');
-execFileSync(ffmpeg, ['-v', 'error', '-y', '-framerate', '1', '-i', join(OUT_DIR, 'frames', '%04d.webp'), '-vf', `scale=150:-1,tile=12x${Math.ceil(count / 12)}`, '-frames:v', '1', sheet]);
+execFileSync(ffmpeg, [
+  '-v',
+  'error',
+  '-y',
+  '-framerate',
+  '1',
+  '-i',
+  join(OUT_DIR, 'frames', '%04d.webp'),
+  '-vf',
+  `scale=150:-1,tile=12x${Math.ceil(count / 12)}`,
+  '-frames:v',
+  '1',
+  sheet,
+]);
 
 const size = frames.reduce((a, f) => a + statSync(join(OUT_DIR, 'frames', f)).size, 0);
 console.log(`frames: ${count}, total ${(size / 1024 / 1024).toFixed(2)} MB, poster ${(statSync(join(OUT_DIR, 'poster.jpg')).size / 1024).toFixed(0)} KB`);
