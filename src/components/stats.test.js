@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countAt, formatStat, parseStat } from './stats';
+import { countAt, formatStat, parseStat, yearsSince } from './stats';
 
 describe('parseStat / formatStat', () => {
   it.each(['1 200+', '1,200+', '1 200+', '100%', '9'])('round-trips %s', (v) => {
@@ -32,5 +32,12 @@ describe('countAt', () => {
       expect(v).toBeGreaterThanOrEqual(prev);
       prev = v;
     }
+  });
+});
+
+describe('yearsSince', () => {
+  it('counts full calendar years from the start year', () => {
+    expect(yearsSince(2017, new Date(2026, 9, 25))).toBe(9);
+    expect(yearsSince(2017, new Date(2027, 0, 1))).toBe(10);
   });
 });

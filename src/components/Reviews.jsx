@@ -1,13 +1,12 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Section, { SectionTitle } from './Section';
 import Reveal from './Reveal';
-import { reviewCars } from '../data';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
 
 export default function Reviews() {
   const { t } = useLang();
-  const reviews = t.reviews.items.map((r, i) => ({ ...r, car: reviewCars[i] }));
+  const reviews = t.reviews.items;
   return (
     <Section id="reviews" dark>
       <SectionTitle overline={t.reviews.overline} title={t.reviews.title} />
@@ -29,12 +28,7 @@ export default function Reviews() {
                 <Typography sx={{ flex: 1, mb: 4, fontFamily: serif, fontSize: '1.35rem', lineHeight: 1.45 }}>{r.text}</Typography>
                 <Stack direction="row" spacing={2} alignItems="center">
                   <Box sx={{ width: 28, height: '1px', bgcolor: 'primary.main' }} />
-                  <Box>
-                    <Typography sx={{ fontWeight: 600, fontSize: 14 }}>{r.name}</Typography>
-                    <Typography variant="overline" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
-                      {r.car}
-                    </Typography>
-                  </Box>
+                  <Typography sx={{ fontWeight: 600, fontSize: 14 }}>{r.name}</Typography>
                 </Stack>
               </Box>
             </Reveal>

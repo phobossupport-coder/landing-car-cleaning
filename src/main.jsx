@@ -13,6 +13,9 @@ import theme from './theme';
 import { LanguageProvider } from './i18n';
 import { BookingProvider } from './booking';
 import App from './App';
+import { initAnalytics } from './analytics';
+
+initAnalytics();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

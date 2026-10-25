@@ -61,6 +61,10 @@ export default function Footer() {
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mt: 5 }}>
           <Typography variant="body2" color="text.secondary" sx={{ fontSize: 12 }}>
             © {new Date().getFullYear()} {brand.name} {brand.tagline}. {t.footer.rights}
+            {brand.orgNr && ` Org.nr. ${brand.orgNr}.`}{' '}
+            <Box component="a" href="#privacy" sx={{ color: 'inherit', '&:hover': { color: 'primary.main' } }}>
+              {t.privacy.link}
+            </Box>
           </Typography>
           <LanguageSwitch />
         </Stack>

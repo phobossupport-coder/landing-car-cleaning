@@ -11,6 +11,7 @@ import { brand, whatsappLink } from '../data';
 import { useLang } from '../i18n';
 import { serviceOptions, useBooking, useWhatsappLink } from '../booking';
 import { canSendLead, leadText, sendLead } from '../lead';
+import { trackEvent } from '../analytics';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -50,6 +51,7 @@ export default function Contact() {
     } else {
       window.open(whatsappLink(text), '_blank', 'noopener');
     }
+    trackEvent('form');
     form.reset();
     setService('');
     setDetails(false);
@@ -150,7 +152,13 @@ export default function Contact() {
                   <Button type="submit" variant="contained" size="large" fullWidth disabled={sending} sx={{ mt: 1 }}>
                     {f.submit}
                   </Button>
-                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2, textAlign: 'center' }}>
+                  <Typography
+                    component="a"
+                    href="#privacy"
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{ display: 'block', mt: 2, textAlign: 'center', textDecorationColor: 'rgba(244,241,234,0.3)', '&:hover': { color: 'primary.main' } }}
+                  >
                     {f.consent}
                   </Typography>
                 </Grid>

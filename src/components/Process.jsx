@@ -1,7 +1,7 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { images } from '../data';
+import { portfolioSrc } from '../data';
 import { serif } from '../theme';
 import { useLang } from '../i18n';
 
@@ -24,7 +24,9 @@ export default function Process() {
               <Box sx={{ position: 'relative' }}>
                 <Box
                   component="img"
-                  src={images.studio}
+                  src={portfolioSrc('bmw-m5-matte', 2, 1080)}
+                  srcSet={`${portfolioSrc('bmw-m5-matte', 2, 640)} 640w, ${portfolioSrc('bmw-m5-matte', 2, 1080)} 1080w`}
+                  sizes="(min-width: 900px) 40vw, 100vw"
                   alt={p.imageAlt}
                   loading="lazy"
                   sx={{ width: 1, aspectRatio: '4 / 3', objectFit: 'cover', filter: 'grayscale(0.35) contrast(1.05)', display: 'block' }}

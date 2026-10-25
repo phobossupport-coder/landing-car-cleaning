@@ -12,6 +12,7 @@ import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
+import Privacy from './components/Privacy';
 import Footer from './components/Footer';
 import MobileBar from './components/MobileBar';
 
@@ -36,6 +37,7 @@ export default function App() {
       </main>
       <Footer />
       <MobileBar />
+      <Privacy />
     </>
   );
 }

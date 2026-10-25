@@ -195,6 +195,18 @@ Source Control → введіть повідомлення → **Commit** → **
 
 Поки ключа немає, форма відкриває WhatsApp з уже написаною заявкою (номер з `brand.whatsapp` у `src/data.js`).
 
+## 6а. Статистика відвідувань
+
+[GoatCounter](https://www.goatcounter.com) — безкоштовно, без cookies (банер згоди не потрібен). Рахує відвідування і натискання «Подзвонити», WhatsApp, Telegram та відправку форми (`src/analytics.js`).
+
+1. Зареєструйтесь на goatcounter.com і оберіть код сайту, наприклад `stella` (адреса статистики — stella.goatcounter.com).
+2. Додайте код у GitHub: Settings → Secrets and variables → Actions → Variables → `GOATCOUNTER`.
+3. Після наступного деплою в політиці конфіденційності автоматично з'явиться розділ про статистику.
+
+## 6б. Org.nr і політика конфіденційності
+
+Номер організації впишіть у `brand.orgNr` у `src/data.js`: він з'явиться у футері та в політиці конфіденційності (відкривається за посиланням `#privacy`, тексти — `privacy` у `src/i18n/<мова>.js`).
+
 Альтернатива в межах AWS: API Gateway + Lambda + SES (або відправка в Telegram-бот).
 
 ---

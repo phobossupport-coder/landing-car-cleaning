@@ -19,3 +19,6 @@ export const easeOutCubic = (t) => 1 - (1 - t) ** 3;
 export function countAt(target, t) {
   return Math.round(target * easeOutCubic(Math.min(1, Math.max(0, t))));
 }
+
+// Роки досвіду рахуються від року початку роботи, щоб цифра не застарівала.
+export const yearsSince = (year, now = new Date()) => now.getFullYear() - year;

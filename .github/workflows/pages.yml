@@ -40,6 +40,7 @@ jobs:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
           SITE_URL: ${{ steps.pages.outputs.base_url }}/
           VITE_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
+          VITE_GOATCOUNTER: ${{ vars.GOATCOUNTER }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

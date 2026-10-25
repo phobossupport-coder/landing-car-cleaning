@@ -5,11 +5,12 @@ const img = (id, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit
 export const brand = {
   name: 'STELLA',
   tagline: 'Detailing Studio',
-  phone: '+47 939 38 230',
+  phone: '+47\u00A0939\u00A038\u00A0230', // нерозривні пробіли: номер не переноситься
   phoneHref: 'tel:+4793938230',
   whatsapp: 'https://wa.me/4793938230',
   telegram: 'https://t.me/+4793938230',
   since: 2017,
+  orgNr: '', // номер у Brønnøysundregistrene, показується у футері, коли заповнений
 };
 
 // Посилання на WhatsApp з готовим текстом повідомлення.
@@ -17,25 +18,24 @@ export const whatsappLink = (text) => `${brand.whatsapp}?text=${encodeURICompone
 
 export const images = {
   hero: img('photo-1617814076367-b759c7d7e738', 2400),
-  studio: img('photo-1607860108855-64acf2078ed9', 1400),
   winter: img('photo-1485291571150-772bcfc10da5', 1800),
   yacht: img('photo-1567899378494-47b22a2ae96a', 2400),
 };
 
-// Бігова дорожка: марки авто (верхній ряд) і яхтові верфі (нижній ряд).
+// Бігова дорожка «Усі марки»: спершу марки з власного портфоліо, далі ті, з якими теж працюємо.
 export const carBrands = [
-  'Rolls-Royce',
+  'Mercedes-AMG',
+  'BMW M',
+  'Chevrolet Corvette',
+  'Volkswagen',
+  'Porsche',
+  'Audi RS',
+  'Range Rover',
+  'Tesla',
+  'Volvo',
+  'Lexus',
   'Bentley',
   'Ferrari',
-  'Lamborghini',
-  'Porsche',
-  'Mercedes-Maybach',
-  'Aston Martin',
-  'McLaren',
-  'Range Rover',
-  'Bugatti',
-  'Maserati',
-  'Cadillac Escalade',
 ];
 
 // Якорі навігації та секцій — однакові для всіх мов.
@@ -87,5 +87,3 @@ export const portfolioCases = [
 ];
 
 export const portfolioSrc = (id, n, w) => `${import.meta.env.BASE_URL}portfolio/${id}/${n}-${w}.webp`;
-
-export const reviewCars = ['Rolls-Royce Ghost', 'Porsche 911 Turbo S', 'BMW M5 Competition'];

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Container, Typography, useMediaQuery } from '@mui/material';
 import Marquee from './Marquee';
-import { carBrands } from '../data';
+import { brand, carBrands } from '../data';
 import { mono, serif } from '../theme';
 import { useLang } from '../i18n';
-import { countAt, easeOutCubic, formatStat, parseStat } from './stats';
+import { countAt, easeOutCubic, formatStat, parseStat, yearsSince } from './stats';
 
 const DURATION = 1200; // мс, «накручування» стрілки
 const FILL = 0.82; // стрілка зупиняється перед «червоною зоною», як на справжньому тахометрі
@@ -100,7 +100,7 @@ export default function SpecStrip() {
         sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, rowGap: 5, py: { xs: 6, md: 8 } }}
       >
         {t.hero.stats.map((s) => (
-          <Gauge key={s.label} t={progress} stat={s} />
+          <Gauge key={s.label} t={progress} stat={s.value === '{years}' ? { ...s, value: String(yearsSince(brand.since)) } : s} />
         ))}
       </Container>
       <Marquee label={t.hero.marqueeCars} items={carBrands} speed={70} />

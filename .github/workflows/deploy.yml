@@ -32,6 +32,7 @@ jobs:
       - run: npm run build
         env:
           VITE_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
+          VITE_GOATCOUNTER: ${{ vars.GOATCOUNTER }}
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
