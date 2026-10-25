@@ -8,8 +8,8 @@ export default {
     title: 'Stella Detailing — mobil bildetailing i Oslo',
     description: 'Mobil bildetailing i Oslo: lakkorreksjon, keramisk coating, komplett vinterklargjøring. Vi kommer hjem til deg, til jobben eller parkeringsplassen. Vi tar også båter.',
   },
-  nav: ['Tjenester', 'Vinter', 'Pakker', 'Yachter', 'Arbeider', 'Omtaler', 'FAQ'],
-  header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk' },
+  nav: ['Tjenester', 'Vinter', 'Pakker', 'Yachter', 'Portefølje', 'Omtaler', 'FAQ'],
+  header: { cta: 'Bestill', menu: 'Meny', close: 'Lukk', language: 'Språk', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobil bildetailing',
     title1: 'Perfeksjon',
@@ -18,7 +18,13 @@ export default {
     cta1: 'Gratis befaring',
     note: 'Lakkmåling · Uforpliktende · Vi svarer innen 15 minutter',
     cta2: 'Tjenester',
-    side: 'Detailing Studio · Est. 2017',
+    skip: 'Hopp over',
+    stops: [
+      { title: 'Lakkorreksjon', text: 'Opptil 90 % av defektene fjernet: hologrammer, swirls, riper.' },
+      { title: 'Keramisk coating', text: '9H med opptil 5 års garanti: fargedybde og vannavvisning.' },
+      { title: 'Felger og kalipere', text: 'Grundig rens og keramikk mot bremsestøv og veisalt.' },
+      { title: 'Interiørdetailing', text: 'Skinn, Alcantara, dyprens og beskyttelse — som ny.' },
+    ],
     stats: [
       { value: '1 200+', label: 'biler betrodd oss' },
       { value: '100%', label: 'oppdrag med fotorapport' },
@@ -120,11 +126,13 @@ export default {
       { title: 'Levering', text: 'Sluttinspeksjon sammen med deg, pleieveiledning, garantisertifikat.' },
     ],
   },
-  gallery: {
+  portfolio: {
     overline: 'Portefølje',
     title: 'Nylige oppdrag',
     subtitle: 'Hvert arbeid – med fotorapport og målinger før og etter.',
-    works: ['Lakkorreksjon + keramikk', 'Concours', 'Vinterklargjøring', 'Interiørdetailing', 'Keramikk', 'Polering av gelcoat'],
+    work: 'Lakkorreksjon + keramikk',
+    prev: 'Forrige bilde',
+    next: 'Neste bilde',
   },
   reviews: {
     overline: 'Omtaler',

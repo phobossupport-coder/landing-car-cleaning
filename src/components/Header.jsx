@@ -18,19 +18,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { brand, navHrefs } from '../data';
-import { serif } from '../theme';
+import { mono, serif } from '../theme';
 import { useLang } from '../i18n';
 import LanguageSwitch from './LanguageSwitch';
 
+// Логотип і дрібний моно-підпис у два рядки, як у Valmora.
 export function Logo() {
+  const { t } = useLang();
   return (
-    <Box component="a" href="#top" sx={{ display: 'flex', alignItems: 'baseline', gap: 1.5, color: 'inherit', textDecoration: 'none' }}>
+    <Box component="a" href="#top" sx={{ display: 'flex', alignItems: 'center', gap: 2, color: 'inherit', textDecoration: 'none' }}>
       <Typography sx={{ fontFamily: serif, fontWeight: 600, fontSize: 26, letterSpacing: '0.28em', lineHeight: 1 }}>
         {brand.name}
       </Typography>
-      <Typography variant="overline" color="primary" sx={{ fontSize: 8.5, display: { xs: 'none', sm: 'block', md: 'none', xl: 'block' }, lineHeight: 1, whiteSpace: 'nowrap' }}>
-        {brand.tagline}
-      </Typography>
+      <Box sx={{ display: { xs: 'none', sm: 'block' }, pl: 2, borderLeft: '1px solid', borderColor: 'divider' }}>
+        {t.header.tagline.map((line) => (
+          <Typography key={line} sx={{ fontFamily: mono, fontSize: 9, letterSpacing: '0.16em', lineHeight: 1.6, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+            {line}
+          </Typography>
+        ))}
+      </Box>
     </Box>
   );
 }
@@ -49,7 +55,7 @@ export default function Header() {
         bgcolor: scrolled ? 'rgba(10,10,11,0.82)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px) saturate(1.2)' : 'none',
         borderBottom: '1px solid',
-        borderColor: scrolled ? 'divider' : 'transparent',
+        borderColor: 'divider',
         transition: 'all .4s ease',
       }}
     >
@@ -65,9 +71,10 @@ export default function Header() {
                 sx={{
                   color: 'text.secondary',
                   textDecoration: 'none',
-                  fontSize: 11.5,
-                  fontWeight: 500,
-                  letterSpacing: '0.12em',
+                  fontFamily: mono,
+                  fontSize: 10.5,
+                  fontWeight: 400,
+                  letterSpacing: '0.22em',
                   whiteSpace: 'nowrap',
                   textTransform: 'uppercase',
                   position: 'relative',
@@ -91,12 +98,13 @@ export default function Header() {
             >
               {brand.phone}
             </Button>
-            <Button href="#contact" variant="outlined" sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 1.25, px: 2.5, whiteSpace: 'nowrap' }}>
+            {/* Золоте текстове посилання замість кнопки — як «Private viewing» у Valmora */}
+            <Typography component="a" href="#contact" sx={{ display: { xs: 'none', sm: 'block' }, fontFamily: mono, fontSize: 10.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'primary.main', textDecoration: 'none', whiteSpace: 'nowrap', pb: 0.5, borderBottom: '1px solid', borderColor: 'rgba(201,168,106,0.5)', '&:hover': { color: 'primary.light', borderColor: 'primary.light' } }}>
               {t.header.cta}
+            </Typography>
+            <Button color="inherit" onClick={() => setOpen(true)} endIcon={<MenuIcon />} aria-label={t.header.menu} sx={{ display: { lg: 'none' }, fontFamily: mono, fontSize: 10.5, letterSpacing: '0.22em', minWidth: 0, px: 1 }}>
+              {t.header.menu}
             </Button>
-            <IconButton color="inherit" onClick={() => setOpen(true)} sx={{ display: { lg: 'none' } }} aria-label={t.header.menu}>
-              <MenuIcon />
-            </IconButton>
           </Stack>
         </Toolbar>
       </Container>

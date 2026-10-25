@@ -7,8 +7,8 @@ export default {
     title: 'Stella Detailing — mobiles Auto-Detailing in Oslo',
     description: 'Mobiles Auto-Detailing in Oslo: Lackkorrektur, Keramikversiegelung, komplette Wintervorbereitung. Wir kommen zu Ihnen nach Hause, ins Büro oder auf den Parkplatz. Auf Wunsch auch Yachten.',
   },
-  nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Arbeiten', 'Bewertungen', 'FAQ'],
-  header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache' },
+  nav: ['Leistungen', 'Winter', 'Pakete', 'Yachten', 'Portfolio', 'Bewertungen', 'FAQ'],
+  header: { cta: 'Buchen', menu: 'Menü', close: 'Schließen', language: 'Sprache', tagline: ['Mobile detailing', 'Oslo · est. 2017'] },
   hero: {
     eyebrow: 'Mobiles Auto-Detailing',
     title1: 'Perfektion',
@@ -17,7 +17,13 @@ export default {
     cta1: 'Kostenloser Check',
     note: 'Lackmessung · Unverbindlich · Antwort innerhalb von 15 Minuten',
     cta2: 'Leistungen',
-    side: 'Detailing Studio · Est. 2017',
+    skip: 'Überspringen',
+    stops: [
+      { title: 'Lackkorrektur', text: 'Bis zu 90 % der Defekte entfernt: Hologramme, Swirls, Kratzer.' },
+      { title: 'Keramikversiegelung', text: '9H mit bis zu 5 Jahren Garantie: Farbtiefe und Abperleffekt.' },
+      { title: 'Felgen & Bremssättel', text: 'Tiefenreinigung und Keramik gegen Bremsstaub und Streusalz.' },
+      { title: 'Innenraumaufbereitung', text: 'Leder, Alcantara, Tiefenreinigung und Schutz — wie neu.' },
+    ],
     stats: [
       { value: '1 200+', label: 'Autos uns anvertraut' },
       { value: '100%', label: 'Aufträge mit Fotobericht' },
@@ -119,11 +125,13 @@ export default {
       { title: 'Übergabe', text: 'Endabnahme gemeinsam mit Ihnen, Pflegeanleitung, Garantiezertifikat.' },
     ],
   },
-  gallery: {
+  portfolio: {
     overline: 'Portfolio',
     title: 'Aktuelle Arbeiten',
     subtitle: 'Jede Arbeit – mit Fotobericht und Messungen vorher und nachher.',
-    works: ['Lackkorrektur + Keramik', 'Concours', 'Wintervorbereitung', 'Innenraum-Detailing', 'Keramik', 'Gelcoat-Politur'],
+    work: 'Lackkorrektur + Keramik',
+    prev: 'Vorheriges Foto',
+    next: 'Nächstes Foto',
   },
   reviews: {
     overline: 'Bewertungen',

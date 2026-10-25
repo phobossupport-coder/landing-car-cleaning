@@ -5,6 +5,7 @@ import { Logo } from './Header';
 import { brand, navHrefs } from '../data';
 import { useLang } from '../i18n';
 import LanguageSwitch from './LanguageSwitch';
+import { mono } from '../theme';
 import { useWhatsappLink } from '../booking';
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
           <Logo />
           <Stack direction="row" flexWrap="wrap" columnGap={3} rowGap={1}>
             {nav.map((n) => (
-              <Typography key={n.href} component="a" href={n.href} variant="overline" sx={{ fontSize: '0.62rem', color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+              <Typography key={n.href} component="a" href={n.href} variant="overline" sx={{ fontFamily: mono, letterSpacing: '0.22em', fontSize: '0.62rem', color: 'text.secondary', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
                 {n.label}
               </Typography>
             ))}

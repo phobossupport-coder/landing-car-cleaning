@@ -1,5 +1,6 @@
 import Header from './components/Header';
-import Hero from './components/Hero';
+import HeroStory from './components/HeroStory';
+import SpecStrip from './components/SpecStrip';
 import Mobile from './components/Mobile';
 import Services from './components/Services';
 import Winter from './components/Winter';
@@ -7,7 +8,7 @@ import BeforeAfter from './components/BeforeAfter';
 import Yachts from './components/Yachts';
 import Packages from './components/Packages';
 import Process from './components/Process';
-import Gallery from './components/Gallery';
+import Portfolio from './components/Portfolio';
 import Reviews from './components/Reviews';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
@@ -18,8 +19,9 @@ export default function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <HeroStory />
       <main>
+        <SpecStrip />
         <Mobile />
         <Services />
         <Winter />
@@ -27,7 +29,7 @@ export default function App() {
         <Packages />
         <Yachts />
         <Process />
-        <Gallery />
+        <Portfolio />
         <Reviews />
         <Faq />
         <Contact />

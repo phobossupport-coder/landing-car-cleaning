@@ -7,13 +7,17 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "hero:frames": "node scripts/hero-frames.mjs",
+    "portfolio:photos": "node scripts/portfolio-photos.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fontsource/cormorant-garamond": "^5.3.0",
     "@fontsource/inter": "^5.1.0",
+    "@fontsource/jetbrains-mono": "^5.1.1",
     "@mui/icons-material": "^7.3.0",
     "@mui/material": "^7.3.0",
     "react": "^18.3.1",
@@ -21,7 +25,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.3",
-    "vite": "^5.4.10"
+    "ffmpeg-static": "^5.2.0",
+    "jsdom": "^25.0.1",
+    "sharp": "^0.33.5",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.9"
   },
   "engines": {
     "node": ">=20"

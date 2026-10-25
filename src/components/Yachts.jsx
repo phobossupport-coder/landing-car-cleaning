@@ -32,7 +32,7 @@ export default function Yachts() {
         <Grid container spacing={{ xs: 5, md: 10 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Reveal>
-              <Eyebrow align="left">{yachts.eyebrow}</Eyebrow>
+              <Eyebrow align="left" section="yachts">{yachts.eyebrow}</Eyebrow>
               <Typography variant="h3" component="h2" sx={{ mt: 2, mb: 2 }}>
                 {yachts.title1}{' '}
                 <Box component="span" sx={{ fontStyle: 'italic', color: 'primary.main' }}>

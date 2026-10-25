@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Slide, useScrollTrigger } from '@mui/material';
+import { Box, Button, Slide } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { brand } from '../data';
 import { useLang } from '../i18n';
 import { useWhatsappLink } from '../booking';
 
-// Липка панель на телефоні: з'являється після Hero й ховається, коли видно форму або футер.
+// Липка панель на телефоні: з'являється, коли hero повністю прокручено, і ховається, коли видно форму або футер.
 export default function MobileBar() {
   const { t } = useLang();
   const whatsapp = useWhatsappLink();
-  const pastHero = useScrollTrigger({ disableHysteresis: true, threshold: 480 });
+  const [heroVisible, setHeroVisible] = useState(true);
   const [formVisible, setFormVisible] = useState(false);
 
   useEffect(() => {
@@ -21,12 +21,18 @@ export default function MobileBar() {
       setFormVisible(visible.size > 0);
     });
     targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const hero = document.getElementById('top');
+    const heroObserver = new IntersectionObserver(([e]) => setHeroVisible(e.isIntersecting));
+    if (hero) heroObserver.observe(hero);
+    return () => {
+      observer.disconnect();
+      heroObserver.disconnect();
+    };
   }, []);
 
   const item = { flex: 1, minWidth: 0, px: 1, py: 1.75, borderRadius: 0, fontSize: 11.5, letterSpacing: '0.06em', whiteSpace: 'nowrap', '& .MuiButton-startIcon': { mr: 0.75 } };
   return (
-    <Slide direction="up" in={pastHero && !formVisible}>
+    <Slide direction="up" in={!heroVisible && !formVisible}>
       <Box
         sx={{
           display: { xs: 'flex', md: 'none' },
