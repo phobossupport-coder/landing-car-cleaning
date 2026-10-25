@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Alert, Box, Button, Collapse, Grid, MenuItem, Snackbar, Stack, TextField, Typography } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
 import { brand, whatsappLink } from '../data';
 import { useLang } from '../i18n';
-import { serviceOptions, useBooking } from '../booking';
+import { serviceOptions, useBooking, useWhatsappLink } from '../booking';
 import { canSendLead, leadText, sendLead } from '../lead';
 
 export default function Contact() {
@@ -19,8 +21,11 @@ export default function Contact() {
   const { t } = useLang();
   const c = t.contact;
   const f = c.form;
+  const whatsapp = useWhatsappLink();
   const contacts = [
     { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
+    { icon: WhatsAppIcon, label: 'WhatsApp', href: whatsapp, external: true },
+    { icon: TelegramIcon, label: 'Telegram', href: brand.telegram, external: true },
     { icon: PlaceOutlinedIcon, label: c.area },
     { icon: AccessTimeIcon, label: c.hours },
   ];
@@ -81,7 +86,7 @@ export default function Contact() {
               {c.text}
             </Typography>
             <Stack spacing={2.5}>
-              {contacts.map(({ icon: Icon, label, href }) => (
+              {contacts.map(({ icon: Icon, label, href, external }) => (
                 <Stack key={label} direction="row" spacing={2} alignItems="center">
                   <Box sx={{ width: 44, height: 44, border: '1px solid', borderColor: 'divider', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <Icon color="primary" sx={{ fontSize: 18 }} />
@@ -89,6 +94,8 @@ export default function Contact() {
                   <Typography
                     component={href ? 'a' : 'span'}
                     href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener' : undefined}
                     sx={{ color: 'text.primary', textDecoration: 'none', transition: 'color .3s', '&:hover': href && { color: 'primary.main' } }}
                   >
                     {label}

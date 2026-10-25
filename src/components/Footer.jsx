@@ -1,5 +1,6 @@
 import { Box, Container, Fab, IconButton, Stack, Typography } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import { Logo } from './Header';
 import { brand, navHrefs } from '../data';
 import { useLang } from '../i18n';
@@ -45,6 +46,15 @@ export default function Footer() {
               sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
             >
               <WhatsAppIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              href={brand.telegram}
+              target="_blank"
+              rel="noopener"
+              aria-label="Telegram"
+              sx={{ border: '1px solid', borderColor: 'divider', '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
+            >
+              <TelegramIcon fontSize="small" />
             </IconButton>
           </Stack>
         </Stack>

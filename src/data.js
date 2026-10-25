@@ -8,6 +8,7 @@ export const brand = {
   phone: '+47 939 38 230',
   phoneHref: 'tel:+4793938230',
   whatsapp: 'https://wa.me/4793938230',
+  telegram: 'https://t.me/+4793938230',
   since: 2017,
 };
 
