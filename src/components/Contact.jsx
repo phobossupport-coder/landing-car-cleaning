@@ -6,12 +6,15 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Section, { Eyebrow } from './Section';
 import Reveal from './Reveal';
-import { brand } from '../data';
+import { brand, whatsappLink } from '../data';
 import { useLang } from '../i18n';
 import { serviceOptions, useBooking } from '../booking';
+import { canSendLead, leadText, sendLead } from '../lead';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [details, setDetails] = useState(false);
   const { service, setService } = useBooking();
   const { t } = useLang();
@@ -20,16 +23,31 @@ export default function Contact() {
   const contacts = [
     { icon: PhoneIcon, label: brand.phone, href: brand.phoneHref },
     { icon: MailOutlineIcon, label: brand.email, href: `mailto:${brand.email}` },
-    { icon: PlaceOutlinedIcon, label: brand.address },
+    { icon: PlaceOutlinedIcon, label: c.area },
     { icon: AccessTimeIcon, label: c.hours },
   ];
   const options = serviceOptions(t);
 
-  // Форма без бекенду: підключіть Formspree / Web3Forms / AWS Lambda —
-  // див. DEPLOY.md, розділ «Форма заявки».
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const fields = Object.fromEntries(new FormData(form));
+    fields.service = options.find((o) => o.id === service)?.label ?? '';
+    const text = leadText(fields, f);
+    if (canSendLead()) {
+      setSending(true);
+      try {
+        await sendLead(fields, text);
+      } catch {
+        setFailed(true);
+        return;
+      } finally {
+        setSending(false);
+      }
+    } else {
+      window.open(whatsappLink(text), '_blank', 'noopener');
+    }
+    form.reset();
     setService('');
     setDetails(false);
     setSent(true);
@@ -124,7 +142,7 @@ export default function Contact() {
                   </Collapse>
                 </Grid>
                 <Grid size={12}>
-                  <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 1 }}>
+                  <Button type="submit" variant="contained" size="large" fullWidth disabled={sending} sx={{ mt: 1 }}>
                     {f.submit}
                   </Button>
                   <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2, textAlign: 'center' }}>
@@ -139,6 +157,11 @@ export default function Contact() {
       <Snackbar open={sent} autoHideDuration={5000} onClose={() => setSent(false)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert severity="success" variant="filled" onClose={() => setSent(false)}>
           {f.success}
+        </Alert>
+      </Snackbar>
+      <Snackbar open={failed} autoHideDuration={8000} onClose={() => setFailed(false)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+        <Alert severity="error" variant="filled" onClose={() => setFailed(false)}>
+          {f.error}
         </Alert>
       </Snackbar>
     </Section>

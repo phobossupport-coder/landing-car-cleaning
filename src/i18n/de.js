@@ -236,6 +236,7 @@ export default {
     title: 'Kostenlose Besichtigung buchen',
     text: 'Wir beurteilen den Zustand von Lack oder Gelcoat, nehmen Messungen vor und schlagen die beste Lösung vor. Rückruf innerhalb von 15 Minuten während der Öffnungszeiten, dabei klären wir die Adresse für den Einsatz.',
     hours: 'Mo–Sa 9:00–20:00',
+    area: 'Wir kommen zu Ihnen im Raum Oslo',
     form: {
       name: 'Name',
       phone: 'Telefon',
@@ -246,6 +247,7 @@ export default {
       submit: 'Anfrage senden',
       consent: 'Mit dem Klick auf den Button stimmen Sie der Verarbeitung personenbezogener Daten zu. Vertraulichkeit garantiert.',
       success: 'Vielen Dank! Wir melden uns in Kürze.',
+      error: 'Senden fehlgeschlagen. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.',
       winterOption: 'Wintervorbereitung – kompletter Zyklus',
       packagePrefix: 'Paket',
       consult: 'Ich brauche eine Beratung',

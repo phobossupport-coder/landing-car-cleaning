@@ -228,6 +228,7 @@ export default {
     title: 'Bestill gratis befaring',
     text: 'Vi vurderer tilstanden på lakk eller gelcoat, tar målinger og foreslår den beste løsningen. Vi ringer tilbake innen 15 minutter i åpningstiden og bekrefter adressen for besøket.',
     hours: 'Man–lør 9:00–20:00',
+    area: 'Vi kommer til deg i Oslo-området',
     form: {
       name: 'Navn',
       phone: 'Telefon',
@@ -238,6 +239,7 @@ export default {
       submit: 'Send forespørsel',
       consent: 'Ved å trykke på knappen samtykker du til behandling av personopplysninger. Konfidensialitet garanteres.',
       success: 'Takk! Vi kontakter deg snart.',
+      error: 'Kunne ikke sende. Ring oss eller skriv på WhatsApp.',
       winterOption: 'Vinterklargjøring – komplett syklus',
       packagePrefix: 'Pakke',
       consult: 'Trenger rådgivning',

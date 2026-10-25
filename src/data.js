@@ -8,7 +8,6 @@ export const brand = {
   phone: '+380 67 000 00 00', // TODO: замініть на реальний номер (для Норвегії — формат +47 ...)
   phoneHref: 'tel:+380670000000',
   email: 'hello@stella-detailing.no',
-  address: 'Verkstedveien 12, Oslo', // TODO: замініть на реальну адресу студії
   instagram: 'https://instagram.com/',
   whatsapp: 'https://wa.me/380670000000',
   since: 2017,

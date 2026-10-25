@@ -233,6 +233,7 @@ export default {
     title: 'Book a free inspection',
     text: 'We assess the paint or gelcoat, take measurements and propose the best option. We call back within 15 minutes during working hours and confirm the visit address.',
     hours: 'Mon–Sat 9:00–20:00',
+    area: 'We come to you in the Oslo area',
     form: {
       name: 'Name',
       phone: 'Phone',
@@ -243,6 +244,7 @@ export default {
       submit: 'Send request',
       consent: 'By pressing the button you agree to the processing of personal data. Confidentiality guaranteed.',
       success: 'Thank you! We will contact you shortly.',
+      error: 'Could not send. Please call us or write on WhatsApp.',
       winterOption: 'Winter preparation – complete cycle',
       packagePrefix: 'Package',
       consult: 'I need a consultation',

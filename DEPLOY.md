@@ -186,21 +186,14 @@ Source Control → введіть повідомлення → **Commit** → **
 
 ## 6. Форма заявки
 
-Зараз форма лише показує повідомлення «Дякуємо». Найпростіше підключення — [Web3Forms](https://web3forms.com) (безкоштовно, заявки приходять на пошту):
+Заявки йдуть на пошту через [Web3Forms](https://web3forms.com) (безкоштовно). Код у `src/lead.js`.
 
-1. Отримайте access key на сайті.
-2. У `src/components/Contact.jsx` замініть функцію `onSubmit`:
-   ```js
-   const onSubmit = async (e) => {
-     e.preventDefault();
-     const form = e.currentTarget;
-     const data = new FormData(form);
-     data.append('access_key', 'ВАШ_КЛЮЧ');
-     await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
-     form.reset();
-     setSent(true);
-   };
-   ```
+1. Отримайте access key на web3forms.com: він прив'язаний до email, на який приходитимуть заявки.
+2. Додайте його в GitHub: Settings → Secrets and variables → Actions → Variables → `WEB3FORMS_KEY`.
+   Ключ Web3Forms публічний (він однаково потрапляє в код сторінки), тому це змінна, а не секрет.
+3. Для локальної перевірки: `VITE_WEB3FORMS_KEY=... npm run dev`.
+
+Поки ключа немає, форма відкриває WhatsApp з уже написаною заявкою (номер з `brand.whatsapp` у `src/data.js`).
 
 Альтернатива в межах AWS: API Gateway + Lambda + SES (або відправка в Telegram-бот).
 

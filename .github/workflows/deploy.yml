@@ -30,6 +30,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
