@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { loadOrder } from './scroll';
 
 const base = `${import.meta.env.BASE_URL}hero/`;
@@ -13,7 +13,9 @@ export function useHeroFrames(enabled, onFrame) {
   const images = useRef([]);
   const loaded = useRef([]);
   const onFrameRef = useRef(onFrame);
-  onFrameRef.current = onFrame;
+  useLayoutEffect(() => {
+    onFrameRef.current = onFrame;
+  });
 
   useEffect(() => {
     if (!enabled) return undefined;

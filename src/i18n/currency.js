@@ -7,7 +7,7 @@ export const currencies = {
   UAH: { rate: 4.4, symbol: '₴', step: 50, locale: 'uk-UA' },
 };
 
-const group = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+const group = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202F');
 
 // formatPrice(5500, 'EUR') → "500 €"; formatPrice(5500, 'NOK') → "5 500 kr"
 export function formatPrice(nok, code = 'NOK') {
@@ -16,5 +16,5 @@ export function formatPrice(nok, code = 'NOK') {
   // Дрібні суми округлюємо дрібніше, великі (від 10 000) — крупніше.
   const step = raw < 100 ? Math.min(c.step, 5) : raw >= 10000 ? c.step * 10 : c.step;
   const value = Math.round(raw / step) * step;
-  return `${group(value)} ${c.symbol}`;
+  return `${group(value)}\u00A0${c.symbol}`;
 }

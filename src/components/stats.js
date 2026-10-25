@@ -2,7 +2,7 @@
 
 // prefix + число з роздільником тисяч + suffix. Роздільник (пробіл, NBSP, кома) зберігаємо як є.
 export function parseStat(value) {
-  const m = /^(\D*)(\d[\d\s,.  ]*\d|\d)(\D*)$/.exec(value);
+  const m = /^(\D*)(\d[\d\s,.\u00A0\u202F]*\d|\d)(\D*)$/.exec(value);
   if (!m) return { number: 0, prefix: value, suffix: '', separator: '' };
   const [, prefix, digits, suffix] = m;
   const separator = digits.replace(/\d/g, '')[0] ?? '';

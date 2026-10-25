@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Box, Button, ButtonBase, Container, Stack, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
@@ -94,8 +94,11 @@ export default function HeroStory() {
   }, [draw]);
 
   const frames = useHeroFrames(!reduced, schedule);
-  framesRef.current = frames;
-  manifestRef.current = frames.manifest;
+  // Свіжі значення для draw(), який викликається поза рендером (rAF, ResizeObserver).
+  useLayoutEffect(() => {
+    framesRef.current = frames;
+    manifestRef.current = frames.manifest;
+  });
   const story = !reduced && !frames.failed;
 
   // Прогрес скролу всередині секції → зупинка (для підписів) і кадр (для canvas).

@@ -58,13 +58,12 @@ export default function SpecStrip() {
   const { t } = useLang();
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)', { noSsr: true });
   const ref = useRef(null);
-  const [progress, setProgress] = useState(reduced ? 1 : 0);
+  const [count, setCount] = useState(0);
+  // Без анімації цифри одразу фінальні.
+  const progress = reduced ? 1 : count;
 
   useEffect(() => {
-    if (reduced) {
-      setProgress(1);
-      return undefined;
-    }
+    if (reduced) return undefined;
     let raf = 0;
     const observer = new IntersectionObserver(
       ([e]) => {
@@ -73,7 +72,7 @@ export default function SpecStrip() {
         const start = performance.now();
         const tick = (now) => {
           const p = Math.min(1, (now - start) / DURATION);
-          setProgress(p);
+          setCount(p);
           if (p < 1) raf = requestAnimationFrame(tick);
         };
         raf = requestAnimationFrame(tick);
